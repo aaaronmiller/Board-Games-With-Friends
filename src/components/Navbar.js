@@ -27,13 +27,13 @@ class Navbar extends Component {
                     <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
                         <MDBNavbarNav right>
                             <MDBNavItem active>
-                                <MDBNavLink to="/"><i className="fas fa-home"></i>Home</MDBNavLink>
+                                <MDBNavLink to="/Board-Games-With-Friends/"><i className="fas fa-home"></i>Home</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
-                                <MDBNavLink to="/dashboard"><i className="fas fa-chess-rook"></i>My Game</MDBNavLink>
+                                <MDBNavLink to="/Board-Games-With-Friends/dashboard"><i className="fas fa-chess-rook"></i>My Game</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
-                                <MDBNavLink to="/find-game"><i className="fas fa-chess-knight"></i>Find A Game</MDBNavLink>
+                                <MDBNavLink to="/Board-Games-With-Friends/find-game"><i className="fas fa-chess-knight"></i>Find A Game</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
                                 <MDBNavLink to="#!"><i className="far fa-newspaper"></i>News</MDBNavLink>
