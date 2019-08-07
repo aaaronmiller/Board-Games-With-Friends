@@ -15,6 +15,7 @@
     "react-scripts": "3.0.1",
     "typescript": "3.5.3"
   },
+  "homepage": "https://aaaronmiller.github.io/Board-Games-With-Friends",
   "scripts": {
     "predeploy": "npm run build",
     "deploy": "gh-pages -d build",
