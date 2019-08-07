@@ -21,11 +21,10 @@ class Login extends React.Component {
   }
   renderRedirect = () => {
     return (
-        <Redirect to="/dashboard"/>
+      <Redirect to="/dashboard" />
     )
   }
-  usernameHandler(event)
-  {
+  usernameHandler(event) {
     this.setState(
       {
         username: event.target.value
@@ -33,8 +32,7 @@ class Login extends React.Component {
     )
     console.log(this.state.username)
   }
-  passwordHandler(event)
-  {
+  passwordHandler(event) {
     this.setState(
       {
         password: event.target.value
@@ -69,46 +67,50 @@ class Login extends React.Component {
       <div>
         <br></br>
         <MDBRow>
-          <MDBCol></MDBCol>
+          <MDBCol md="3"></MDBCol>
           <MDBCol md="6">
+          <MDBRow  style={{margin: "auto"}}>
+          <MDBCol md="1"></MDBCol>
+          <MDBCol md="11">
           <MDBCard
-            className="card-image"
-            style={{
-              backgroundImage:
+          className="card-image "
+          style={{
+                backgroundImage:
                 "url(https://i.ibb.co/CbxQtDM/chess.jpg)",
-              backgroundSize: "100% 100%",
-              width: "28rem",
-            }}
-          >
-            <div className="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
+                backgroundSize: "100% 100%",
+                width: "28rem",
+                align: "center"
+              }}
+              >
+              <div className="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
               <div className="text-center">
-                <h3 className="white-text mb-5 mt-4 font-weight-bold">
-                  <strong>LOG</strong>
-                  <a href="#!" className="red-text font-weight-bold">
-                    <strong> IN</strong>
-                  </a>
-                </h3>
-              </div>
-              <div className="text-white">
-                <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate />
-                <MDBInput label="Your password" group icon="lock" type="password" validate />
-              </div>
-              <MDBRow className="d-flex align-items-center mb-4">
-                <div className="text-center mb-3 col-md-12">
-                  <MDBBtn
-                    color="red"
-                    rounded
-                    type="button"
-                    className="btn-block z-depth-1"
-                  >
-                    LOG IN
+              <h3 className="white-text mb-5 mt-4 font-weight-bold">
+              <strong>LOG</strong>
+                    <a href="#!" className="red-text font-weight-bold">
+                      <strong> IN</strong>
+                    </a>
+                  </h3>
+                </div>
+                <div className="text-white">
+                  <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate />
+                  <MDBInput label="Your password" group icon="lock" type="password" validate />
+                </div>
+                <MDBRow className="d-flex align-items-center mb-4">
+                  <div className="text-center mb-3 col-md-12">
+                    <MDBBtn
+                      color="red"
+                      rounded
+                      type="button"
+                      className="btn-block z-depth-1"
+                    >
+                      LOG IN
                   </MDBBtn>
                   </div>
                 </MDBRow>
                 <MDBCol md="12">
                   <p className="font-small white-text d-flex justify-content-end">
                     Don't have an account?
-                  <a href="/sign-up" className="green-text ml-1 font-weight-bold">
+                  <a href="/sign-up" className="red-text ml-1 font-weight-bold">
                       Sign up
                   </a>
                   </p>
@@ -116,15 +118,18 @@ class Login extends React.Component {
                 <MDBCol md="12">
                   <p className="font-small white-text d-flex justify-content-end">
                     Forgot
-                  <a href="#!" className="green-text ml-1 font-weight-bold">
+                  <a href="#!" className="red-text ml-1 font-weight-bold">
                       Password?
                   </a>
                   </p>
                 </MDBCol>
               </div>
             </MDBCard>
+            </MDBCol>
+           
+            </MDBRow>
           </MDBCol>
-          <MDBCol></MDBCol>
+          <MDBCol md="3"></MDBCol>
         </MDBRow>
       </div>
     );
