@@ -4,19 +4,24 @@ import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalF
 class CreateModal extends Component {
     state = {
         modal1: false,
-        gameObj: {
-            title: "",
-            name: "",
-            capacity: NaN,
-            Date: "",
-            Time: "",
-            location: "",
-            address: "",
-            description: "" 
-        }
+        username: "",
+        title: "",
+        name: "",
+        capacity: NaN,
+        date: "",
+        time: "",
+        location: "",
+        address: "",
+        description: "" 
+        
     }
+    handleInputChange = event => {
+        const { name, value } = event.target;
+        this.setState({
+          [name]: value
+        });
+    };
 
-    
 
     toggle = nr => () => {
         let modalNumber = 'modal' + nr
@@ -37,19 +42,25 @@ class CreateModal extends Component {
                             containerClassName="mb-2 mt-0"
                             prepend="Title"
                             hint="Event Title"
+                            name="title"
+                            onClick={handleInputChange}
                         />
                         <MDBInputGroup
                             material
                             containerClassName="mb-2 mt-0"
                             prepend="Name"
+                            name="name"
                             hint="The Name Of The Boardgame"
+                            onClick={handleInputChange}
                         />
                         <MDBInputGroup
                             material
                             containerClassName="mb-2 mt-0"
                             prepend="Capacity"
                             hint="Maximum Number of People"
+                            name="capcity"
                             type="number"
+                            onClick={handleInputChange}
                         />
                         <div className="d-flex flex-row">
                             <MDBInputGroup
@@ -57,12 +68,16 @@ class CreateModal extends Component {
                                 containerClassName="mb-2 mt-0"
                                 prepend="Event Date"
                                 hint="MM/DD/YYYY"
+                                name="date"
+                                onClick={handleInputChange}
                             />
                             <MDBInputGroup
                                 material
                                 containerClassName="mb-2 mt-0"
                                 prepend="Start Time"
                                 hint="HH:MM"
+                                name="time"
+                                onClick={handleInputChange}
                             />
                         </div>
                         <div className="d-flex flex-row">
@@ -71,12 +86,16 @@ class CreateModal extends Component {
                                 containerClassName="mb-2 mt-0"
                                 prepend="Location"
                                 hint="Room/Apt. Number"
+                                name="location"
+                                onClick={handleInputChange}
                             />
                             <MDBInputGroup
                                 material
                                 containerClassName="mb-2 mt-0"
                                 prepend=" "
                                 hint="Address"
+                                name="address"
+                                onClick={handleInputChange}
                             />
                         </div>
                         <MDBInputGroup
@@ -85,6 +104,8 @@ class CreateModal extends Component {
                             prepend="Description"
                             type="textarea"
                             hint="Extra Information"
+                            name="descrition"
+                            onClick={handleInputChange}
                         />
 
                     </MDBModalBody>

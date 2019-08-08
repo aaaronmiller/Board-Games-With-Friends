@@ -20,11 +20,9 @@ class Login extends React.Component {
 
   }
   renderRedirect = () => {
-
-      // <Route>
-      // <Redirect to="/dashboard" />
-      // </Route>
-
+    return (
+      <Redirect to="/dashboard" />
+    )
   }
   usernameHandler(event) {
     this.setState(
@@ -32,7 +30,6 @@ class Login extends React.Component {
         username: event.target.value
       }
     )
-    console.log(this.state.username)
   }
   passwordHandler(event) {
     this.setState(
@@ -40,29 +37,25 @@ class Login extends React.Component {
         password: event.target.value
       }
     )
-    console.log(this.state.username)
   }
 
   handlesubmit(event) {
     axios.put("https://arcane-spire-45572.herokuapp.com/api/login"||'http://localhost:8080/login', {
-        username: this.state.username,
+        userName: this.state.username,
         password: this.state.password
     })
     .then(function (response) {
-      console.log(response);
       if(!response.data)
       {
         alert("wrong username or password")
       } else {
         sessionStorage.setItem("token", response.data);
-        console.log(sessionStorage.getItem("token"));
-        // renderRedirect();
+        this.renderRedirect();
       }
     })
     .catch(function (error) {
       console.log(error);
     });
-    console.log("adfadf");
 
   }
   render() {
@@ -96,8 +89,8 @@ class Login extends React.Component {
                   </h3>
                 </div>
                 <div className="text-white">
-                  <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate />
-                  <MDBInput label="Your password" group icon="lock" type="password" validate />
+                  <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler}/>
+                  <MDBInput label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler}/>
                 </div>
                 <MDBRow className="d-flex align-items-center mb-4">
                   <div className="text-center mb-3 col-md-12">
@@ -106,6 +99,7 @@ class Login extends React.Component {
                       rounded
                       type="button"
                       className="btn-block z-depth-1"
+                      onClick={this.handlesubmit}
                     >
                       LOG IN
                   </MDBBtn>
