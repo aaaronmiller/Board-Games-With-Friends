@@ -18,7 +18,7 @@ class Navbar extends Component {
             <div>
                 <MDBNavbar color="#283593 indigo darken-3" dark expand="md">
                     <MDBNavbarBrand>
-                    <a class="navbar-brand" href="/">
+                    <a className="navbar-brand" href="/">
                         <img src="https://i.ibb.co/yXrwR6V/bgwf.jpg" alt="" />
                     </a>
                     </MDBNavbarBrand>
