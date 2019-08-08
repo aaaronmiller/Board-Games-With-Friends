@@ -20,9 +20,17 @@ class Login extends React.Component {
 
   }
   renderRedirect = () => {
+<<<<<<< HEAD
     <Route>
       <Redirect to="/dashboard" />
     </Route>
+=======
+
+      // <Route>
+      // <Redirect to="/dashboard" />
+      // </Route>
+
+>>>>>>> david
   }
   usernameHandler(event) {
     this.setState(
@@ -42,24 +50,26 @@ class Login extends React.Component {
   }
 
   handlesubmit(event) {
-    // axios.put("http://localhost:8080/createaccount"||'http://localhost:8080/login', {
-    //     username: this.state.username,
-    //     password: this.state.password
-    // })
-    // .then(function (response) {
-    //   console.log(response);
-    //   if(!response.data)
-    //   {
-    //     alert("wrong username or password")
-    //   } else {
-    //     renderRedirect();
-    //   }
-    // })
-    // .catch(function (error) {
-    //   console.log(error);
-    // });
-    // console.log("adfadf");
-    this.renderRedirect();
+    axios.put("https://arcane-spire-45572.herokuapp.com/api/login"||'http://localhost:8080/login', {
+        username: this.state.username,
+        password: this.state.password
+    })
+    .then(function (response) {
+      console.log(response);
+      if(!response.data)
+      {
+        alert("wrong username or password")
+      } else {
+        sessionStorage.setItem("token", response.data);
+        console.log(sessionStorage.getItem("token"));
+        // renderRedirect();
+      }
+    })
+    .catch(function (error) {
+      console.log(error);
+    });
+    console.log("adfadf");
+
   }
   render() {
 
