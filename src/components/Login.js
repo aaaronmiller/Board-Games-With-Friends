@@ -89,6 +89,7 @@ class Login extends React.Component {
                   </h3>
                 </div>
                 <div className="text-white">
+
                   <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler}/>
                   <MDBInput label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler}/>
                 </div>

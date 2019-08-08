@@ -43,7 +43,7 @@ class CreateModal extends Component {
                             prepend="Title"
                             hint="Event Title"
                             name="title"
-                            onClick={handleInputChange}
+                            onClick={this.handleInputChange}
                         />
                         <MDBInputGroup
                             material
@@ -51,7 +51,7 @@ class CreateModal extends Component {
                             prepend="Name"
                             name="name"
                             hint="The Name Of The Boardgame"
-                            onClick={handleInputChange}
+                            onClick={this.handleInputChange}
                         />
                         <MDBInputGroup
                             material
@@ -60,7 +60,7 @@ class CreateModal extends Component {
                             hint="Maximum Number of People"
                             name="capcity"
                             type="number"
-                            onClick={handleInputChange}
+                            onClick={this.handleInputChange}
                         />
                         <div className="d-flex flex-row">
                             <MDBInputGroup
@@ -69,7 +69,7 @@ class CreateModal extends Component {
                                 prepend="Event Date"
                                 hint="MM/DD/YYYY"
                                 name="date"
-                                onClick={handleInputChange}
+                                onClick={this.handleInputChange}
                             />
                             <MDBInputGroup
                                 material
@@ -77,7 +77,7 @@ class CreateModal extends Component {
                                 prepend="Start Time"
                                 hint="HH:MM"
                                 name="time"
-                                onClick={handleInputChange}
+                                onClick={this.handleInputChange}
                             />
                         </div>
                         <div className="d-flex flex-row">
@@ -87,7 +87,7 @@ class CreateModal extends Component {
                                 prepend="Location"
                                 hint="Room/Apt. Number"
                                 name="location"
-                                onClick={handleInputChange}
+                                onClick={this.handleInputChange}
                             />
                             <MDBInputGroup
                                 material
@@ -95,7 +95,7 @@ class CreateModal extends Component {
                                 prepend=" "
                                 hint="Address"
                                 name="address"
-                                onClick={handleInputChange}
+                                onClick={this.handleInputChange}
                             />
                         </div>
                         <MDBInputGroup
@@ -105,7 +105,7 @@ class CreateModal extends Component {
                             type="textarea"
                             hint="Extra Information"
                             name="descrition"
-                            onClick={handleInputChange}
+                            onClick={this.handleInputChange}
                         />
 
                     </MDBModalBody>

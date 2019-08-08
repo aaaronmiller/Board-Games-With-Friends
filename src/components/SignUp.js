@@ -57,9 +57,12 @@ class SignUp extends React.Component {
       <div>
         <br></br>
         <MDBRow>
-          <MDBCol></MDBCol>
+          <MDBCol md="3"></MDBCol>
           <MDBCol md="6">
-            <MDBCard
+          <MDBRow  style={{margin: "auto"}}>
+          <MDBCol md="1"></MDBCol>
+          <MDBCol md="11">
+          <MDBCard
               className="card-image"
               style={{
                 backgroundImage:
@@ -77,8 +80,10 @@ class SignUp extends React.Component {
                   </a>
                 </h3>
               </div>
+
               <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler} />
               <MDBInput className="text-white" label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler}/>
+
               <MDBRow className="d-flex align-items-center mb-4">
                 <div className="text-center mb-3 col-md-12">
                   <MDBBtn
@@ -102,13 +107,15 @@ class SignUp extends React.Component {
                 </MDBCol>
               </div>
             </MDBCard>
+            </MDBCol>
+           
+            </MDBRow>
           </MDBCol>
-          <MDBCol></MDBCol>
+          <MDBCol md="3"></MDBCol>
         </MDBRow>
       </div>
     );
   }
-
 }
 
 export default SignUp;
