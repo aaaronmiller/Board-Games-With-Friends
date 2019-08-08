@@ -50,7 +50,8 @@ class Login extends React.Component {
         alert("wrong username or password")
       } else {
         sessionStorage.setItem("token", response.data);
-        this.renderRedirect();
+        // this.renderRedirect();
+        console.log("logged in")
       }
     })
     .catch(function (error) {

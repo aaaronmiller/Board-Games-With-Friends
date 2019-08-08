@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInputGroup } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInputGroup, MDBInput } from 'mdbreact';
 
 class CreateModal extends Component {
     state = {
@@ -21,8 +21,10 @@ class CreateModal extends Component {
           [name]: value
         });
     };
-
-
+    handleCreate = () => {
+        this.setState({ modal1: false});
+        console.log(this.state);
+    }
     toggle = nr => () => {
         let modalNumber = 'modal' + nr
         this.setState({
@@ -33,85 +35,81 @@ class CreateModal extends Component {
     render() {
         return (
             <div style={{ display: "inline-block" }}>
-                <a><i class="far fa-plus-square" onClick={this.toggle(1)}></i></a>
+                <a><i className="far fa-plus-square" onClick={this.toggle(1)}></i></a>
                 <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} size="lg">
                     <MDBModalHeader toggle={this.toggle(1)}>Create a board game</MDBModalHeader>
-                    <MDBModalBody>
-                        <MDBInputGroup
+                    <MDBModalBody>   
+                        <MDBInput
                             material
                             containerClassName="mb-2 mt-0"
-                            prepend="Title"
+                            
                             hint="Event Title"
                             name="title"
-                            onClick={handleInputChange}
+                            onChange={this.handleInputChange}
                         />
-                        <MDBInputGroup
+                        <MDBInput
                             material
                             containerClassName="mb-2 mt-0"
                             prepend="Name"
                             name="name"
                             hint="The Name Of The Boardgame"
-                            onClick={handleInputChange}
+                            onChange={this.handleInputChange}
                         />
-                        <MDBInputGroup
+                        <MDBInput
                             material
                             containerClassName="mb-2 mt-0"
                             prepend="Capacity"
                             hint="Maximum Number of People"
                             name="capcity"
                             type="number"
-                            onClick={handleInputChange}
+                            onChange={this.handleInputChange}
                         />
-                        <div className="d-flex flex-row">
-                            <MDBInputGroup
-                                material
-                                containerClassName="mb-2 mt-0"
-                                prepend="Event Date"
-                                hint="MM/DD/YYYY"
-                                name="date"
-                                onClick={handleInputChange}
-                            />
-                            <MDBInputGroup
-                                material
-                                containerClassName="mb-2 mt-0"
-                                prepend="Start Time"
-                                hint="HH:MM"
-                                name="time"
-                                onClick={handleInputChange}
-                            />
-                        </div>
-                        <div className="d-flex flex-row">
-                            <MDBInputGroup
-                                material
-                                containerClassName="mb-2 mt-0"
-                                prepend="Location"
-                                hint="Room/Apt. Number"
-                                name="location"
-                                onClick={handleInputChange}
-                            />
-                            <MDBInputGroup
-                                material
-                                containerClassName="mb-2 mt-0"
-                                prepend=" "
-                                hint="Address"
-                                name="address"
-                                onClick={handleInputChange}
-                            />
-                        </div>
-                        <MDBInputGroup
+                        <MDBInput
+                            material
+                            containerClassName="mb-2 mt-0"
+                            prepend="Event Date"
+                            hint="MM/DD/YYYY"
+                            name="date"
+                            onChange={this.handleInputChange}
+                        />
+                        <MDBInput
+                            material
+                            containerClassName="mb-2 mt-0"
+                            prepend="Start Time"
+                            hint="HH:MM"
+                            name="time"
+                            onChange={this.handleInputChange}
+                        />
+                        <MDBInput
+                            material
+                            containerClassName="mb-2 mt-0"
+                            prepend="Location"
+                            hint="Room/Apt. Number"
+                            name="location"
+                            onChange={this.handleInputChange}
+                        />
+                        <MDBInput
+                            material
+                            containerClassName="mb-2 mt-0"
+                            prepend=" "
+                            hint="Address"
+                            name="address"
+                            onChange={this.handleInputChange}
+                        />
+                        <MDBInput
                             material
                             containerClassName="mb-2 mt-0"
                             prepend="Description"
                             type="textarea"
                             hint="Extra Information"
-                            name="descrition"
-                            onClick={handleInputChange}
+                            name="description"
+                            onChange={this.handleInputChange}
                         />
 
                     </MDBModalBody>
                     <MDBModalFooter>
                         <MDBBtn color="secondary" onClick={this.toggle(1)}>Close</MDBBtn>
-                        <MDBBtn color="primary">Create</MDBBtn>
+                        <MDBBtn color="primary" onClick={this.handleCreate}>Create</MDBBtn>
                     </MDBModalFooter>
                 </MDBModal>
             </div>
