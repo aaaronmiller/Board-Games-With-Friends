@@ -1,5 +1,6 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInputGroup, MDBInput } from 'mdbreact';
+import Axios from 'axios';
 
 class CreateModal extends Component {
     state = {
@@ -23,6 +24,7 @@ class CreateModal extends Component {
     };
     handleCreate = () => {
         this.setState({ modal1: false});
+        Axios.post("api/createGame");
         console.log(this.state);
     }
     toggle = nr => () => {
