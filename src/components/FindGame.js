@@ -11,10 +11,10 @@ export default function FindGame() {
             <div>
                 <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
                 <MDBBtn outline color="warning" rounded size="sm" type="submit" className="mr-auto">
-                Search
+                    Search
                 </MDBBtn>
             </div>
-            <div className="border d-flex flex-row flex-wrap">
+            <div className="d-flex flex-row flex-wrap">
                 <GamePanle />
                 <GamePanle />
                 <GamePanle />

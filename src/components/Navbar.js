@@ -19,27 +19,26 @@ class Navbar extends Component {
                 <MDBNavbar color="#283593 indigo darken-3" dark expand="md">
                     <MDBNavbarBrand>
                     <a class="navbar-brand" href="/">
-                    <img src="https://i.ibb.co/yXrwR6V/bgwf.jpg" alt="" />
-                  </a>
-                        
+                        <img src="https://i.ibb.co/yXrwR6V/bgwf.jpg" alt="" />
+                    </a>
                     </MDBNavbarBrand>
                     <MDBNavbarToggler onClick={this.toggleCollapse} />
                     <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
                         <MDBNavbarNav right>
-                            <MDBNavItem active>
-                                <MDBNavLink to="/Board-Games-With-Friends/"><i className="fas fa-home"></i>Home</MDBNavLink>
+                            <MDBNavItem>
+                                <MDBNavLink to="/"><i className="fas fa-home"></i>Home</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
-                                <MDBNavLink to="/Board-Games-With-Friends/dashboard"><i className="fas fa-chess-rook"></i>My Game</MDBNavLink>
+                                <MDBNavLink to="/dashboard"><i className="fas fa-chess-rook"></i>My Game</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
-                                <MDBNavLink to="/Board-Games-With-Friends/find-game"><i className="fas fa-chess-knight"></i>Find A Game</MDBNavLink>
+                                <MDBNavLink to="/find-game"><i className="fas fa-chess-knight"></i>Find A Game</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
                                 <MDBNavLink to="#!"><i className="far fa-newspaper"></i>News</MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
-                                <MDBNavLink to="#!"><i className="far fa-address-card"></i>Profile</MDBNavLink>
+                                <MDBNavLink to="/profile"><i className="far fa-address-card"></i>Profile</MDBNavLink>
                             </MDBNavItem>
                             {/* <MDBNavItem>
                                 <MDBDropdown>
