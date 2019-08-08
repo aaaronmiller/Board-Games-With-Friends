@@ -3,8 +3,20 @@ import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalF
 
 class CreateModal extends Component {
     state = {
-        modal1: false
+        modal1: false,
+        gameObj: {
+            title: "",
+            name: "",
+            capacity: NaN,
+            Date: "",
+            Time: "",
+            location: "",
+            address: "",
+            description: "" 
+        }
     }
+
+    
 
     toggle = nr => () => {
         let modalNumber = 'modal' + nr

@@ -35,7 +35,7 @@ class SignUp extends React.Component {
   }
 
   handlesubmit(event) {
-    axios.post("http://localhost:8080/createaccount"||'http://localhost:8080/createaccount', {
+    axios.post("http://localhost:3000/createaccount"||'http://localhost:8080/createaccount', {
       username: this.state.username,
       password: this.state.password
     })
