@@ -97,7 +97,7 @@ class Login extends React.Component {
                 </div>
                 <div className="text-white">
                   <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate />
-                  <MDBInput label="Your password" group icon="lock" type="password" validate />
+                  <MDBInput className="text-white" label="Your password" group icon="lock" type="password" validate />
                 </div>
                 <MDBRow className="d-flex align-items-center mb-4">
                   <div className="text-center mb-3 col-md-12">
