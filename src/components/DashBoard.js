@@ -15,10 +15,10 @@ export default class DashBoard extends Component {
     }
 
     loadRegistedGames = () => {
-        Axios.post()
-        {
-            token: sessionStorage.getItem(token)
-        }
+        // Axios.post()
+        // {
+        //     token: sessionStorage.getItem(token)
+        // }
     }
     
     loadHostedGames = () => {

@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
-import { Redirect, withRouter } from "react-router-dom";
+import { Redirect, Route } from "react-router-dom";
 import axios from 'axios';
 import DashBoard from "./DashBoard";
 
@@ -20,9 +20,11 @@ class Login extends React.Component {
 
   }
   renderRedirect = () => {
-    return (
-      <Redirect to="/dashboard" />
-    )
+
+      // <Route>
+      // <Redirect to="/dashboard" />
+      // </Route>
+
   }
   usernameHandler(event) {
     this.setState(
