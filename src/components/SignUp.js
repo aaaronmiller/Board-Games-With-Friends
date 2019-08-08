@@ -35,8 +35,9 @@ class SignUp extends React.Component {
   }
 
   handlesubmit(event) {
-    axios.post("http://localhost:3000/createaccount"||'http://localhost:8080/createaccount', {
-      username: this.state.username,
+    console.log(this.state.username, this.state.password);
+    axios.post("https://arcane-spire-45572.herokuapp.com/api/createaccount"||'http://localhost:3000/createaccount', {
+      userName: this.state.username,
       password: this.state.password
     })
     .then(function (response) {
@@ -48,7 +49,7 @@ class SignUp extends React.Component {
     .catch(function (error) {
     console.log(error);
     });
-    console.log("adfadf");
+    console.log("not work!");
   }
   render() {
 
@@ -69,15 +70,15 @@ class SignUp extends React.Component {
           >
             <div className="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
               <div className="text-center">
-                <h3 className="white-text mb-5 mt-4 font-weight-bold">
+                <h3 className="text-white mb-5 mt-4 font-weight-bold">
                   <strong>SIGN</strong>
                   <a href="#!" className="#1565c0-text font-weight-bold">
                     <strong> UP</strong>
                   </a>
                 </h3>
               </div>
-              <MDBInput label="Your email" group icon="user" type="text" validate />
-              <MDBInput label="Your password" group icon="lock" type="password" validate />
+              <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler} />
+              <MDBInput className="text-white" label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler}/>
               <MDBRow className="d-flex align-items-center mb-4">
                 <div className="text-center mb-3 col-md-12">
                   <MDBBtn
@@ -85,13 +86,14 @@ class SignUp extends React.Component {
                     rounded
                     type="button"
                     className="btn-block z-depth-1"
+                    onClick={this.handlesubmit}
                   >
                     SIGN UP
                   </MDBBtn>
                 </div>
               </MDBRow>
               <MDBCol md="12">
-                <p className="font-small white-text d-flex justify-content-end">
+                <p className="font-small text-white d-flex justify-content-end">
                 Already have an accout?
                   <a href="/" className="#1565c0-text ml-1 font-weight-bold">
                     Log in
