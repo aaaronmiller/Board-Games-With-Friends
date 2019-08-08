@@ -20,17 +20,11 @@ class Login extends React.Component {
 
   }
   renderRedirect = () => {
-<<<<<<< HEAD
-    <Route>
-      <Redirect to="/dashboard" />
-    </Route>
-=======
 
       // <Route>
       // <Redirect to="/dashboard" />
       // </Route>
 
->>>>>>> david
   }
   usernameHandler(event) {
     this.setState(
