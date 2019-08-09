@@ -31,11 +31,11 @@ export default class DashBoard extends Component {
                     <h1 className="text-white">Upcoming Games
                     <MDBBtn color="#d50000 red accent-4" style={{ color: "white", marginLeft: "340px" }} href="#"  onClick={this.handleSubmit}>Create a Game</MDBBtn></h1>
                     <div className="d-flex flex-row flex-wrap">
+                        {/* <GameCard />
                         <GameCard />
                         <GameCard />
                         <GameCard />
-                        <GameCard />
-                        <GameCard />
+                        <GameCard /> */}
 
                     </div>
                 </div>

@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
+import { Redirect, Route } from "react-router-dom";
 
 class SignUp extends React.Component {
 
@@ -14,7 +15,19 @@ class SignUp extends React.Component {
     this.usernameHandler = this.usernameHandler.bind(this);
     this.passwordHandler = this.passwordHandler.bind(this);
     this.handlesubmit = this.handlesubmit.bind(this);
+    this.renderRedirect = this.renderRedirect.bind(this);
 
+
+  }
+
+  renderRedirect(){
+    console.log("redirect");
+    this.setState(
+      {
+
+        redirectPath: "/dashboard"
+      }
+    )
   }
 
   usernameHandler(event) {
@@ -36,12 +49,13 @@ class SignUp extends React.Component {
 
   handlesubmit(event) {
     console.log(this.state.username, this.state.password);
-    axios.post("https://arcane-spire-45572.herokuapp.com/api/createaccount"||'http://localhost:3000/createaccount', {
+    axios.post("https://arcane-spire-45572.herokuapp.com/api/createaccount"||'http://localhost:8080/api/createaccount', {
       userName: this.state.username,
       password: this.state.password
     })
-    .then(function (response) {
+    .then((response) => {
     console.log(response);
+      this.renderRedirect();
     if (!response.data) {
         alert("wrong username or password")
     }
@@ -49,7 +63,6 @@ class SignUp extends React.Component {
     .catch(function (error) {
     console.log(error);
     });
-    console.log("not work!");
   }
   render() {
 
@@ -113,6 +126,8 @@ class SignUp extends React.Component {
           </MDBCol>
           <MDBCol md="3"></MDBCol>
         </MDBRow>
+        <Redirect to={this.state.redirectPath} />
+
       </div>
     );
   }
