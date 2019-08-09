@@ -30,7 +30,7 @@ class CreateModal extends Component {
         this.setState({ modal1: false});
         console.log("hit")
 
-        axios.post("http://localhost:8080/api/gameEvents", {
+        axios.post("https://arcane-spire-45572.herokuapp.com/api/gameEvents", {
             eventTitle: this.state.title,
             description: this.state.description,
             location: this.state.location,
@@ -61,7 +61,7 @@ class CreateModal extends Component {
                 <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} size="lg">
                     <MDBModalHeader  style={{textAlign:"center", color:"black"}} toggle={this.toggle(1)}>Create a board game</MDBModalHeader>
                     <MDBModalBody>
-                        <div class="md-form">
+                        <div className="md-form">
 
                                
                                 <MDBInput
@@ -80,16 +80,7 @@ class CreateModal extends Component {
                                     hint="The Name Of The Boardgame"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="title">Title</label>
-                                <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend="phone"
-                                    hint="phone"
-                                    name="phone"
-                                    type="phone"
-                                    onChange={this.handleInputChange}
-                                />
+
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
@@ -99,7 +90,6 @@ class CreateModal extends Component {
                                     type="number"
                                     onChange={this.handleInputChange}
                                 />
-                       
 
                                 <MDBInput
                                     material
@@ -134,6 +124,14 @@ class CreateModal extends Component {
                                     prepend=" "
                                     hint="Address"
                                     name="address"
+                                    onChange={this.handleInputChange}
+                                />
+                                <MDBInput
+                                    material
+                                    containerClassName="mb-2 mt-0"
+                                    prepend=" "
+                                    hint="Phone Number"
+                                    name="phone"
                                     onChange={this.handleInputChange}
                                 />
 

@@ -10,7 +10,8 @@ export default class DashBoard extends Component {
         super(props);
         this.state = {
             grabbedGames: [],
-            HostedGames: []
+            HostedGames: [],
+            isLoggedIn: sessionStorage.getItem("isLoggedIn")
         };
         this.loadRegistedGames();
       }
@@ -20,7 +21,7 @@ export default class DashBoard extends Component {
     }
 
     loadRegistedGames = () => {
-        Axios.get("http://localhost:8080/api/gameEvents"||"https://arcane-spire-45572.herokuapp.com/api/gameEvents")
+        Axios.get("https://arcane-spire-45572.herokuapp.com/api/gameEvents")
         .then((Response) =>
         {
             this.setState(
@@ -44,6 +45,7 @@ export default class DashBoard extends Component {
     render() {
         return (
             <MDBContainer>
+
             <div>
             <h1 className="text-white">Upcoming Games
             <MDBBtn color="#d50000 red accent-4" style={{ color: "white", marginLeft: "340px" }} href="#"  onClick={this.handleSubmit}>Create a Game</MDBBtn></h1>
@@ -55,15 +57,23 @@ export default class DashBoard extends Component {
                 </div>
                 {/* <div>
                 <h1 className="text-white">Hosted Games</h1>
+
                     <div className="d-flex flex-row flex-wrap">
-                    <GameCard />
-                    <GameCard />
-                    <GameCard />
-                    <GameCard />
-                    <GameCard />
-                </div>*/}
-                </div> 
-                </MDBContainer>
-                )
-            }
+                    {this.state.grabbedGames.map((data) => <GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity} />)}
+                    </div>
+                </div>
+                <div>
+                <h1 className="text-white">Hosted Games<CreateModal /></h1>
+                    {/* <div className="d-flex flex-row flex-wrap">
+                        <GameCard />
+                        <GameCard />
+                        <GameCard />
+                        <GameCard />
+                        <GameCard />
+                    </div> */}
+                </div>
+            </MDBContainer>
+        )
+    }
+
 }
