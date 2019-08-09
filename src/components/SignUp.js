@@ -9,7 +9,8 @@ class SignUp extends React.Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      redirectPath: "sign-up"
     };
 
     this.usernameHandler = this.usernameHandler.bind(this);
