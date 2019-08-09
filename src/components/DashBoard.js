@@ -45,6 +45,7 @@ export default class DashBoard extends Component {
     render() {
         return (
             <MDBContainer>
+
                 <div>
                     <h1 className="text-white">Upcoming Games</h1>
                     <div className="d-flex flex-row flex-wrap">
@@ -64,4 +65,5 @@ export default class DashBoard extends Component {
             </MDBContainer>
         )
     }
+
 }
