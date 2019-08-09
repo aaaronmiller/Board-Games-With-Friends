@@ -15,7 +15,7 @@ class Login extends React.Component {
 
     this.usernameHandler = this.usernameHandler.bind(this);
     this.passwordHandler = this.passwordHandler.bind(this);
-    this.handlesubmit = this.handlesubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.renderRedirect = this.renderRedirect.bind(this);
 
 
