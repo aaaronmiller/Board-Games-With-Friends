@@ -25,7 +25,7 @@ import API from "../utils/API";
     }
 
     loadEvents = () => {
-      API.getEvents()
+      API.getAllEvents()
         .then(res =>
           this.setState({ gameObj: res.data })
         )

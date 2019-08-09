@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdbreact";
-import GamePanle from "./GamePanel";
+import GamePanel from "./GamePanel";
 
 export default function FindGame() {
     return (
@@ -15,13 +15,13 @@ export default function FindGame() {
                 </MDBBtn>
             </div>
             <div className="d-flex flex-row flex-wrap">
-                <GamePanle />
-                <GamePanle />
-                <GamePanle />
-                <GamePanle />
-                <GamePanle />
-                <GamePanle />
-                <GamePanle />
+                <GamePanel />
+                <GamePanel />
+                <GamePanel />
+                <GamePanel />
+                <GamePanel />
+                <GamePanel />
+                <GamePanel />
             </div>
         </MDBContainer>
     )
