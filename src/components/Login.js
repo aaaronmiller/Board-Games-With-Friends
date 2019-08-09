@@ -15,7 +15,7 @@ class Login extends React.Component {
 
     this.usernameHandler = this.usernameHandler.bind(this);
     this.passwordHandler = this.passwordHandler.bind(this);
-    this.handlesubmit = this.handlesubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.renderRedirect = this.renderRedirect.bind(this);
 
 
@@ -44,10 +44,10 @@ class Login extends React.Component {
     )
   }
 
-  handlesubmit(event) {
-    axios.put("https://arcane-spire-45572.herokuapp.com/api/login" || 'http://localhost:8080/login', {
-      userName: this.state.username,
-      password: this.state.password
+  handleSubmit(event) {
+    axios.put("https://arcane-spire-45572.herokuapp.com/api/login"||'http://localhost:8080/login', {
+        userName: this.state.username,
+        password: this.state.password
     })
       .then((response) => {
         if (!response.data) {
@@ -95,26 +95,26 @@ class Login extends React.Component {
                     </div>
                     <div className="text-white">
 
-                      <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler} />
-                      <MDBInput label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler} />
-                    </div>
-                    <MDBRow className="d-flex align-items-center mb-4">
-                      <div className="text-center mb-3 col-md-12">
-                        <MDBBtn
-                          color="red"
-                          rounded
-                          type="button"
-                          className="btn-block z-depth-1"
-                          onClick={this.handlesubmit}
-                        >
-                          LOG IN
+                  <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler}/>
+                  <MDBInput label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler}/>
+                </div>
+                <MDBRow className="d-flex align-items-center mb-4">
+                  <div className="text-center mb-3 col-md-12">
+                    <MDBBtn
+                      color="red"
+                      rounded
+                      type="button"
+                      className="btn-block z-depth-1"
+                      onClick={this.handleSubmit}
+                    >
+                      LOG IN
                   </MDBBtn>
                       </div>
                     </MDBRow>
                     <MDBCol md="12">
                       <p className="font-small white-text d-flex justify-content-end">
                         Don't have an account?
-                  <a href="/sign-up" className="red-text ml-1 font-weight-bold">
+                  <a href="/SignUp" className="red-text ml-1 font-weight-bold">
                           Sign up
                   </a>
                       </p>

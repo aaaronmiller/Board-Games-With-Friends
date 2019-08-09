@@ -1,5 +1,5 @@
 import React, { Component }  from 'react';
-import { MDBBadge, MDBContainer } from "mdbreact";
+import { MDBBtn, MDBContainer } from 'mdbreact';
 import GameCard from "./GameCard";
 import CreateModal from './CreateModal';
 import Axios from 'axios';
@@ -28,7 +28,8 @@ export default class DashBoard extends Component {
         return (
             <MDBContainer>
                 <div>
-                    <h1><MDBBadge color="primary">My</MDBBadge> Upcoming Game</h1>
+                    <h1 className="text-white">Upcoming Games
+                    <MDBBtn color="#d50000 red accent-4" style={{ color: "white", marginLeft: "340px" }} href="#"  onClick={this.handleSubmit}>Create a Game</MDBBtn></h1>
                     <div className="d-flex flex-row flex-wrap">
                         {/* <GameCard />
                         <GameCard />
@@ -39,7 +40,7 @@ export default class DashBoard extends Component {
                     </div>
                 </div>
                 <div>
-                    <h1><MDBBadge color="primary">My</MDBBadge> Hosted Game  <CreateModal /></h1>
+                <h1 className="text-white">Hosted Games</h1>
                     <div className="d-flex flex-row flex-wrap">
                         <GameCard />
                         <GameCard />
