@@ -1,7 +1,12 @@
-import axios from 'axios';
 import React from "react";
+<<<<<<< HEAD
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput, MDBNavLink } from 'mdbreact';
 import { Redirect, Route, Link } from "react-router-dom";
+=======
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
+import { Redirect, Route } from "react-router-dom";
+import API from "../utils/API";
+>>>>>>> development
 
 class SignUp extends React.Component {
 
@@ -50,10 +55,7 @@ class SignUp extends React.Component {
 
   handlesubmit(event) {
     console.log(this.state.username, this.state.password);
-    axios.post("https://arcane-spire-45572.herokuapp.com/api/createaccount", {
-      userName: this.state.username,
-      password: this.state.password
-    })
+    API.signUp(this.state.username,this.state.password)
     .then((response) => {
     console.log(response);
       this.renderRedirect();

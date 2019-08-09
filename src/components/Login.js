@@ -1,8 +1,14 @@
 import React from "react";
+<<<<<<< HEAD
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput, MDBNavLink } from 'mdbreact';
 import { Redirect, Route, Link } from "react-router-dom";
 import axios from 'axios';
+=======
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
+import { Redirect, Route } from "react-router-dom";
+>>>>>>> development
 import DashBoard from "./DashBoard";
+import API from "../utils/API";
 
 class Login extends React.Component {
   constructor(props) {
@@ -45,18 +51,16 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    axios.put("https://arcane-spire-45572.herokuapp.com/api/login", {
-        userName: this.state.username,
-        password: this.state.password
-    })
+    API.logIn(this.state.username, this.state.password)
       .then((response) => {
         if (!response.data) {
           alert("wrong username or password")
         } else {
+          console.log(this.props.message);
           sessionStorage.setItem("token", response.data);
           sessionStorage.setItem("isLoggedIn", true);
+          this.props.handleLogIn();
           this.renderRedirect();
-          console.log(sessionStorage);
         }
       })
       .catch(function (error) {

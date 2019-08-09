@@ -1,27 +1,31 @@
 import React, { Component } from "react";
+import { Link } from "react-router-dom";
 import {
-    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
-    MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
+    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse
 } from "mdbreact";
 
 class Navbar extends Component {
-    state = {
-        isOpen: false
-    };
-
+    constructor(props){ 
+        super(props)
+        this.state = {
+            isOpen: false,
+        };
+    }
     toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
     }
     logOut = () => {
         sessionStorage.clear();
+        this.props.handleLogOut();
     }
     isLoggedIn = () => {
-        if (sessionStorage.getItem("isLoggedIn"))
+        if (this.props.isLoggedIn) {
             return (
                 <MDBNavItem>
                     <MDBNavLink to="/" onClick={this.logOut}>Log Out</MDBNavLink>
                 </MDBNavItem>
             )
+        }
     }
 
     render() {
@@ -29,9 +33,9 @@ class Navbar extends Component {
             <div>
                 <MDBNavbar color="#283593 indigo darken-3" dark expand="md">
                     <MDBNavbarBrand>
-                    <a className="navbar-brand" href="/">
+                    <Link className="navbar-brand" to="/">
                         <img src="https://i.ibb.co/yXrwR6V/bgwf.jpg" alt="" />
-                    </a>
+                    </Link>
                     </MDBNavbarBrand>
                     <MDBNavbarToggler onClick={this.toggleCollapse} />
                     <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
