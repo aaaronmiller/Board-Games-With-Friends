@@ -39,7 +39,7 @@ class Login extends React.Component {
     )
   }
 
-  handlesubmit(event) {
+  handleSubmit(event) {
     axios.put("https://arcane-spire-45572.herokuapp.com/api/login"||'http://localhost:8080/login', {
         userName: this.state.username,
         password: this.state.password
@@ -101,7 +101,7 @@ class Login extends React.Component {
                       rounded
                       type="button"
                       className="btn-block z-depth-1"
-                      onClick={this.handlesubmit}
+                      onClick={this.handleSubmit}
                     >
                       LOG IN
                   </MDBBtn>

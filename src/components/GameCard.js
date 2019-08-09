@@ -5,27 +5,28 @@ import API from "../utils/API";
 // const CardExample = (props) => {
 class CardExample extends Component {
   state = {
+    //creator toggle
+    isOwner: false, 
     //populated from user table:
 
     //populated from event table:
     id: "",
-    eventTitle: "",
+    eventTitle: "dog",
     eventOwner: "",
     description: "",
     location: "",
     locationGPS: "",
     dateTime: "",
-    phone: "",
     maxOfPlayers: "",
     signedInPlayers: "",
     // Below are from the game table, not event table
-    gameName: "",
-    gameImage: "https://images-na.ssl-images-amazon.com/images/I/61Uzk6kyVyL.jpg",
+    gameName: "Chess",
+    gameImage: "http://miro.medium.com/max/1838/1*fcOemY1xrwLcWUnX8l8g8Q.jpeg",
   };
 
-  componentDidMount() {
-    this.loadEvents();
-  }
+  // componentDidMount() {
+  //   this.loadEvents();
+  // }
 
   loadEvents = () => {
     API.getAllEvents()
@@ -51,8 +52,8 @@ class CardExample extends Component {
   render() {
     return (
       <MDBCol md="4">
-        <MDBCard>
-          <MDBCardImage className="img-fluid" src="{CardExample.gameImage}" waves />
+        <MDBCard className="text-white bg-light" style={{ textAlign: "center", margin: "30px" }}>
+          <MDBCardImage className="img-fluid" src={CardExample.gameImage} waves />
           <MDBCardBody>
             <MDBCardTitle>{CardExample.eventTitle}</MDBCardTitle>
             <MDBCardText>
@@ -61,12 +62,12 @@ class CardExample extends Component {
               <span>{CardExample.description}</span><br />
               <span>{CardExample.location}</span><br />
               Created by:{CardExample.eventOwner}<br />
-
-              <span>{CardExample.phone}</span><br />
               <span>Max # of players: {CardExample.maxOfPlayers}</span><br />
               <span>Curerent players: {CardExample.signedInPlayers}</span>
             </MDBCardText>
-            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#"  onClick={this.handlesubmit}>Join</MDBBtn>
+            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#"  onClick={this.handleSubmit}>Join</MDBBtn>
+            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#"  onClick={this.handleSubmit}>Delete</MDBBtn>
+            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#"  onClick={this.handleSubmit}>Edit</MDBBtn>
           </MDBCardBody>
         </MDBCard>
       </MDBCol>
