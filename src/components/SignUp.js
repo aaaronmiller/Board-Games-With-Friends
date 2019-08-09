@@ -1,7 +1,7 @@
 import axios from 'axios';
 import React from "react";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
-import { Redirect, Route } from "react-router-dom";
+import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput, MDBNavLink } from 'mdbreact';
+import { Redirect, Route, Link } from "react-router-dom";
 
 class SignUp extends React.Component {
 
@@ -114,9 +114,9 @@ class SignUp extends React.Component {
               <MDBCol md="12">
                 <p className="font-small text-white d-flex justify-content-end">
                 Already have an accout?
-                  <a href="/" className="#1565c0-text ml-1 font-weight-bold">
+                  <Link to="/" className="#1565c0-text ml-1 font-weight-bold">
                     Log in
-                  </a>
+                  </Link>
                   </p>
                 </MDBCol>
               </div>

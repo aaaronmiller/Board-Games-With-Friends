@@ -18,7 +18,7 @@ class App extends Component {
   render() {
 
     return (
-      <Router>
+      <Router basename={process.env.PUBLIC_URL}>
         <div style={{
           backgroundImage:
             "url(https://i.ibb.co/BVy8Qwt/bluebb.jpg)",
@@ -32,6 +32,7 @@ class App extends Component {
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/find-game" component={FindGame} />
               <Route exact path="/profile" component={Profile} />
+              
             </div>
           </Switch>
         </div>
