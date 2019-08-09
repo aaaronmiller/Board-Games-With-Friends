@@ -45,7 +45,7 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    axios.put("https://arcane-spire-45572.herokuapp.com/api/login"||'http://localhost:8080/login', {
+    axios.put('http://localhost:8080/login' || "https://arcane-spire-45572.herokuapp.com/api/login", {
         userName: this.state.username,
         password: this.state.password
     })
