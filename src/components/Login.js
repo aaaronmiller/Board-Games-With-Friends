@@ -1,12 +1,6 @@
 import React from "react";
-<<<<<<< HEAD
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput, MDBNavLink } from 'mdbreact';
-import { Redirect, Route, Link } from "react-router-dom";
-import axios from 'axios';
-=======
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
 import { Redirect, Route } from "react-router-dom";
->>>>>>> development
 import DashBoard from "./DashBoard";
 import API from "../utils/API";
 

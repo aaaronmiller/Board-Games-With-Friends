@@ -1,12 +1,7 @@
 import React from "react";
-<<<<<<< HEAD
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput, MDBNavLink } from 'mdbreact';
-import { Redirect, Route, Link } from "react-router-dom";
-=======
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
 import { Redirect, Route } from "react-router-dom";
 import API from "../utils/API";
->>>>>>> development
 
 class SignUp extends React.Component {
 
