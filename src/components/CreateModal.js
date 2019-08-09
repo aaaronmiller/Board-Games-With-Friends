@@ -59,12 +59,11 @@ class CreateModal extends Component {
                 <MDBBtn className="text-white" color="#d50000 red accent-4" style={{ color: "white", marginLeft: "340px" }} href="#" onClick={this.toggle(1)}>Create a Game</MDBBtn>
 
                 <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} size="lg">
-                    <MDBModalHeader toggle={this.toggle(1)}>Create a board game</MDBModalHeader>
+                    <MDBModalHeader  style={{textAlign:"center", color:"black"}} toggle={this.toggle(1)}>Create a board game</MDBModalHeader>
                     <MDBModalBody>
                         <div class="md-form">
 
-                   
-
+                               
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
@@ -72,7 +71,6 @@ class CreateModal extends Component {
                                     name="title"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="title">Title</label>
 
                                 <MDBInput
                                     material
@@ -82,7 +80,7 @@ class CreateModal extends Component {
                                     hint="The Name Of The Boardgame"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="title">Title</label>
+                              
 
                                 <MDBInput
                                     material
@@ -93,7 +91,7 @@ class CreateModal extends Component {
                                     type="number"
                                     onChange={this.handleInputChange}
                                 />
-                                <label for="title">Title</label>
+                       
 
                                 <MDBInput
                                     material
@@ -144,8 +142,8 @@ class CreateModal extends Component {
                         </div>
                         </MDBModalBody>
                         <MDBModalFooter>
-                            <MDBBtn color="secondary" onClick={this.toggle(1)}>Close</MDBBtn>
-                            <MDBBtn color="primary" onClick={this.handleCreate}>Create</MDBBtn>
+                            <MDBBtn color="#01579b light-blue darken-4" onClick={this.toggle(1)}>Close</MDBBtn>
+                            <MDBBtn color="#d50000 red accent-4" onClick={this.handleCreate}>Create</MDBBtn>
                         </MDBModalFooter>
                     </MDBModal>
                     </div>

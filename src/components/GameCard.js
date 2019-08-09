@@ -66,8 +66,8 @@ class CardExample extends Component {
               <span>Curerent players: {CardExample.signedInPlayers}</span>
             </MDBCardText>
             <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#"  onClick={this.handleSubmit}>Join</MDBBtn>
-            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#"  onClick={this.handleSubmit}>Delete</MDBBtn>
-            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#"  onClick={this.handleSubmit}>Edit</MDBBtn>
+            {this.state.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#"  onClick={this.handleSubmit}>Delete</MDBBtn>) : ("")}
+            {this.state.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#"  onClick={this.handleSubmit}>Edit</MDBBtn>): ("")}
           </MDBCardBody>
         </MDBCard>
       </MDBCol>
