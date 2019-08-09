@@ -44,17 +44,10 @@ class Login extends React.Component {
     )
   }
 
-<<<<<<< HEAD
   handleSubmit(event) {
     axios.put("https://arcane-spire-45572.herokuapp.com/api/login"||'http://localhost:8080/login', {
         userName: this.state.username,
         password: this.state.password
-=======
-  handlesubmit(event) {
-    axios.put("https://arcane-spire-45572.herokuapp.com/api/login" || 'http://localhost:8080/login', {
-      userName: this.state.username,
-      password: this.state.password
->>>>>>> d8bb1b95c76f142f12d9127a1cdb33838f89d34f
     })
       .then((response) => {
         if (!response.data) {
@@ -102,7 +95,6 @@ class Login extends React.Component {
                     </div>
                     <div className="text-white">
 
-<<<<<<< HEAD
                   <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler}/>
                   <MDBInput label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler}/>
                 </div>
@@ -116,21 +108,6 @@ class Login extends React.Component {
                       onClick={this.handleSubmit}
                     >
                       LOG IN
-=======
-                      <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler} />
-                      <MDBInput label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler} />
-                    </div>
-                    <MDBRow className="d-flex align-items-center mb-4">
-                      <div className="text-center mb-3 col-md-12">
-                        <MDBBtn
-                          color="red"
-                          rounded
-                          type="button"
-                          className="btn-block z-depth-1"
-                          onClick={this.handlesubmit}
-                        >
-                          LOG IN
->>>>>>> d8bb1b95c76f142f12d9127a1cdb33838f89d34f
                   </MDBBtn>
                       </div>
                     </MDBRow>
