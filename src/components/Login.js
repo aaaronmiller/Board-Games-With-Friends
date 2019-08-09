@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
-import { Redirect, Route } from "react-router-dom";
+import { Redirect, Route, Link } from "react-router-dom";
 import DashBoard from "./DashBoard";
 import API from "../utils/API";
 
