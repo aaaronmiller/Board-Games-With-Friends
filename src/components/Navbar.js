@@ -12,6 +12,17 @@ class Navbar extends Component {
     toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
     }
+    logOut = () => {
+        sessionStorage.clear();
+    }
+    isLoggedIn = () => {
+        if (sessionStorage.getItem("isLoggedIn"))
+            return (
+                <MDBNavItem>
+                    <MDBNavLink to="/" onClick={this.logOut}>Log Out</MDBNavLink>
+                </MDBNavItem>
+            )
+    }
 
     render() {
         return (
@@ -40,6 +51,7 @@ class Navbar extends Component {
                             <MDBNavItem>
                                 <MDBNavLink to="/profile"><i className="far fa-address-card"></i>Profile</MDBNavLink>
                             </MDBNavItem>
+                            { this.isLoggedIn() }
                             {/* <MDBNavItem>
                                 <MDBDropdown>
                                     <MDBDropdownToggle nav caret>

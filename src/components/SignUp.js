@@ -26,7 +26,7 @@ class SignUp extends React.Component {
     this.setState(
       {
 
-        redirectPath: "/dashboard"
+        redirectPath: "/"
       }
     )
   }
@@ -50,7 +50,7 @@ class SignUp extends React.Component {
 
   handlesubmit(event) {
     console.log(this.state.username, this.state.password);
-    axios.post('http://localhost:8080/api/createaccount' || "https://arcane-spire-45572.herokuapp.com/api/createaccount", {
+    axios.post("https://arcane-spire-45572.herokuapp.com/api/createaccount", {
       userName: this.state.username,
       password: this.state.password
     })
