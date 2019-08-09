@@ -1,6 +1,9 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInputGroup, MDBInput } from 'mdbreact';
-import Axios from 'axios';
+import axios from 'axios';
+import API from '../utils/API';
+import { resolve } from 'url';
+import { number } from 'prop-types';
 
 class CreateModal extends Component {
     state = {
@@ -8,13 +11,14 @@ class CreateModal extends Component {
         username: "",
         title: "",
         name: "",
-        capacity: NaN,
+        capacity: number,
         date: "",
         time: "",
         location: "",
         address: "",
-        description: ""
-
+        description: "",
+        phone: number
+        
     }
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -23,9 +27,23 @@ class CreateModal extends Component {
         });
     };
     handleCreate = () => {
-        this.setState({ modal1: false });
-        Axios.post("api/createGame");
-        console.log(this.state);
+        this.setState({ modal1: false});
+        console.log("hit")
+
+        axios.post("http://localhost:8080/api/gameEvents", {
+            eventTitle: this.state.title,
+            description: this.state.description,
+            location: this.state.location,
+            capacity:  this.state.capacity,
+            phone: this.state.phone
+          })
+            .then((response) => {
+                console.log("event created")
+                console.log(response)
+            }).catch(function (error) {
+                console.log(error);
+              })
+              console.log(this.state);
     }
     toggle = nr => () => {
         let modalNumber = 'modal' + nr

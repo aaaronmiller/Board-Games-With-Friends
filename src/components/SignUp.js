@@ -10,7 +10,11 @@ class SignUp extends React.Component {
     this.state = {
       username: "",
       password: "",
+<<<<<<< HEAD
+      redirectPath: "sign-up"
+=======
       redirectPath: "/signUp"
+>>>>>>> 0e1793444ab67d46a4cd2467a279309aff400db4
     };
 
     this.usernameHandler = this.usernameHandler.bind(this);
