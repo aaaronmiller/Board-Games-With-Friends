@@ -45,7 +45,7 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    axios.put('http://localhost:8080/login' || "https://arcane-spire-45572.herokuapp.com/api/login", {
+    axios.put('http://localhost:8080/api/login' || "https://arcane-spire-45572.herokuapp.com/api/login", {
         userName: this.state.username,
         password: this.state.password
     })
@@ -114,7 +114,7 @@ class Login extends React.Component {
                     <MDBCol md="12">
                       <p className="font-small white-text d-flex justify-content-end">
                         Don't have an account?
-                  <a href="/SignUp" className="red-text ml-1 font-weight-bold">
+                  <a href="/signUp" className="red-text ml-1 font-weight-bold">
                           Sign up
                   </a>
                       </p>
