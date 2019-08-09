@@ -49,7 +49,7 @@ import API from "../utils/API";
       return (
         <MDBCol md="4">
           <MDBCard style={{ width: "22rem", marginTop: "1rem" }} className="text-center">
-            <MDBCardHeader color="success-color">{GamePanel.eventTitle}</MDBCardHeader>
+            <MDBCardHeader color="secondary-color">{GamePanel.eventTitle}</MDBCardHeader>
             <MDBCardBody>
               <MDBCardTitle>{GamePanel.eventTitle}</MDBCardTitle>
               <MDBCardText>
@@ -58,11 +58,11 @@ import API from "../utils/API";
                 <span>{GamePanel.phone}</span>
                 <span>Max # of players: {GamePanel.maxOfPlayers}</span>
               </MDBCardText>
-              <MDBBtn color="success" size="sm">
+              <MDBBtn color="secondary" size="sm">
                 Join Game
         </MDBBtn>
             </MDBCardBody>
-            <MDBCardFooter color="success-color">2 days ago</MDBCardFooter>
+            <MDBCardFooter color="secondary-color">2 days ago</MDBCardFooter>
           </MDBCard>
         </MDBCol>
       );
