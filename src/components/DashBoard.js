@@ -2,7 +2,7 @@ import React, { Component }  from 'react';
 import { MDBBtn, MDBContainer } from 'mdbreact';
 import GameCard from "./GameCard";
 import CreateModal from './CreateModal';
-import Axios from 'axios';
+import API from '../utils/API';
 
 
 export default class DashBoard extends Component {
@@ -21,7 +21,7 @@ export default class DashBoard extends Component {
     }
 
     loadRegistedGames = () => {
-        Axios.get("https://arcane-spire-45572.herokuapp.com/api/gameEvents")
+        API.loadGameEvents()
         .then((Response) =>
         {
             this.setState(
