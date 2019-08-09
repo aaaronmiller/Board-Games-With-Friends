@@ -45,7 +45,7 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
-    axios.put('http://localhost:8080/api/login' || "https://arcane-spire-45572.herokuapp.com/api/login", {
+    axios.put("https://arcane-spire-45572.herokuapp.com/api/login", {
         userName: this.state.username,
         password: this.state.password
     })
@@ -54,6 +54,7 @@ class Login extends React.Component {
           alert("wrong username or password")
         } else {
           sessionStorage.setItem("token", response.data);
+          sessionStorage.setItem("isLoggedIn", true);
           this.renderRedirect();
           console.log(sessionStorage);
         }
