@@ -1,23 +1,23 @@
 self.__precacheManifest = (self.__precacheManifest || []).concat([
   {
-    "revision": "1cb8540806806f6a301f31000d664d18",
+    "revision": "666acca2907ac1817bc6be322b8f29ad",
     "url": "/Board-Games-With-Friends/index.html"
   },
   {
-    "revision": "795db0492fb121fe2c3e",
+    "revision": "c22cdae091381b65254a",
     "url": "/Board-Games-With-Friends/static/css/2.bd51b987.chunk.css"
   },
   {
-    "revision": "d07e4759bcc146e0e4d0",
+    "revision": "fb7ced7b610d3c446b80",
     "url": "/Board-Games-With-Friends/static/css/main.3117349f.chunk.css"
   },
   {
-    "revision": "795db0492fb121fe2c3e",
-    "url": "/Board-Games-With-Friends/static/js/2.f24c78fa.chunk.js"
+    "revision": "c22cdae091381b65254a",
+    "url": "/Board-Games-With-Friends/static/js/2.543a52bd.chunk.js"
   },
   {
-    "revision": "d07e4759bcc146e0e4d0",
-    "url": "/Board-Games-With-Friends/static/js/main.b1722a3d.chunk.js"
+    "revision": "fb7ced7b610d3c446b80",
+    "url": "/Board-Games-With-Friends/static/js/main.20db4024.chunk.js"
   },
   {
     "revision": "2278db8b84b865a9dfe2",
