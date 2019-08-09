@@ -20,7 +20,7 @@ export default class DashBoard extends Component {
     }
 
     loadRegistedGames = () => {
-        Axios.get("http://localhost:8080/api/gameEvents")
+        Axios.get("http://localhost:8080/api/gameEvents"||"https://arcane-spire-45572.herokuapp.com/api/gameEvents")
         .then((Response) =>
         {
             this.setState(
@@ -45,22 +45,11 @@ export default class DashBoard extends Component {
         return (
             <MDBContainer>
                 <div>
-<<<<<<< HEAD
                     {/* <h1 className="text-white">Upcoming Games
                     <MDBBtn color="#d50000 red accent-4" style={{ color: "white", marginLeft: "340px" }} href="#"  onClick={this.handleSubmit}>Create a Game</MDBBtn></h1> */}
                     {/* <div className="d-flex flex-row flex-wrap"> */}
                     {this.state.grabbedGames.map((data)=> 
                 (<GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity}/>))}
-=======
-                    <h1 className="text-white">Upcoming Games<CreateModal /></h1>
-                    
-                    <div className="d-flex flex-row flex-wrap">
-                        <GameCard />
-                        <GameCard />
-                        <GameCard />
-                        <GameCard />
-                        <GameCard /> 
->>>>>>> a5907e995855c56bfaea45c4162d09114324bb2b
 
                     {/* </div>x x */}
                 </div>
