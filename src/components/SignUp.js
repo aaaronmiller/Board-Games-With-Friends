@@ -1,6 +1,7 @@
 import axios from 'axios';
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
+import { Redirect, Route } from "react-router-dom";
 
 class SignUp extends React.Component {
 
@@ -8,13 +9,26 @@ class SignUp extends React.Component {
     super(props);
     this.state = {
       username: "",
-      password: ""
+      password: "",
+      redirectPath: "/signUp"
     };
 
     this.usernameHandler = this.usernameHandler.bind(this);
     this.passwordHandler = this.passwordHandler.bind(this);
     this.handlesubmit = this.handlesubmit.bind(this);
+    this.renderRedirect = this.renderRedirect.bind(this);
 
+
+  }
+
+  renderRedirect(){
+    console.log("redirect");
+    this.setState(
+      {
+
+        redirectPath: "/dashboard"
+      }
+    )
   }
 
   usernameHandler(event) {
@@ -35,12 +49,14 @@ class SignUp extends React.Component {
   }
 
   handlesubmit(event) {
-    axios.post("http://localhost:8080/createaccount"||'http://localhost:8080/createaccount', {
-      username: this.state.username,
+    console.log(this.state.username, this.state.password);
+    axios.post('http://localhost:8080/api/createaccount' || "https://arcane-spire-45572.herokuapp.com/api/createaccount", {
+      userName: this.state.username,
       password: this.state.password
     })
-    .then(function (response) {
+    .then((response) => {
     console.log(response);
+      this.renderRedirect();
     if (!response.data) {
         alert("wrong username or password")
     }
@@ -48,7 +64,6 @@ class SignUp extends React.Component {
     .catch(function (error) {
     console.log(error);
     });
-    console.log("adfadf");
   }
   render() {
 
@@ -56,9 +71,12 @@ class SignUp extends React.Component {
       <div>
         <br></br>
         <MDBRow>
-          <MDBCol></MDBCol>
+          <MDBCol md="3"></MDBCol>
           <MDBCol md="6">
-            <MDBCard
+          <MDBRow  style={{margin: "auto"}}>
+          <MDBCol md="1"></MDBCol>
+          <MDBCol md="11">
+          <MDBCard
               className="card-image"
               style={{
                 backgroundImage:
@@ -69,15 +87,17 @@ class SignUp extends React.Component {
           >
             <div className="text-white rgba-stylish-strong py-5 px-5 z-depth-4">
               <div className="text-center">
-                <h3 className="white-text mb-5 mt-4 font-weight-bold">
+                <h3 className="text-white mb-5 mt-4 font-weight-bold">
                   <strong>SIGN</strong>
                   <a href="#!" className="#1565c0-text font-weight-bold">
                     <strong> UP</strong>
                   </a>
                 </h3>
               </div>
-              <MDBInput label="Your email" group icon="user" type="text" validate />
-              <MDBInput label="Your password" group icon="lock" type="password" validate />
+
+              <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler} />
+              <MDBInput className="text-white" label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler}/>
+
               <MDBRow className="d-flex align-items-center mb-4">
                 <div className="text-center mb-3 col-md-12">
                   <MDBBtn
@@ -85,13 +105,14 @@ class SignUp extends React.Component {
                     rounded
                     type="button"
                     className="btn-block z-depth-1"
+                    onClick={this.handlesubmit}
                   >
                     SIGN UP
                   </MDBBtn>
                 </div>
               </MDBRow>
               <MDBCol md="12">
-                <p className="font-small white-text d-flex justify-content-end">
+                <p className="font-small text-white d-flex justify-content-end">
                 Already have an accout?
                   <a href="/" className="#1565c0-text ml-1 font-weight-bold">
                     Log in
@@ -100,13 +121,17 @@ class SignUp extends React.Component {
                 </MDBCol>
               </div>
             </MDBCard>
+            </MDBCol>
+           
+            </MDBRow>
           </MDBCol>
-          <MDBCol></MDBCol>
+          <MDBCol md="3"></MDBCol>
         </MDBRow>
+        <Redirect to={this.state.redirectPath} />
+
       </div>
     );
   }
-
 }
 
 export default SignUp;

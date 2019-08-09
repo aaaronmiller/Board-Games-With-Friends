@@ -1,6 +1,6 @@
 import React from 'react';
 import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdbreact";
-import GamePanle from "./GamePanel";
+import GamePanel from "./GamePanel";
 
 export default function FindGame() {
     return (
@@ -11,17 +11,17 @@ export default function FindGame() {
             <div>
                 <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
                 <MDBBtn outline color="warning" rounded size="sm" type="submit" className="mr-auto">
-                Search
+                    Search
                 </MDBBtn>
             </div>
-            <div className="border d-flex flex-row flex-wrap">
-                <GamePanle />
-                <GamePanle />
-                <GamePanle />
-                <GamePanle />
-                <GamePanle />
-                <GamePanle />
-                <GamePanle />
+            <div className="d-flex flex-row flex-wrap">
+                <GamePanel />
+                <GamePanel />
+                <GamePanel />
+                <GamePanel />
+                <GamePanel />
+                <GamePanel />
+                <GamePanel />
             </div>
         </MDBContainer>
     )
