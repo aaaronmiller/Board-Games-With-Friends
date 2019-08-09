@@ -50,7 +50,7 @@ export default class DashBoard extends Component {
                     {/* <div className="d-flex flex-row flex-wrap"> */}
                     {this.state.grabbedGames.map((data)=> 
                 (<GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity}/>))}
-
+                <CreateModal />
                     {/* </div>x x */}
                 </div>
                 {/* <div>
