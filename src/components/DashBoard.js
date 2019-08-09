@@ -21,7 +21,7 @@ export default class DashBoard extends Component {
     }
 
     loadRegistedGames = () => {
-        Axios.get("https://arcane-spire-45572.herokuapp.com/api/games")
+        Axios.get("https://arcane-spire-45572.herokuapp.com/api/gameEvents")
         .then((Response) =>
         {
             this.setState(
