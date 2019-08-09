@@ -6,19 +6,36 @@ import Axios from 'axios';
 
 
 export default class DashBoard extends Component {
-    state = {
-        RegistedGames: [],
-        HostedGames: []
-    }
+    constructor(props) {
+        super(props);
+        this.state = {
+            grabbedGames: [],
+            HostedGames: []
+        };
+        this.loadRegistedGames();
+      }
+
     ComponentdidMount = () => {
         
     }
 
     loadRegistedGames = () => {
-        // Axios.post()
-        // {
-        //     token: sessionStorage.getItem(token)
-        // }
+        Axios.get("http://localhost:8080/api/gameEvents")
+        .then((Response) =>
+        {
+            this.setState(
+                {
+                    grabbedGames: Response.data
+                }
+            )
+            console.log(Response);
+        console.log(this.state.grabbedGames);
+
+        })
+        .catch(function(error){
+            console.log(error)
+        });
+
     }
     
     loadHostedGames = () => {
@@ -28,18 +45,15 @@ export default class DashBoard extends Component {
         return (
             <MDBContainer>
                 <div>
-                    <h1 className="text-white">Upcoming Games<CreateModal /></h1>
-                    
-                    <div className="d-flex flex-row flex-wrap">
-                        <GameCard />
-                        <GameCard />
-                        <GameCard />
-                        <GameCard />
-                        <GameCard /> 
+                    {/* <h1 className="text-white">Upcoming Games
+                    <MDBBtn color="#d50000 red accent-4" style={{ color: "white", marginLeft: "340px" }} href="#"  onClick={this.handleSubmit}>Create a Game</MDBBtn></h1> */}
+                    {/* <div className="d-flex flex-row flex-wrap"> */}
+                    {this.state.grabbedGames.map((data)=> 
+                (<GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity}/>))}
 
-                    </div>
+                    {/* </div>x x */}
                 </div>
-                <div>
+                {/* <div>
                 <h1 className="text-white">Hosted Games</h1>
                     <div className="d-flex flex-row flex-wrap">
                         <GameCard />
@@ -48,7 +62,7 @@ export default class DashBoard extends Component {
                         <GameCard />
                         <GameCard />
                     </div>
-                </div>
+                </div> */}
             </MDBContainer>
         )
     }
