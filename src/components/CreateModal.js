@@ -45,8 +45,7 @@ class CreateModal extends Component {
                     <MDBModalBody>
                         <div class="md-form">
 
-                            <input type="text" id="form1" class="form-control">
-                                <label for="form1" class="">Example label</label>
+                   
 
                                 <MDBInput
                                     material
