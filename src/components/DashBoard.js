@@ -30,11 +30,11 @@ export default class DashBoard extends Component {
                 <div>
                     <h1><MDBBadge color="primary">My</MDBBadge> Upcoming Game</h1>
                     <div className="d-flex flex-row flex-wrap">
+                        {/* <GameCard />
                         <GameCard />
                         <GameCard />
                         <GameCard />
-                        <GameCard />
-                        <GameCard />
+                        <GameCard /> */}
 
                     </div>
                 </div>
