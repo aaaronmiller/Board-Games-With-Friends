@@ -10,18 +10,18 @@ class CardExample extends Component {
     // populated from user table:
 
     //populated from event table:
-    id: "",
-    description: "",
-    location: "",
-    capacity: "",
-    phone: "",
-    createdAt: "",
-    updatedAt: "",
-    userName: "",
-    UserId: "",
-    User: "",
+    // id: "",
+    // description: "",
+    // location: "",
+    // capacity: "",
+    // phone: "",
+    // createdAt: "",
+    // updatedAt: "",
+    // userName: "",
+    // UserId: "",
+    // User: "",
+    // gameImage: "",
     // Below are from the game table, not event table
-    gameImage: "",
   };
 
   componentDidMount() {
