@@ -114,7 +114,7 @@ class Login extends React.Component {
                     <MDBCol md="12">
                       <p className="font-small white-text d-flex justify-content-end">
                         Don't have an account?
-                  <a href="/SignUp" className="red-text ml-1 font-weight-bold">
+                  <a href="/signUp" className="red-text ml-1 font-weight-bold">
                           Sign up
                   </a>
                       </p>
