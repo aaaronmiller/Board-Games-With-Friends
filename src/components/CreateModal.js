@@ -80,14 +80,22 @@ class CreateModal extends Component {
                                     hint="The Name Of The Boardgame"
                                     onChange={this.handleInputChange}
                                 />
-                              
-
+                                <label for="title">Title</label>
+                                <MDBInput
+                                    material
+                                    containerClassName="mb-2 mt-0"
+                                    prepend="phone"
+                                    hint="phone"
+                                    name="phone"
+                                    type="phone"
+                                    onChange={this.handleInputChange}
+                                />
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
                                     prepend="Capacity"
                                     hint="Maximum Number of People"
-                                    name="capcity"
+                                    name="capacity"
                                     type="number"
                                     onChange={this.handleInputChange}
                                 />

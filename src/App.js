@@ -11,7 +11,6 @@ import Routes from "./Routes";
 
 class App extends Component {
   state = {
-    
   };
   
 
