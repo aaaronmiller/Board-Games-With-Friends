@@ -50,7 +50,6 @@ class Login extends React.Component {
         if (!response.data) {
           alert("wrong username or password")
         } else {
-          console.log(this.props.message);
           sessionStorage.setItem("token", response.data);
           sessionStorage.setItem("isLoggedIn", true);
           this.props.handleLogIn();

@@ -37,7 +37,6 @@ class SignUp extends React.Component {
         username: event.target.value
       }
     )
-    console.log(this.state.username)
   }
   passwordHandler(event) {
     this.setState(
@@ -45,7 +44,6 @@ class SignUp extends React.Component {
         password: event.target.value
       }
     )
-    console.log(this.state.username)
   }
 
   handlesubmit(event) {

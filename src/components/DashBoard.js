@@ -18,7 +18,7 @@ export default class DashBoard extends Component {
       }
     componentDidMount = () => {
         this.renderRedirect();
-        this.loadRegistedGames();
+        this.loadHostedGames();
     }
     renderRedirect = () => {
         console.log("redirect");
@@ -26,7 +26,7 @@ export default class DashBoard extends Component {
             this.setState({ redirectPath: "/" });
     }
     loadRegistedGames = () => {
-        API.loadGameEvents()
+        API.getAllEvents()
         .then((Response) =>
         {
             this.setState(
@@ -45,7 +45,21 @@ export default class DashBoard extends Component {
     }
     
     loadHostedGames = () => {
-    
+        API.getHostedEvents(sessionStorage.getItem("token"))
+        .then((Response) =>
+        {
+            this.setState(
+                {
+                    grabbedGames: Response.data
+                }
+            )
+            console.log(Response);
+        console.log(this.state.grabbedGames);
+
+        })
+        .catch(function(error){
+            console.log(error)
+        });
     }
     render() {
         return (
@@ -57,7 +71,7 @@ export default class DashBoard extends Component {
             <CreateModal handleLoad={this.loadRegistedGames}/></h1>
             <div className="d-flex flex-row flex-wrap">
             {this.state.grabbedGames.map((data)=> 
-                (<GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity}/>))}
+                (<GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity} />))}
                 
                     {/* </div>x x */}
                 </div>

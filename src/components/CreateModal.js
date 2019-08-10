@@ -28,11 +28,15 @@ class CreateModal extends Component {
         this.setState({ modal1: false});
 
         API.createGame({
+            token: sessionStorage.getItem("token"),
             eventTitle: this.state.title,
             description: this.state.description,
-            location: this.state.location,
+            location: this.state.address,
             capacity:  this.state.capacity,
-            phone: this.state.phone
+            phone: this.state.phone,
+            time: this.state.time,
+            date: this.state.date,
+            specificLocation: this.state.location
           })
             .then((response) => {
                 console.log("event created");
@@ -93,7 +97,7 @@ class CreateModal extends Component {
                                     material
                                     containerClassName="mb-2 mt-0"
                                     prepend="Event Date"
-                                    hint="MM/DD/YYYY"
+                                    hint="YYYY/MM/DD"
                                     name="date"
                                     onChange={this.handleInputChange}
                                 />

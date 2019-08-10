@@ -1,17 +1,13 @@
 import axios from "axios";
 
-const url = "https://arcane-spire-45572.herokuapp.com";
-// const url = "http://localhost:8080";
+// const url = "https://arcane-spire-45572.herokuapp.com";
+const url = "http://localhost:8080";
 
 export default {
   // Event API's  
 
   // Gets all events
   getAllEvents: function () {
-    return axios.get(url + "/api/gameEvents");
-  },
-  // Gets all events created by current user
-  getEvents: function (user_id) {
     return axios.get(url + "/api/gameEvents");
   },
   // Gets the event with the given id
@@ -67,13 +63,25 @@ export default {
 
   // Dashboard
   // LoadGameEvents
-  loadGameEvents: () => {
-    return axios.get(url + "/api/gameEvents");
-  },
+  // loadGameEvents: () => {
+  //   return axios.get(url + "/api/gameEvents");
+  // },
   // Create a game
   createGame: (gameObj) => {
     return (
       axios.post(url + "/api/gameEvents", gameObj)
     )
+  },
+
+  // Gets events
+  // Using the token to get registed game 
+  // NOT IMPLEMENT YET!
+  getRegistedEvents: function (user_token) {
+    return axios.get(url + "/api/gameEvents/registed/" + user_token);
+  },
+  // Using the token to get hosted game
+  // Works!
+  getHostedEvents: function (user_token) {
+    return axios.get(url + "/api/gameEvents/host/" + user_token);
   }
 };
