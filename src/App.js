@@ -11,7 +11,7 @@ import Routes from "./Routes";
 
 class App extends Component {
   state = {
-    
+    isLoggedIn: sessionStorage.getItem("isLoggedIn")
   };
   logIn = () => {
     this.setState({isLoggedIn: true});
