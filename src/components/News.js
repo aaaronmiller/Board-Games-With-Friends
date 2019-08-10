@@ -14,7 +14,6 @@ export default class DashBoard extends Component {
         };
     }
     componentDidMount = () => {
-        this.renderRedirect();
         this.loadNewsArticles();
     }
     loadNewsArticles = () => {
@@ -40,7 +39,7 @@ export default class DashBoard extends Component {
             <div>
                 <MDBContainer>
                     <div>
-                        <h1 className="text-white">
+                        <h1 className="text-white" style= {{textAlign: "center"}}>
                             Boardgames in the News
                         </h1>
                         <div className="d-flex flex-row flex-wrap">

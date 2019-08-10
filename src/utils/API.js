@@ -65,15 +65,9 @@ export default {
     });
   },
 
-  // Dashboard
-  // LoadGameEvents
-  loadGameEvents: () => {
-    return axios.get(url + "/api/gameEvents");
+
+  getNews: function () {
+    return axios.get(url + "/api/getNews");
   },
-  // Create a game
-  createGame: (gameObj) => {
-    return (
-      axios.post(url + "/api/gameEvents", gameObj)
-    )
-  }
+
 };

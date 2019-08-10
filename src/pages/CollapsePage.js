@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { MDBBtn, MDBCollapse, MDBContainer } from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 class CollapsePage extends Component {
   state = {

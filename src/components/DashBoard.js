@@ -1,6 +1,6 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import { MDBBtn, MDBContainer } from 'mdbreact';
+import { MDBContainer } from 'mdbreact';
 import GameCard from "./GameCard";
 import CreateModal from './CreateModal';
 import API from '../utils/API';

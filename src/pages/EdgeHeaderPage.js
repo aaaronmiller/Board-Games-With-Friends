@@ -10,8 +10,8 @@ import {
   MDBContainer,
   MDBEdgeHeader
 } from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 const EdgeHeaderPage = props => {
   return (

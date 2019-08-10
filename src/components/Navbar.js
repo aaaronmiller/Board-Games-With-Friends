@@ -1,8 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import {
-    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse
-} from "mdbreact";
+import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse} from "mdbreact";
 
 class Navbar extends Component {
     constructor(props) {
@@ -18,17 +16,22 @@ class Navbar extends Component {
         sessionStorage.clear();
         this.props.handleLogOut();
     }
-    isLoggedIn = () => {
-        if (this.props.isLoggedIn) {
-            return (
-                <MDBNavItem>
-                    <MDBNavLink to="/" onClick={this.logOut}>
-                        Log Out
-                    </MDBNavLink>
-                </MDBNavItem>
-            )
-        }
-    }
+
+    // Legacy Code : this function is handled with a && instead, delete on 8/10
+            //   |
+            //   |
+    //           V
+    // isLoggedIn = () => {
+    //     if (this.props.isLoggedIn) {
+    //         return (
+    //             <MDBNavItem>
+    //                 <MDBNavLink to="/" onClick={this.logOut}>
+    //                     Log Out
+    //                 </MDBNavLink>
+    //             </MDBNavItem>
+    //         )
+    //     }
+    // }
 
     render() {
         return (
@@ -83,7 +86,12 @@ class Navbar extends Component {
                                 }
                             </MDBNavItem>
 
-                            {/*}      {this.isLoggedIn()}
+                            {/*}   
+                                // Legacy Code :  delete on 8/10
+                                         |
+                                         |
+                                         V
+                                {this.isLoggedIn()}
 
                              <MDBNavItem>
                                 <MDBDropdown>

@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBEdgeHeader, MDBContainer, MDBRow, MDBCol, MDBJumbotron, MDBIcon, MDBAnimation } from "mdbreact";
-import MenuLink from "./../components/menuLink";
+import MenuLink from "../components/menuLink";
 
 const AdvancedNavPage = () => {
   return (

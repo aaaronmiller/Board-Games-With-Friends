@@ -1,6 +1,5 @@
 import React, { Component } from "react";
 import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
-import API from "../utils/API";
 
 // const CardExample = (props) => {
 class CardExample extends Component {
@@ -51,7 +50,7 @@ class CardExample extends Component {
   
   render() {
     return (
-      <MDBCol md="4">
+      <MDBCol sm="4">
         <MDBCard className="text-black bg-light" style={{ textAlign: "center", margin: "30px" }}>
           <MDBCardImage className="img-fluid" src={this.props.gameImage} waves />
           <MDBCardBody>

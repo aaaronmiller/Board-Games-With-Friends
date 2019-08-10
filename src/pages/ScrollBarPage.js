@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBContainer } from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 import "./ScrollbarPage.css";
 
 const ScrollBarPage = () => {

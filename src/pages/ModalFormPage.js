@@ -9,8 +9,8 @@ import {
   MDBInput,
   MDBIcon
 } from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 class ModalFormPage extends Component {
   state = {

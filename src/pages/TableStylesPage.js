@@ -11,7 +11,7 @@ import {
   MDBTableHead,
   MDBIcon
 } from "mdbreact";
-import DocsLink from "./../components/docsLink";
+import DocsLink from "../components/docsLink";
 import SectionContainer from "../components/sectionContainer";
 
 const TableStylesPage = props => {

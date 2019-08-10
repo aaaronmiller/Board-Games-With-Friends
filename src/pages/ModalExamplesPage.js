@@ -15,8 +15,8 @@ import {
   MDBTableHead
 } from "mdbreact";
 import "./ModalExamplesPage.css";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 class ModalExamplesPage extends Component {
   state = {

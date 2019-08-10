@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBDataTable, MDBContainer, MDBRow, MDBCol, MDBCard, MDBCardBody } from "mdbreact";
-import DocsLink from "./../components/docsLink";
+import DocsLink from "../components/docsLink";
 import SectionContainer from "../components/sectionContainer";
 
 const DatatableApiPage = () => {

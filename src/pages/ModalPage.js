@@ -14,8 +14,8 @@ import {
   MDBCol,
   MDBInput
 } from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 class ModalPage extends Component {
   state = {

@@ -6,7 +6,6 @@ import Dashboard from "./components/DashBoard";
 import FindGame from "./components/FindGame";
 import News from "./components/News";
 import Profile from "./components/Profile";
-import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Routes from "./Routes";
 

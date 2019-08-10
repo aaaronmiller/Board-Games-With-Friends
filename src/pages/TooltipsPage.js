@@ -1,7 +1,7 @@
 import React from "react";
 import { MDBTooltip, MDBContainer, MDBBtn } from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 const TooltipsPage = () => {
   const style = { display: "inline-block", maxWidth: "50vh" };
