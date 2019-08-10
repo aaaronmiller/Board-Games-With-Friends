@@ -1,8 +1,6 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInputGroup, MDBInput } from 'mdbreact';
-import axios from 'axios';
 import API from '../utils/API';
-import { resolve } from 'url';
 import { number } from 'prop-types';
 
 class CreateModal extends Component {
@@ -28,9 +26,8 @@ class CreateModal extends Component {
     };
     handleCreate = () => {
         this.setState({ modal1: false});
-        console.log("hit")
 
-        axios.post("https://arcane-spire-45572.herokuapp.com/api/gameEvents", {
+        API.createGame({
             eventTitle: this.state.title,
             description: this.state.description,
             location: this.state.location,
@@ -38,8 +35,9 @@ class CreateModal extends Component {
             phone: this.state.phone
           })
             .then((response) => {
-                console.log("event created")
-                console.log(response)
+                console.log("event created");
+                console.log(response);
+                this.props.handleLoad();
             }).catch(function (error) {
                 console.log(error);
               })

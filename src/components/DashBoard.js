@@ -15,10 +15,10 @@ export default class DashBoard extends Component {
             redirectPath: "/dashboard",
             isLoggedIn: sessionStorage.getItem("isLoggedIn")
         };
-        this.loadRegistedGames();
       }
     componentDidMount = () => {
         this.renderRedirect();
+        this.loadRegistedGames();
     }
     renderRedirect = () => {
         console.log("redirect");
@@ -54,7 +54,7 @@ export default class DashBoard extends Component {
 
             <div>
             <h1 className="text-white">Upcoming Games
-            <CreateModal /></h1>
+            <CreateModal handleLoad={this.loadRegistedGames}/></h1>
             <div className="d-flex flex-row flex-wrap">
             {this.state.grabbedGames.map((data)=> 
                 (<GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity}/>))}
