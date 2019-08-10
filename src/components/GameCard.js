@@ -24,30 +24,30 @@ class CardExample extends Component {
     // Below are from the game table, not event table
   };
 
-  componentDidMount() {
-    this.loadEvents();
-  };
+  // componentDidMount() {
+  //   this.loadEvents();
+  // };
 
-  loadEvents = () => {
-    API.getAllEvents()
-      .then(res =>
-        this.setState({ gameObj: res.data })
-      )
-      .catch(err => console.log(err));
-  };
+  // loadEvents = () => {
+  //   API.getAllEvents()
+  //     .then(res =>
+  //       this.setState({ gameObj: res.data })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
-  deleteEvent = id => {
-    API.deleteEvent(id)
-      .then(res => this.loadEvents())
-      .catch(err => console.log(err));
-  };
+  // deleteEvent = id => {
+  //   API.deleteEvent(id)
+  //     .then(res => this.loadEvents())
+  //     .catch(err => console.log(err));
+  // };
 
-  handleInputChange = event => {
-    const { name, value } = event.target;
-    this.setState({
-      [name]: value
-    });
-  };
+  // handleInputChange = event => {
+  //   const { name, value } = event.target;
+  //   this.setState({
+  //     [name]: value
+  //   });
+  // };
   
   render() {
     return (

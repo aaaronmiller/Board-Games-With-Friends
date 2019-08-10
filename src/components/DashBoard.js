@@ -1,4 +1,4 @@
-import React, { Component }  from 'react';
+import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
 import { MDBBtn, MDBContainer } from 'mdbreact';
 import GameCard from "./GameCard";
@@ -15,7 +15,7 @@ export default class DashBoard extends Component {
             redirectPath: "/dashboard",
             isLoggedIn: sessionStorage.getItem("isLoggedIn")
         };
-      }
+    }
     componentDidMount = () => {
         this.renderRedirect();
         this.loadRegistedGames();
@@ -26,60 +26,51 @@ export default class DashBoard extends Component {
             this.setState({ redirectPath: "/" });
     }
     loadRegistedGames = () => {
-        API.loadGameEvents()
-        .then((Response) =>
-        {
-            this.setState(
-                {
-                    grabbedGames: Response.data
-                }
-            )
-            console.log(Response);
-        console.log(this.state.grabbedGames);
+        API.getAllEvents ()
+            .then((Response) => {
+                this.setState(
+                    {
+                        grabbedGames: Response.data
+                    }
+                )
+                console.log(Response);
+                console.log(this.state.grabbedGames);
 
-        })
-        .catch(function(error){
-            console.log(error)
-        });
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
 
     }
-    
+
+    deleteEvent = id => {
+        API.deleteEvent(id)
+            .then(res => this.loadEvents())
+            .catch(err => console.log(err));
+    };
+
+
     loadHostedGames = () => {
-    
+
     }
     render() {
         return (
             <div>
-            <MDBContainer>
+                <MDBContainer>
+                    <div>
+                        <h1 className="text-white">
+                          Upcoming Games
+                        {/*<CreateModal handleLoad={this.loadRegistedGames} />*/}
+                        <CreateModal />
+                        </h1>
+                        <div className="d-flex flex-row flex-wrap">
+                            {this.state.grabbedGames.map((data) => 
+                                (<GameCard key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
 
-            <div>
-            <h1 className="text-white">Upcoming Games
-            <CreateModal handleLoad={this.loadRegistedGames}/></h1>
-            <div className="d-flex flex-row flex-wrap">
-            {this.state.grabbedGames.map((data)=> 
-                (<GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity}/>))}
-                
-                    {/* </div>x x */}
-                </div>
-                {/* <div>
-                <h1 className="text-white">Hosted Games</h1>
-
-                    <div className="d-flex flex-row flex-wrap">
-                    {this.state.grabbedGames.map((data) => <GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity} />)}
+                        </div>
                     </div>
-                </div>
-                <div>
-                <h1 className="text-white">Hosted Games<CreateModal /></h1>
-                    {/* <div className="d-flex flex-row flex-wrap">
-                        <GameCard />
-                        <GameCard />
-                        <GameCard />
-                        <GameCard />
-                        <GameCard />
-                    </div> */}
-                </div>
-            </MDBContainer>
-            <Redirect to={this.state.redirectPath} />
+                </MDBContainer>
+                <Redirect to={this.state.redirectPath} />
             </div>
         )
     }
