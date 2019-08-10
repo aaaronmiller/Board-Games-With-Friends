@@ -11,7 +11,7 @@ export default class DashBoard extends Component {
         super(props);
         this.state = {
             grabbedGames: [],
-            HostedGames: [],
+            hostedGames: [],
             redirectPath: "/dashboard",
             isLoggedIn: sessionStorage.getItem("isLoggedIn")
         };
@@ -31,11 +31,11 @@ export default class DashBoard extends Component {
         {
             this.setState(
                 {
-                    grabbedGames: Response.data
+                    hostedGames: Response.data
                 }
             )
             console.log(Response);
-        console.log(this.state.grabbedGames);
+        console.log(this.state.hostedGames);
 
         })
         .catch(function(error){
@@ -50,11 +50,11 @@ export default class DashBoard extends Component {
         {
             this.setState(
                 {
-                    grabbedGames: Response.data
+                    hostedGames: Response.data
                 }
             )
             console.log(Response);
-        console.log(this.state.grabbedGames);
+        console.log(this.state.hostedGames);
 
         })
         .catch(function(error){
@@ -70,8 +70,8 @@ export default class DashBoard extends Component {
             <h1 className="text-white">Upcoming Games
             <CreateModal handleLoad={this.loadRegistedGames}/></h1>
             <div className="d-flex flex-row flex-wrap">
-            {this.state.grabbedGames.map((data)=> 
-                (<GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity} />))}
+            {this.state.hostedGames.map((data)=> 
+                (<GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity} isOwner={true}/>))}
                 
                     {/* </div>x x */}
                 </div>
