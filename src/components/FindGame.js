@@ -15,13 +15,7 @@ export default function FindGame() {
                 </MDBBtn>
             </div>
             <div className="d-flex flex-row flex-wrap">
-                <GamePanel />
-                <GamePanel />
-                <GamePanel />
-                <GamePanel />
-                <GamePanel />
-                <GamePanel />
-                <GamePanel />
+
             </div>
         </MDBContainer>
     )

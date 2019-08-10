@@ -4,6 +4,7 @@ import Login from "./components/Login";
 import SignUp from "./components/SignUp";
 import Dashboard from "./components/DashBoard";
 import FindGame from "./components/FindGame";
+import News from "./components/News";
 import Profile from "./components/Profile";
 import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
@@ -35,6 +36,7 @@ class App extends Component {
               <Route exact path="/signUp" component={SignUp} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/find-game" component={FindGame} />
+              <Route exact path="/news" component={News} />
               <Route exact path="/profile" component={Profile} />
               
             </div>

@@ -30,9 +30,13 @@ class CreateModal extends Component {
         API.createGame({
             eventTitle: this.state.title,
             description: this.state.description,
-            location: this.state.location,
+            location: this.state.address,
             capacity:  this.state.capacity,
-            phone: this.state.phone
+            phone: this.state.phone,
+            date: this.state.date,
+            specificLocation: this.state.location,
+            time: this.state.time,
+            gameName: this.state.name,
           })
             .then((response) => {
                 console.log("event created");
@@ -60,8 +64,6 @@ class CreateModal extends Component {
                     <MDBModalHeader  style={{textAlign:"center", color:"black"}} toggle={this.toggle(1)}>Create a board game</MDBModalHeader>
                     <MDBModalBody>
                         <div className="md-form">
-
-                               
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
@@ -112,7 +114,7 @@ class CreateModal extends Component {
                                     containerClassName="mb-2 mt-0"
                                     prepend="Location"
                                     hint="Room/Apt. Number"
-                                    name="location"
+                                    name="GPSlocation"
                                     onChange={this.handleInputChange}
                                 />
 
