@@ -11,10 +11,14 @@ import Routes from "./Routes";
 
 class App extends Component {
   state = {
+    isLoggedIn: sessionStorage.getItem("isLoggedIn")
   };
-  
-
-
+  logIn = () => {
+    this.setState({isLoggedIn: true});
+  }
+  logOut = () => {
+    this.setState({isLoggedIn: false});
+  }
   render() {
 
     return (
@@ -24,10 +28,10 @@ class App extends Component {
             "url(https://i.ibb.co/BVy8Qwt/bluebb.jpg)",
        
         }}>
-          <Navbar/>
+          <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.logOut}/>
           <Switch>
             <div>
-              <Route exact path="/" component={Login} />
+              <Route exact path="/" render={() => <Login handleLogIn={this.logIn} />} />
               <Route exact path="/signUp" component={SignUp} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/find-game" component={FindGame} />

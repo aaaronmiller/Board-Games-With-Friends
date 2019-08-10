@@ -1,8 +1,9 @@
 import React, { Component }  from 'react';
+import { Redirect } from "react-router-dom";
 import { MDBBtn, MDBContainer } from 'mdbreact';
 import GameCard from "./GameCard";
 import CreateModal from './CreateModal';
-import Axios from 'axios';
+import API from '../utils/API';
 
 
 export default class DashBoard extends Component {
@@ -11,17 +12,21 @@ export default class DashBoard extends Component {
         this.state = {
             grabbedGames: [],
             HostedGames: [],
+            redirectPath: "/dashboard",
             isLoggedIn: sessionStorage.getItem("isLoggedIn")
         };
-        this.loadRegistedGames();
       }
-
-    ComponentdidMount = () => {
-        
+    componentDidMount = () => {
+        this.renderRedirect();
+        this.loadRegistedGames();
     }
-
+    renderRedirect = () => {
+        console.log("redirect");
+        if (!this.state.isLoggedIn)
+            this.setState({ redirectPath: "/" });
+    }
     loadRegistedGames = () => {
-        Axios.get("https://arcane-spire-45572.herokuapp.com/api/gameEvents")
+        API.loadGameEvents()
         .then((Response) =>
         {
             this.setState(
@@ -44,15 +49,16 @@ export default class DashBoard extends Component {
     }
     render() {
         return (
+            <div>
             <MDBContainer>
 
             <div>
             <h1 className="text-white">Upcoming Games
-            <MDBBtn color="#d50000 red accent-4" style={{ color: "white", marginLeft: "340px" }} href="#"  onClick={this.handleSubmit}>Create a Game</MDBBtn></h1>
+            <CreateModal handleLoad={this.loadRegistedGames}/></h1>
             <div className="d-flex flex-row flex-wrap">
             {this.state.grabbedGames.map((data)=> 
                 (<GameCard  key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity ={data.capacity}/>))}
-                <CreateModal />
+                
                     {/* </div>x x */}
                 </div>
                 {/* <div>
@@ -73,6 +79,8 @@ export default class DashBoard extends Component {
                     </div> */}
                 </div>
             </MDBContainer>
+            <Redirect to={this.state.redirectPath} />
+            </div>
         )
     }
 
