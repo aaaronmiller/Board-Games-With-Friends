@@ -1,6 +1,7 @@
 import axios from "axios";
 
-const url = "https://arcane-spire-45572.herokuapp.com";
+// const url = "https://arcane-spire-45572.herokuapp.com";
+const url = "http://localhost:8080";
 
 export default {
   // Event API's  
@@ -68,5 +69,11 @@ export default {
   // LoadGameEvents
   loadGameEvents: () => {
     return axios.get(url + "/api/gameEvents");
+  },
+  // Create a game
+  createGame: (gameObj) => {
+    return (
+      axios.post(url + "/api/gameEvents", gameObj)
+    )
   }
 };
