@@ -52,18 +52,15 @@ class CardExample extends Component {
   render() {
     return (
       <MDBCol md="4">
-      dog
-        <MDBCard className="text-white bg-light" style={{ textAlign: "center", margin: "30px" }}>
+        <MDBCard className="text-black bg-light" style={{ textAlign: "center", margin: "30px" }}>
           <MDBCardImage className="img-fluid" src={this.props.gameImage} waves />
           <MDBCardBody>
             <MDBCardTitle>{this.props.eventTitle}</MDBCardTitle>
             <MDBCardText>
-            <span>{this.props.eventTitle}</span><br />
-              {/* <span>{CardExample.dateTime}</span><br /> */}
-              <span>{this.props.description}</span><br />
-              <span>{this.props.location}</span><br />
+              <span><p>Location: {this.props.location}</p></span><br />
               {/* Created by:{CardExample.eventOwner}<br />c */}
-              <span>Max # of players: {this.props.capacity}</span><br />
+              <span><p>Maximum: {this.props.capacity}</p></span><br />
+              <span><p>Description: {this.props.description}</p></span><br />
               {/* <span>Curerent players: {CardExample.signedInPlayers}</span> */}
             </MDBCardText>
             <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#"  onClick={this.handleSubmit}>Join</MDBBtn>
