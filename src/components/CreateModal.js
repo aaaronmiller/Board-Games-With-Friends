@@ -4,19 +4,19 @@ import API from '../utils/API';
 import { number } from 'prop-types';
 
 class CreateModal extends Component {
-    state = {
-        modal1: false,
-        username: "",
-        title: "",
-        name: "",
-        capacity: number,
-        date: "",
-        time: "",
-        location: "",
-        address: "",
-        description: "",
-        phone: number
+    constructor(props) {
+        super(props);
 
+        this.state = {
+            modal1: false,
+            eventTitle: "",
+            gameName: "",
+            description: "",
+            location: "",
+            maxPlayers: "",
+            dateTime: "",
+            gpsLocation: ""
+        }
     }
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -28,24 +28,22 @@ class CreateModal extends Component {
         this.setState({ modal1: false });
 
         API.saveEvent({
-            eventTitle: this.state.title,
+            eventTitle: this.state.eventTitle,
+            gameName: this.state.gameName,
             description: this.state.description,
             location: this.state.address,
-            capacity: this.state.capacity,
-            phone: this.state.phone,
-            date: this.state.date,
-            specificLocation: this.state.location,
-            time: this.state.time,
-            gameName: this.state.name,
+            maxPlayers: this.state.capacity,
+            dateTime: this.state.date,
+            gpslocation: this.state.gpslocation,
+            enrolledPlayers: this.props.username
         })
             .then((response) => {
-                // console.log("event created");
-                // console.log(response);
+                console.log("event created");
+                console.log(response);
                 window.location.reload();
             }).catch(function (error) {
                 console.log(error);
             })
-        console.log(this.state);
     }
 
 
@@ -72,15 +70,14 @@ class CreateModal extends Component {
                                     material
                                     containerClassName="mb-2 mt-0"
                                     hint="Event Title"
-                                    name="title"
+                                    name="eventTitle"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
-                                    prepend="Name"
-                                    name="name"
+                                    name="gameName"
                                     hint="The Name Of The Boardgame"
                                     onChange={this.handleInputChange}
                                 />
@@ -88,9 +85,8 @@ class CreateModal extends Component {
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
-                                    prepend="Capacity"
                                     hint="Maximum Number of People"
-                                    name="capacity"
+                                    name="maxPlayers"
                                     type="number"
                                     onChange={this.handleInputChange}
                                 />
@@ -98,51 +94,30 @@ class CreateModal extends Component {
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
-                                    prepend="Event Date"
-                                    hint="MM/DD/YYYY"
-                                    name="date"
+                                    hint="Date and start time"
+                                    name="dateTime"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
-                                    prepend="Start Time"
-                                    hint="HH:MM"
-                                    name="time"
+                                    hint="GPSlocation"
+                                    name="gpslocation"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
-                                    prepend="Location"
-                                    hint="Room/Apt. Number"
-                                    name="GPSlocation"
+                                    hint="Location"
+                                    name="location"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
-                                    prepend=" "
-                                    hint="Address"
-                                    name="address"
-                                    onChange={this.handleInputChange}
-                                />
-                                <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend=" "
-                                    hint="Phone Number"
-                                    name="phone"
-                                    onChange={this.handleInputChange}
-                                />
-
-                                <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend="Description"
                                     type="textarea"
                                     hint="Extra Information"
                                     name="description"

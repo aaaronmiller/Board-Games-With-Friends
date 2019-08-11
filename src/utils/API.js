@@ -26,8 +26,8 @@ export default {
   saveEvent: function (eventData) {
     return axios.post(url + "/api/gameEvents", eventData);
   },
-  updateEvent: function (eventId) {
-    return axios.put(url + "/api/gameEvents/" + eventId);
+  updateEvent: function (eventData) {
+    return axios.put(url + "/api/gameEvents/", eventData);
   },
 
   // User Profile APIs
@@ -72,17 +72,22 @@ export default {
   getNews: function () {
     return axios.get(url + "/api/getNews");
   },
-  deleteNews: function (userId) {
-    return axios.delete(url + "/api/deleteNews/" + userId);
+  deleteNews: function (newsId) {
+    return axios.delete(url + "/api/deleteNews/" + newsId);
   },
+
+
   getGames: function () {
     return axios.get(url + "/api/getGames");
   },
   saveGame: function (eventData) {
   return axios.post(url + "/api/saveGame/", eventData);
   },
-  deleteGame: function (userId) {
-    return axios.delete(url + "/api/deleteGame/" + userId);
+  deleteGame: function (gameId) {
+    return axios.delete(url + "/api/deleteGame/" +gameId);
+  },
+  updateGame: function (gameId, gameData) {
+    return axios.put(url + "/api/updateGame/" + gameId, gameData);
   },
 
 };

@@ -30,6 +30,30 @@ class GameCard extends Component {
       })
   }
 
+  joinEvent = id => {
+    API.getEvent(id)
+      .then((response) => {
+        let wookie = response;
+        let peopleInGame = wookie.data.enrolledPlayers;
+        // check here if peopleInGame < wookie.data.maxOfPlayers (need to convert to array and count first)
+        // ie.
+        //
+        // let maxPlayers = wookie.data.maxOfPlayers;
+        // let jawa = peopleInGame.split(",");
+        // if parseInt(jawa) < maxPlayers { do some crazy shit } 
+        console.log(peopleInGame);
+        peopleInGame = peopleInGame + ", " + this.props.username;
+        wookie.data.enrolledPlayers = peopleInGame;
+          API.updateEvent(wookie).then((response) => {
+                // console.log("event created");
+                // console.log(response);
+                window.location.reload();
+               }).catch(function (error) {
+                console.log(error);
+            })
+      });
+}
+
   // handleInputChange = event => {
   //   const { name, value } = event.target;
   //   this.setState({
