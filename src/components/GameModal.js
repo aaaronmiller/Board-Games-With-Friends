@@ -3,19 +3,13 @@ import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalF
 import API from '../utils/API';
 import { number } from 'prop-types';
 
-class CreateModal extends Component {
+class GameModal extends Component {
     state = {
         modal1: false,
-        username: "",
-        title: "",
         name: "",
-        capacity: number,
-        date: "",
-        time: "",
-        location: "",
-        address: "",
         description: "",
-        phone: number
+        capacity: number,
+        picture: ""
 
     }
     handleInputChange = event => {
@@ -27,17 +21,12 @@ class CreateModal extends Component {
     handleCreate = () => {
         this.setState({ modal1: false });
 
-        API.saveEvent({
-            eventTitle: this.state.title,
-            description: this.state.description,
-            location: this.state.address,
-            capacity: this.state.capacity,
-            phone: this.state.phone,
-            date: this.state.date,
-            specificLocation: this.state.location,
-            time: this.state.time,
+        API.saveGame({
             gameName: this.state.name,
-        })
+            gameDescript: this.state.description,
+            maxOfPlayers: this.state.capacity,
+            picture: this.state.picture,
+          })
             .then((response) => {
                 // console.log("event created");
                 // console.log(response);
@@ -71,17 +60,16 @@ class CreateModal extends Component {
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
-                                    hint="Event Title"
-                                    name="title"
+                                    hint="Game Title"
+                                    name="name"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
-                                    prepend="Name"
-                                    name="name"
-                                    hint="The Name Of The Boardgame"
+                                    hint="Description"
+                                    name="description"
                                     onChange={this.handleInputChange}
                                 />
 
@@ -98,57 +86,10 @@ class CreateModal extends Component {
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
-                                    prepend="Event Date"
-                                    hint="MM/DD/YYYY"
-                                    name="date"
+                                    hint="Image URL"
+                                    name="picture"
                                     onChange={this.handleInputChange}
                                 />
-
-                                <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend="Start Time"
-                                    hint="HH:MM"
-                                    name="time"
-                                    onChange={this.handleInputChange}
-                                />
-
-                                <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend="Location"
-                                    hint="Room/Apt. Number"
-                                    name="GPSlocation"
-                                    onChange={this.handleInputChange}
-                                />
-
-                                <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend=" "
-                                    hint="Address"
-                                    name="address"
-                                    onChange={this.handleInputChange}
-                                />
-                                <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend=" "
-                                    hint="Phone Number"
-                                    name="phone"
-                                    onChange={this.handleInputChange}
-                                />
-
-                                <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend="Description"
-                                    type="textarea"
-                                    hint="Extra Information"
-                                    name="description"
-                                    onChange={this.handleInputChange}
-                                />
-
                             </div>
                         </MDBModalBody>
                         <MDBModalFooter>
@@ -162,4 +103,4 @@ class CreateModal extends Component {
     }
 }
 
-export default CreateModal;
+export default GameModal;

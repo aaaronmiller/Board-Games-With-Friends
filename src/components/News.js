@@ -39,7 +39,7 @@ export default class DashBoard extends Component {
         API.scrape()
           .then((response) => {
             console.log(response);
-            this.renderRedirect();
+            window.location.reload();
             
           })
           .catch(function (error) {
@@ -64,7 +64,7 @@ export default class DashBoard extends Component {
 
                         <div className="d-flex flex-row flex-wrap">
                             {this.state.newsArticles.map((data) => 
-                                (<NewsCard key={data.id} gameTitle={data.title} summary={data.summary} image={data.image} link={data.link} />))}
+                                (<NewsCard id={data.id} key={data.id} gameTitle={data.title} summary={data.summary} image={data.image} link={data.link} />))}
                         </div>
                     </div>
                     </MDBCol>

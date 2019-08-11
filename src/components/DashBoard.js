@@ -10,6 +10,7 @@ export default class DashBoard extends Component {
     constructor(props) {
         super(props);
         this.state = {
+            isOwner: true,
             grabbedGames: [],
             HostedGames: [],
             redirectPath: "/dashboard",
@@ -43,13 +44,6 @@ export default class DashBoard extends Component {
 
     }
 
-    deleteEvent = id => {
-        API.deleteEvent(id)
-            .then(res => this.loadEvents())
-            .catch(err => console.log(err));
-    };
-
-
     render() {
         return (
             <div>
@@ -62,7 +56,7 @@ export default class DashBoard extends Component {
                         </h1>
                         <div className="d-flex flex-row flex-wrap">
                             {this.state.grabbedGames.map((data) => 
-                                (<GameCard key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
+                                (<GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
 
                         </div>
                     </div>

@@ -1,10 +1,22 @@
 import React, { Component } from "react";
-import { MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
+import { MDBCard, MDBBtn, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
+import API from '../utils/API';
 
 class NewsCard extends Component {
   state = {
 
   };
+
+  deleteNews = id => {
+    API.deleteNews(id)
+      .then((response) => {
+        window.location.reload();
+      }).catch(function (error) {
+        console.log(error);
+      })
+  }
+
+
   render() {
     return (
       <MDBCol md="4">
@@ -22,6 +34,7 @@ class NewsCard extends Component {
             <MDBCardText style={{color: "black", textAlign:"left"}}>
               {this.props.summary}
             </MDBCardText>
+            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={() => this.deleteNews(this.props.id)} >Delete</MDBBtn>
           </MDBCardBody>
         </MDBCard>
       </MDBCol>

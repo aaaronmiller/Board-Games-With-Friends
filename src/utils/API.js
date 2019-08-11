@@ -72,8 +72,17 @@ export default {
   getNews: function () {
     return axios.get(url + "/api/getNews");
   },
+  deleteNews: function (userId) {
+    return axios.delete(url + "/api/deleteNews/" + userId);
+  },
   getGames: function () {
     return axios.get(url + "/api/getGames");
+  },
+  saveGame: function (eventData) {
+  return axios.post(url + "/api/saveGame/", eventData);
+  },
+  deleteGame: function (userId) {
+    return axios.delete(url + "/api/deleteGame/" + userId);
   },
 
 };

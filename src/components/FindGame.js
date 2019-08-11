@@ -2,12 +2,13 @@ import React, { Component } from 'react';
 import { MDBContainer } from "mdbreact";
 import GamePanel from "./GamePanel";
 import API from '../utils/API';
+import GameModal from './GameModal';
 
 export default class FindGame extends Component {
     constructor(props) {
         super(props);
         this.state = {
-            grabbedGames: [],
+            gamesToPlay: [],
             redirectPath: "/findgame",
             isLoggedIn: sessionStorage.getItem("isLoggedIn")
         };
@@ -20,11 +21,11 @@ export default class FindGame extends Component {
             .then((Response) => {
                 this.setState(
                     {
-                        grabbedGames: Response.data
+                        gamesToPlay: Response.data
                     }
                 )
                 console.log(Response);
-                console.log(this.state.grabbedGames);
+                console.log(this.state.gamesToPlay);
 
             })
             .catch(function (error) {
@@ -36,11 +37,11 @@ export default class FindGame extends Component {
 
     render() {
         return (
-            <MDBContainer>
-
+            <MDBContainer style={{textgAlign:"center"}}>
+                <GameModal />
                 <div className="d-flex flex-row flex-wrap">
-                    {this.state.grabbedGames.map((data) =>
-                        (<GamePanel key={data.id} gameTitle={data.gameName} description={data.gameDescript} image={data.picture} timesPlayed={data.totalTimesPlayed} maxPlayers={data.maxOfPlayers} />))}
+                    {this.state.gamesToPlay.map((data) =>
+                        (<GamePanel id={data.id} key={data.id} gameTitle={data.gameName} description={data.gameDescript} image={data.picture} timesPlayed={data.totalTimesPlayed} maxPlayers={data.maxOfPlayers} />))}
 
                 </div>
 
