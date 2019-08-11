@@ -1,18 +1,18 @@
 {
   "files": {
-    "main.css": "/Board-Games-With-Friends/static/css/main.3117349f.chunk.css",
-    "main.js": "/Board-Games-With-Friends/static/js/main.e75221c1.chunk.js",
-    "main.js.map": "/Board-Games-With-Friends/static/js/main.e75221c1.chunk.js.map",
+    "main.css": "/Board-Games-With-Friends/static/css/main.c1b139d5.chunk.css",
+    "main.js": "/Board-Games-With-Friends/static/js/main.9d9274d2.chunk.js",
+    "main.js.map": "/Board-Games-With-Friends/static/js/main.9d9274d2.chunk.js.map",
     "runtime~main.js": "/Board-Games-With-Friends/static/js/runtime~main.f2d42475.js",
     "runtime~main.js.map": "/Board-Games-With-Friends/static/js/runtime~main.f2d42475.js.map",
     "static/css/2.bd51b987.chunk.css": "/Board-Games-With-Friends/static/css/2.bd51b987.chunk.css",
-    "static/js/2.5334ce6b.chunk.js": "/Board-Games-With-Friends/static/js/2.5334ce6b.chunk.js",
-    "static/js/2.5334ce6b.chunk.js.map": "/Board-Games-With-Friends/static/js/2.5334ce6b.chunk.js.map",
+    "static/js/2.a5215888.chunk.js": "/Board-Games-With-Friends/static/js/2.a5215888.chunk.js",
+    "static/js/2.a5215888.chunk.js.map": "/Board-Games-With-Friends/static/js/2.a5215888.chunk.js.map",
     "index.html": "/Board-Games-With-Friends/index.html",
-    "precache-manifest.a1ae35d168908b843a4b963856787857.js": "/Board-Games-With-Friends/precache-manifest.a1ae35d168908b843a4b963856787857.js",
+    "precache-manifest.c8a539ec2a72732cb225071a552e0342.js": "/Board-Games-With-Friends/precache-manifest.c8a539ec2a72732cb225071a552e0342.js",
     "service-worker.js": "/Board-Games-With-Friends/service-worker.js",
     "static/css/2.bd51b987.chunk.css.map": "/Board-Games-With-Friends/static/css/2.bd51b987.chunk.css.map",
-    "static/css/main.3117349f.chunk.css.map": "/Board-Games-With-Friends/static/css/main.3117349f.chunk.css.map",
+    "static/css/main.c1b139d5.chunk.css.map": "/Board-Games-With-Friends/static/css/main.c1b139d5.chunk.css.map",
     "static/media/mdb.css": "/Board-Games-With-Friends/static/media/arrow_right.8ef6a08c.svg",
     "static/media/all.min.css": "/Board-Games-With-Friends/static/media/fa-solid-900.f14c3b2f.ttf"
   }
