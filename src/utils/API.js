@@ -10,6 +10,12 @@ export default {
   getAllEvents: function () {
     return axios.get(url + "/api/gameEvents");
   },
+
+  // Gets all events created by current user
+  getEvents: function () {
+    return axios.get(url + "/api/gameEvents");
+  },
+
   // Gets the event with the given id
   getEvent: function (eventId) {
     return axios.get(url + "/api/gameEvents/" + eventId);
@@ -61,27 +67,26 @@ export default {
     });
   },
 
-  // Dashboard
-  // LoadGameEvents
-  // loadGameEvents: () => {
-  //   return axios.get(url + "/api/gameEvents");
-  // },
-  // Create a game
-  createGame: (gameObj) => {
-    return (
-      axios.post(url + "/api/gameEvents", gameObj)
-    )
+
+
+  scrape: function () {
+    return axios.get(url + "/api/scrape");
+  },
+  getNews: function () {
+    return axios.get(url + "/api/getNews");
+  },
+  deleteNews: function (userId) {
+    return axios.delete(url + "/api/deleteNews/" + userId);
+  },
+  getGames: function () {
+    return axios.get(url + "/api/getGames");
+  },
+  saveGame: function (eventData) {
+  return axios.post(url + "/api/saveGame/", eventData);
+  },
+  deleteGame: function (userId) {
+    return axios.delete(url + "/api/deleteGame/" + userId);
   },
 
-  // Gets events
-  // Using the token to get registed game 
-  // NOT IMPLEMENT YET!
-  getRegistedEvents: function (user_token) {
-    return axios.get(url + "/api/gameEvents/registed/" + user_token);
-  },
-  // Using the token to get hosted game
-  // Works!
-  getHostedEvents: function (user_token) {
-    return axios.get(url + "/api/gameEvents/host/" + user_token);
-  }
+
 };

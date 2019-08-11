@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInputGroup, MDBInput } from 'mdbreact';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
 import API from '../utils/API';
 import { number } from 'prop-types';
 
@@ -16,7 +16,7 @@ class CreateModal extends Component {
         address: "",
         description: "",
         phone: number
-        
+
     }
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -25,28 +25,31 @@ class CreateModal extends Component {
         });
     };
     handleCreate = () => {
-        this.setState({ modal1: false});
-
-        API.createGame({
+        this.setState({ modal1: false });
+        API.saveEvent({
             token: sessionStorage.getItem("token"),
             eventTitle: this.state.title,
             description: this.state.description,
             location: this.state.address,
-            capacity:  this.state.capacity,
+            capacity: this.state.capacity,
             phone: this.state.phone,
-            time: this.state.time,
             date: this.state.date,
-            specificLocation: this.state.location
-          })
+            specificLocation: this.state.location,
+            time: this.state.time,
+            gameName: this.state.name
+        })
             .then((response) => {
-                console.log("event created");
-                console.log(response);
-                this.props.handleLoad();
+                // console.log("event created");
+                // console.log(response);
+                window.location.reload();
             }).catch(function (error) {
                 console.log(error);
-              })
-              console.log(this.state);
+            })
+        console.log(this.state);
     }
+
+
+
     toggle = nr => () => {
         let modalNumber = 'modal' + nr
         this.setState({
@@ -56,16 +59,15 @@ class CreateModal extends Component {
 
     render() {
         return (
-            <div style={{ display: "inline-block" }}>
+            <MDBContainer>
+                <div style={{ display: "inline-block" }}>
 
-                <MDBBtn className="text-white" color="#d50000 red accent-4" style={{ color: "white", marginLeft: "340px" }} href="#" onClick={this.toggle(1)}>Create a Game</MDBBtn>
+                    <MDBBtn className="text-white" color="#d50000 red accent-4" style={{ color: "white", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={this.toggle(1)}>Create a Game</MDBBtn>
 
-                <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} size="lg">
-                    <MDBModalHeader  style={{textAlign:"center", color:"black"}} toggle={this.toggle(1)}>Create a board game</MDBModalHeader>
-                    <MDBModalBody>
-                        <div className="md-form">
-
-                               
+                    <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} size="lg">
+                        <MDBModalHeader style={{ textAlign: "center", color: "black" }} toggle={this.toggle(1)}>Create a board game</MDBModalHeader>
+                        <MDBModalBody>
+                            <div className="md-form">
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
@@ -116,7 +118,7 @@ class CreateModal extends Component {
                                     containerClassName="mb-2 mt-0"
                                     prepend="Location"
                                     hint="Room/Apt. Number"
-                                    name="location"
+                                    name="GPSlocation"
                                     onChange={this.handleInputChange}
                                 />
 
@@ -146,17 +148,18 @@ class CreateModal extends Component {
                                     name="description"
                                     onChange={this.handleInputChange}
                                 />
-                        
-                        </div>
+
+                            </div>
                         </MDBModalBody>
                         <MDBModalFooter>
                             <MDBBtn color="#01579b light-blue darken-4" onClick={this.toggle(1)}>Close</MDBBtn>
                             <MDBBtn color="#d50000 red accent-4" onClick={this.handleCreate}>Create</MDBBtn>
                         </MDBModalFooter>
                     </MDBModal>
-                    </div>
-                );
-            }
-        }
-        
+                </div>
+            </MDBContainer>
+        );
+    }
+}
+
 export default CreateModal;

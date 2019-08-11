@@ -15,8 +15,8 @@ import {
   MDBContainer,
   MDBIcon
 } from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 class NavbarPage extends Component {
   state = {

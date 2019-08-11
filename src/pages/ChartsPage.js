@@ -1,8 +1,8 @@
 import React from "react";
 import { Line, Bar, Radar, Pie, Doughnut, Polar } from "react-chartjs-2";
 import { MDBContainer } from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 // LineChart
 const dataLine = {
