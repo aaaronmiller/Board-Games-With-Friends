@@ -12,7 +12,7 @@ export default class DashBoard extends Component {
         this.state = {
             isOwner: true,
             grabbedGames: [],
-            HostedGames: [],
+            hostedGames: [],
             redirectPath: "/dashboard",
             isLoggedIn: sessionStorage.getItem("isLoggedIn")
         };
@@ -43,9 +43,10 @@ export default class DashBoard extends Component {
             });
 
     }
-
     render() {
+
         return (
+
             <div>
                 <MDBContainer>
                     <div>
@@ -57,7 +58,6 @@ export default class DashBoard extends Component {
                         <div className="d-flex flex-row flex-wrap">
                             {this.state.grabbedGames.map((data) => 
                                 (<GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
-
                         </div>
                     </div>
                 </MDBContainer>
@@ -67,3 +67,4 @@ export default class DashBoard extends Component {
     }
 
 }
+
