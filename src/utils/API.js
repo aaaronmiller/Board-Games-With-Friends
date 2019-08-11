@@ -8,7 +8,7 @@ export default {
     return axios.get("/api/gameEvents");
   },
   // Gets all events created by current user
-  getEvents: function(user_id) {
+  getEvents: function(eventId) {
     return axios.get("/api/gameEvents");
   },
   // Gets the event with the given id

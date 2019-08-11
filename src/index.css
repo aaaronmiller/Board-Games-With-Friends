@@ -38,3 +38,11 @@ body {
 	color:rgba(0,0,0,.35);
 	float:right;
 }
+
+.profilePage {
+	color: white;
+}
+
+#placeholder {
+	color:white;
+}

@@ -63,7 +63,6 @@ class CreateModal extends Component {
                     <MDBModalBody>
                         <div className="md-form">
 
-                               
                                 <MDBInput
                                     material
                                     containerClassName="mb-2 mt-0"
