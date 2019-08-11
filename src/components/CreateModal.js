@@ -26,8 +26,8 @@ class CreateModal extends Component {
     };
     handleCreate = () => {
         this.setState({ modal1: false });
-
         API.saveEvent({
+            token: sessionStorage.getItem("token"),
             eventTitle: this.state.title,
             description: this.state.description,
             location: this.state.address,
@@ -36,7 +36,7 @@ class CreateModal extends Component {
             date: this.state.date,
             specificLocation: this.state.location,
             time: this.state.time,
-            gameName: this.state.name,
+            gameName: this.state.name
         })
             .then((response) => {
                 // console.log("event created");
@@ -99,7 +99,7 @@ class CreateModal extends Component {
                                     material
                                     containerClassName="mb-2 mt-0"
                                     prepend="Event Date"
-                                    hint="MM/DD/YYYY"
+                                    hint="YYYY/MM/DD"
                                     name="date"
                                     onChange={this.handleInputChange}
                                 />

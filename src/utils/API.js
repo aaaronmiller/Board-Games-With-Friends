@@ -10,10 +10,12 @@ export default {
   getAllEvents: function () {
     return axios.get(url + "/api/gameEvents");
   },
+
   // Gets all events created by current user
   getEvents: function () {
     return axios.get(url + "/api/gameEvents");
   },
+
   // Gets the event with the given id
   getEvent: function (eventId) {
     return axios.get(url + "/api/gameEvents/" + eventId);
@@ -66,6 +68,7 @@ export default {
   },
 
 
+
   scrape: function () {
     return axios.get(url + "/api/scrape");
   },
@@ -84,5 +87,6 @@ export default {
   deleteGame: function (userId) {
     return axios.delete(url + "/api/deleteGame/" + userId);
   },
+
 
 };
