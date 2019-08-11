@@ -107,7 +107,7 @@ class Login extends React.Component {
                           borderRadius: "8px",
                           filter: "drop-shadow(10px 10px 9px #000000)"
                         }}>
-                          Log IN
+                          LOG IN
                     </MDBBtn>
                         </div>
                       </MDBRow>
