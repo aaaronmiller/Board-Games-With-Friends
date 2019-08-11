@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const url = "https://arcane-spire-45572.herokuapp.com";
-// const url = "http://localhost:8080";
+// const url = "https://arcane-spire-45572.herokuapp.com";
+const url = "http://localhost:8080";
 
 export default {
   // Event API's  
@@ -11,7 +11,7 @@ export default {
     return axios.get(url + "/api/gameEvents");
   },
   // Gets all events created by current user
-  getEvents: function (user_id) {
+  getEvents: function () {
     return axios.get(url + "/api/gameEvents");
   },
   // Gets the event with the given id
@@ -66,8 +66,14 @@ export default {
   },
 
 
+  scrape: function () {
+    return axios.get(url + "/api/scrape");
+  },
   getNews: function () {
     return axios.get(url + "/api/getNews");
+  },
+  getGames: function () {
+    return axios.get(url + "/api/getGames");
   },
 
 };

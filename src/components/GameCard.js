@@ -51,7 +51,7 @@ class CardExample extends Component {
   render() {
     return (
       <MDBCol sm="4">
-        <MDBCard className="text-black bg-light" style={{ textAlign: "center", margin: "30px" }}>
+        <MDBCard className="text-black bg-light" style={{ color: "white", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }}>
           <MDBCardImage className="img-fluid" src={this.props.gameImage} waves />
           <MDBCardBody>
             <MDBCardTitle>{this.props.eventTitle}</MDBCardTitle>

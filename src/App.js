@@ -9,7 +9,7 @@ import Profile from "./components/Profile";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Routes from "./Routes";
 
-class App extends Component {
+  class App extends Component {
   state = {
     isLoggedIn: sessionStorage.getItem("isLoggedIn")
   };

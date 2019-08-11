@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBRow , MDBCol } from 'mdbreact';
+import { MDBContainer, MDBRow , MDBCol, MDBBtn } from 'mdbreact';
 import NewsCard from "./NewsCard";
 import API from '../utils/API';
 
@@ -34,6 +34,20 @@ export default class DashBoard extends Component {
 
     }
 
+    handlesubmit(event) {
+        console.log("scrape in progress");
+        API.scrape()
+          .then((response) => {
+            console.log(response);
+            this.renderRedirect();
+            
+          })
+          .catch(function (error) {
+            console.log(error);
+          });
+      }
+
+
     render() {
         return (
             <div>
@@ -43,8 +57,11 @@ export default class DashBoard extends Component {
                 <MDBCol>
                     <div>
                         <h1 className="text-white" style= {{textAlign: "center"}}>
-                            Boardgames in the News
-                        </h1><br /> 
+                            Boardgames in the News<br />
+                            <MDBBtn className="text-white" color="#d50000 red accent-4" style={{ color: "white", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={this.handlesubmit}>Scrape</MDBBtn>
+                        </h1>
+                        <br /> 
+
                         <div className="d-flex flex-row flex-wrap">
                             {this.state.newsArticles.map((data) => 
                                 (<NewsCard key={data.id} gameTitle={data.title} summary={data.summary} image={data.image} link={data.link} />))}

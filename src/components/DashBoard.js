@@ -17,16 +17,16 @@ export default class DashBoard extends Component {
         };
     }
     componentDidMount = () => {
-        this.renderRedirect();
+        // this.renderRedirect();
         this.loadRegistedGames();
     }
-    renderRedirect = () => {
-        console.log("redirect");
-        if (!this.state.isLoggedIn)
-            this.setState({ redirectPath: "/" });
-    }
+    // renderRedirect = () => {
+    //     console.log("redirect");
+    //     if (!this.state.isLoggedIn)
+    //         this.setState({ redirectPath: "/" });
+    // }
     loadRegistedGames = () => {
-        API.getAllEvents ()
+        API.getEvents ()
             .then((Response) => {
                 this.setState(
                     {
@@ -50,15 +50,12 @@ export default class DashBoard extends Component {
     };
 
 
-    loadHostedGames = () => {
-
-    }
     render() {
         return (
             <div>
                 <MDBContainer>
                     <div>
-                        <h1 className="text-white">
+                        <h1 className="text-white" style={{textAlign: "center"}}>
                           Upcoming Games
                         {/*<CreateModal handleLoad={this.loadRegistedGames} />*/}
                         <CreateModal />
@@ -70,7 +67,7 @@ export default class DashBoard extends Component {
                         </div>
                     </div>
                 </MDBContainer>
-                <Redirect to={this.state.redirectPath} />
+
             </div>
         )
     }

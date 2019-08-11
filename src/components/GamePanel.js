@@ -37,7 +37,7 @@ class GamePanel extends Component {
 
     return (
       <MDBCol sm="4">
-        <MDBCard style={{ width: "22rem", marginTop: "1rem" }} className="text-center">
+        <MDBCard style={{ width: "22rem", marginTop: "1rem", color: "white", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }} className="text-center">
           <MDBCardHeader color="secondary-color">
             {this.props.gameTitle}
           </MDBCardHeader>

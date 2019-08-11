@@ -8,18 +8,18 @@ class NewsCard extends Component {
   render() {
     return (
       <MDBCol md="4">
-        <MDBCard className="text-black bg-light" style={{ textAlign: "center", margin: "30px" }}>
+        <MDBCard className="text-black bg-light" style={{ textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(30px 30px 9px #000000)" }}>
+        <br />
           <a href={this.props.link}>
-            <MDBCardImage className="img-fluid" src={this.props.image} waves />
+            <MDBCardImage className="img-fluid rounded mx-auto d-block" src={this.props.image}  style={{ height : "80%", width :   "80%", borderRadius: "25px" }}waves />
           </a>
-
-          <MDBCardBody>
+         <MDBCardBody>
             <MDBCardTitle>
-              <a href={this.props.link}>
+              <a href={this.props.link} style={{color: "gray" , fontSize: "18px"}}>
                 {this.props.gameTitle}
               </a>
             </MDBCardTitle>
-            <MDBCardText>
+            <MDBCardText style={{color: "black", textAlign:"left"}}>
               {this.props.summary}
             </MDBCardText>
           </MDBCardBody>

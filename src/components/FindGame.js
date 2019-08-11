@@ -16,7 +16,7 @@ export default class FindGame extends Component {
            this.loadGamesToPlay();
     }
     loadGamesToPlay = () => {
-        API.getNews()
+        API.getGames()
             .then((Response) => {
                 this.setState(
                     {
