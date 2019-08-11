@@ -93,7 +93,7 @@ class SignUp extends React.Component {
                       </div>
 
                       <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler} />
-                      <MDBInput className="text-white" label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler} />
+                      <MDBInput className="text-white" label="Your password" group icon="lock" type="password" validate onChange= {this.passwordHandler} />
 
                       <MDBRow className="d-flex align-items-center mb-4">
                         <div className="text-center mb-3 col-md-12">
