@@ -1,6 +1,6 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
-import { MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse} from "mdbreact";
+import { MDBNavbar, MDBCol, MDBRow, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
 
 class Navbar extends Component {
     constructor(props) {
@@ -18,8 +18,8 @@ class Navbar extends Component {
     }
 
     // Legacy Code : this function is handled with a && instead, delete on 8/10
-            //   |
-            //   |
+    //   |
+    //   |
     //           V
     // isLoggedIn = () => {
     //     if (this.props.isLoggedIn) {
@@ -39,13 +39,13 @@ class Navbar extends Component {
                 <MDBNavbar color="#283593 indigo darken-3" dark expand="md">
                     <MDBNavbarBrand>
                         <Link className="navbar-brand" to="/">
-                            <img src="https://i.ibb.co/yXrwR6V/bgwf.jpg" alt="" />
+                            <img src="https://i.ibb.co/yXrwR6V/bgwf.jpg" width="500px" alt="" />
                         </Link>
                     </MDBNavbarBrand>
                     <MDBNavbarToggler onClick={this.toggleCollapse} />
-                    <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+                    <MDBCollapse id="navbarCollapse" isOpen={this.state.isOpen} navbar>
                         <MDBNavbarNav right>
-                            <MDBNavItem>
+                            <MDBNavItem active>
                                 <MDBNavLink to="/"><i className="fas fa-home"></i>
                                     Home
                                 </MDBNavLink>
@@ -66,56 +66,24 @@ class Navbar extends Component {
                                 <MDBNavLink to="/news">
                                     <i className="far fa-newspaper"></i>
                                     News
-                                </MDBNavLink>
+                                 </MDBNavLink>
                             </MDBNavItem>
-                            <MDBNavItem>
-
-                                {this.props.isLoggedIn &&
-                                    <span>
-                                        <MDBNavLink to="/profile">
-                                            <i className="far fa-address-card"></i>
-                                            Profile
-                                        </MDBNavLink>
-
-                                        <MDBNavItem>
-                                            <MDBNavLink to="/" onClick={this.logOut}>
-                                                Log Out
-                                            </MDBNavLink>
-                                        </MDBNavItem>
-                                    </span>
-                                }
-                            </MDBNavItem>
-
-                            {/*}   
-                                // Legacy Code :  delete on 8/10
-                                         |
-                                         |
-                                         V
-                                {this.isLoggedIn()}
-
-                             <MDBNavItem>
-                                <MDBDropdown>
-                                    <MDBDropdownToggle nav caret>
-                                        <span className="mr-2">Dropdown</span>
-                                    </MDBDropdownToggle>
-                                    <MDBDropdownMenu>
-                                        <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                                        <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                                        <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                                        <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                                    </MDBDropdownMenu>
-                                </MDBDropdown>
-                            </MDBNavItem> */}
+                            {this.props.isLoggedIn &&
+                                <MDBNavItem>
+                                    <MDBNavLink to="/profile">
+                                        <i className="far fa-address-card"></i>
+                                        Profile
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                            }
+                            {this.props.isLoggedIn &&
+                                <MDBNavItem>
+                                    <MDBNavLink to="/" onClick={this.logOut}>
+                                        Log Out
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                            }
                         </MDBNavbarNav>
-                        {/* <MDBNavbarNav right>
-                            <MDBNavItem>
-                                <MDBFormInline waves>
-                                    <div className="md-form my-0">
-                                        <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                                    </div>
-                                </MDBFormInline>
-                            </MDBNavItem>
-                        </MDBNavbarNav> */}
                     </MDBCollapse>
                 </MDBNavbar>
             </div>
