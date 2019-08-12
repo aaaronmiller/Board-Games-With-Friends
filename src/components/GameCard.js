@@ -30,29 +30,29 @@ class GameCard extends Component {
       })
   }
 
-  joinEvent = id => {
-    API.getEvent(id)
-      .then((response) => {
-        let wookie = response;
-        let peopleInGame = wookie.data.enrolledPlayers;
-        // check here if peopleInGame < wookie.data.maxOfPlayers (need to convert to array and count first)
-        // ie.
-        //
-        // let maxPlayers = wookie.data.maxOfPlayers;
-        // let jawa = peopleInGame.split(",");
-        // if parseInt(jawa) < maxPlayers { do some crazy shit } 
-        console.log(peopleInGame);
-        peopleInGame = peopleInGame + ", " + this.props.username;
-        wookie.data.enrolledPlayers = peopleInGame;
-          API.updateEvent(wookie).then((response) => {
-                // console.log("event created");
-                // console.log(response);
-                window.location.reload();
-               }).catch(function (error) {
-                console.log(error);
-            })
-      });
-}
+//   joinEvent = id => {
+//     API.getEvent(id)
+//       .then((response) => {
+//         let wookie = response;
+//         let peopleInGame = wookie.data.enrolledPlayers;
+//                         // check here if peopleInGame < wookie.data.maxOfPlayers (need to convert to array and count first)
+//                         // ie.
+//                         //
+//                         // let maxPlayers = wookie.data.maxOfPlayers;
+//                         // let jawa = peopleInGame.split(",");
+//                         // if parseInt(jawa) < maxPlayers { do some crazy shit } 
+//         console.log(peopleInGame); 
+//         peopleInGame = peopleInGame + ", " + this.props.username;
+//         wookie.data.enrolledPlayers = peopleInGame;
+//           API.updateEvent(wookie).then((response) => {
+//                         // console.log("event created");
+//                         // console.log(response);
+//                 window.location.reload();
+//                }).catch(function (error) {
+//                 console.log(error);
+//             })
+//       });
+// }
 
   // handleInputChange = event => {
   //   const { name, value } = event.target;
@@ -80,9 +80,7 @@ class GameCard extends Component {
 
             <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={() => this.deleteEvent(this.props.id)} >Delete</MDBBtn>
 
-            {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleDelete}>Delete</MDBBtn>) : ("")}
-
-            {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleEdit}>Edit</MDBBtn>) : ("")}
+    
           </MDBCardBody>
         </MDBCard>
       </MDBCol>
@@ -91,3 +89,9 @@ class GameCard extends Component {
 
 }
 export default GameCard;
+
+
+
+// {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleDelete}>Delete</MDBBtn>) : ("")}
+
+// {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleEdit}>Edit</MDBBtn>) : ("")}

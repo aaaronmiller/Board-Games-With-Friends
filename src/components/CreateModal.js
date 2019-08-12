@@ -28,15 +28,14 @@ class CreateModal extends Component {
         this.setState({ modal1: false });
         API.saveEvent({
             token: sessionStorage.getItem("token"),
-            eventTitle: this.state.title,
+            eventTitle: this.state.eventTitle,
+            gameName: this.state.gameName,
             description: this.state.description,
-            location: this.state.address,
-            capacity: this.state.capacity,
-            phone: this.state.phone,
-            date: this.state.date,
-            specificLocation: this.state.location,
-            time: this.state.time,
-            gameName: this.state.name
+            location: this.state.location,
+            maxPlayers: this.state.maxPlayers,
+            dateTime: this.state.dateTime,
+            gpslocation: this.state.gpslocation,
+            enrolledPlayers: this.props.username
         })
             .then((response) => {
                 console.log("event created");
