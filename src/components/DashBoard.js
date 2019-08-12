@@ -16,11 +16,12 @@ export default class DashBoard extends Component {
             redirectPath: "/dashboard",
             isLoggedIn: sessionStorage.getItem("isLoggedIn")
         };
-    }
-    componentDidMount = () => {
-        // this.renderRedirect();
         this.loadRegistedGames();
     }
+    // componentDidMount = () => {
+    //     // this.renderRedirect();
+    //     this.loadRegistedGames();
+    // }
     // renderRedirect = () => {
     //     console.log("redirect");
     //     if (!this.state.isLoggedIn)
