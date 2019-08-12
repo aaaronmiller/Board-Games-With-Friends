@@ -28,15 +28,13 @@ class CreateModal extends Component {
         this.setState({ modal1: false });
         API.saveEvent({
             token: sessionStorage.getItem("token"),
-            eventTitle: this.state.title,
+            eventTitle: this.state.eventTitle,
             description: this.state.description,
-            location: this.state.address,
-            capacity: this.state.capacity,
-            phone: this.state.phone,
-            date: this.state.date,
-            specificLocation: this.state.location,
-            time: this.state.time,
-            gameName: this.state.name
+            location: this.state.location,
+            maxPlayers: this.state.maxPlayers,
+            dateTime: this.state.dateTIME,
+            gameName: this.state.gameName,
+            gpsLocation: this.gpsLocation
         })
             .then((response) => {
                 console.log("event created");
@@ -68,24 +66,21 @@ class CreateModal extends Component {
                         <MDBModalBody>
                             <div className="md-form">
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    className="mb-2 mt-0"
                                     hint="Event Title"
                                     name="eventTitle"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    className="mb-2 mt-0"
                                     name="gameName"
                                     hint="The Name Of The Boardgame"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    className="mb-2 mt-0"
                                     hint="Maximum Number of People"
                                     name="maxPlayers"
                                     type="number"
@@ -93,32 +88,28 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    className="mb-2 mt-0"
                                     hint="Date and start time"
                                     name="dateTime"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    className="mb-2 mt-0"
                                     hint="GPSlocation"
                                     name="gpslocation"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    className="mb-2 mt-0"
                                     hint="Location"
                                     name="location"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    className="mb-2 mt-0"
                                     type="textarea"
                                     hint="Extra Information"
                                     name="description"
