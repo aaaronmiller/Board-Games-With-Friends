@@ -75,5 +75,3 @@ export default function Profile() {
         </>
     )
 }
-
-export default ContactPage;
