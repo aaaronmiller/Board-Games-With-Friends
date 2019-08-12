@@ -53,7 +53,8 @@ export default {
   // Login/SignUp APIs
   // Login
   logIn: (username, password) => {
-    return axios.put(url + "/api/login", 
+    // console.log("works!");
+    return axios.post(url + "/api/login", 
     {
       userName: username,
       password: password
