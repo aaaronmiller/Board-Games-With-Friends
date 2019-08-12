@@ -27,14 +27,16 @@ class CreateModal extends Component {
     handleCreate = () => {
         this.setState({ modal1: false });
         API.saveEvent({
-            token: sessionStorage.getItem("token"),
+            // token: sessionStorage.getItem("token"),
             eventTitle: this.state.eventTitle,
+            gameName: this.state.gameName,
             description: this.state.description,
             location: this.state.location,
             maxPlayers: this.state.maxPlayers,
-            dateTime: this.state.dateTIME,
-            gameName: this.state.gameName,
-            gpsLocation: this.gpsLocation
+            dateTime: this.state.dateTime,
+            gpsLocation: this.state.gpsLocation,
+            // enrolledPlayers: 
+            // time: this.state.time,
         })
             .then((response) => {
                 console.log("event created");
@@ -66,6 +68,7 @@ class CreateModal extends Component {
                         <MDBModalBody>
                             <div className="md-form">
                                 <MDBInput
+                                    
                                     className="mb-2 mt-0"
                                     hint="Event Title"
                                     name="eventTitle"
@@ -73,6 +76,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
+                                    
                                     className="mb-2 mt-0"
                                     name="gameName"
                                     hint="The Name Of The Boardgame"
@@ -80,6 +84,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
+                                    
                                     className="mb-2 mt-0"
                                     hint="Maximum Number of People"
                                     name="maxPlayers"
@@ -88,6 +93,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
+                                    
                                     className="mb-2 mt-0"
                                     hint="Date and start time"
                                     name="dateTime"
@@ -95,6 +101,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
+                                    
                                     className="mb-2 mt-0"
                                     hint="GPSlocation"
                                     name="gpslocation"
@@ -102,6 +109,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
+                                    
                                     className="mb-2 mt-0"
                                     hint="Location"
                                     name="location"
@@ -109,6 +117,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
+                                    
                                     className="mb-2 mt-0"
                                     type="textarea"
                                     hint="Extra Information"
