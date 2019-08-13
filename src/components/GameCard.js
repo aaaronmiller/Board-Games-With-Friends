@@ -57,9 +57,7 @@ class GameCard extends Component {
 
             <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>
 
-            {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleDelete}>Delete</MDBBtn>) : ("")}
-
-            {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleEdit}>Edit</MDBBtn>) : ("")}
+    
           </MDBCardBody>
         </MDBCard>
       </MDBCol>
@@ -68,3 +66,9 @@ class GameCard extends Component {
 
 }
 export default GameCard;
+
+
+
+// {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleDelete}>Delete</MDBBtn>) : ("")}
+
+// {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleEdit}>Edit</MDBBtn>) : ("")}
