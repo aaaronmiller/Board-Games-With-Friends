@@ -67,7 +67,7 @@ export default {
     });
   },
   
-  joinEvent: function (url, token, eventId) {
+  joinEvent: function (token, eventId) {
     return axios.post(url + "/api/users/join/" + token + "/" + eventId);
   },
 
