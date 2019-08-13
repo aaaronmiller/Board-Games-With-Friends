@@ -14,6 +14,7 @@ export default class DashBoard extends Component {
         };
     }
     componentDidMount = () => {
+        // this.handlesubmit();
         this.loadNewsArticles();
     }
     loadNewsArticles = () => {
