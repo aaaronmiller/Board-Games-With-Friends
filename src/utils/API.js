@@ -95,6 +95,11 @@ export default {
   updateGame: function (gameId, gameData) {
     return axios.put(url + "/api/updateGame/" + gameId, gameData);
   },
-
+  updateProfile: function (userId, profileObj) {
+    return axios.put(url + "/api/updateProfile/" + userId, profileObj);
+  },
+  getProfile: function (userId) {
+    return axios.get(url + "/api/getProfile/" + userId);
+  }
 
 };
