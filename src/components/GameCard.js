@@ -53,9 +53,9 @@ class GameCard extends Component {
               <span><p>Description: {this.props.description}</p></span><br />
               {/* <span>Curerent players: {CardExample.signedInPlayers}</span> */}
             </MDBCardText>
-            
-            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.joinEvent(this.props.id)}>Join</MDBBtn>
-            
+
+            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={()=>this.joinEvent(this.props.id)}>Join</MDBBtn>
+
             <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>
             
     
