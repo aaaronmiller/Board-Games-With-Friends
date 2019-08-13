@@ -14,11 +14,29 @@ module.exports = function(app) {
 
   // GET route for getting all of the GameEvents
   app.get("/api/gameEvents", function(req, res) {
-    db.Event.findAll().then(function(dbEvent) {
-      console.log("events")
+    var query = {};
+    if (req.query.user_id) {
+      query.UserId = req.query.user_id;
+    }
+    // Here we add an "include" property to our options in our findAll query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.User
+    db.Event.findAll({
+      where: query,
+      include: [db.User, db.Games]
+    }).then(function(dbEvent) {
       res.json(dbEvent);
     });
   });
+
+  // GET route for getting all of the GameEvents
+  // FROM AARON
+  // app.get("/api/gameEvents", function(req, res) {
+  //   db.Event.findAll().then(function(dbEvent) {
+  //     console.log("events")
+  //     res.json(dbEvent);
+  //   });
+  // });
 
   // Get route for retrieving a single gameEvent
   app.get("/api/gameEvents/:id", function(req, res) {
@@ -39,9 +57,19 @@ module.exports = function(app) {
   app.post("/api/gameEvents", function(req, res) {
     db.Event.create(req.body)
     .then(function(dbEvent) {
+        dbEvent.addUser(req.body.UserId);
+        dbEvent.addGames(req.body.EventId);
         res.json(dbEvent);
     });
   });
+  // app.post("/api/gameEvents/join", function(req, res) {
+  //   db.Event.create(req.body)
+  //   .then(function(dbEvent) {
+  //       dbEvent.addUser(req.body.UserId);
+  //       // dbEvent.addGames(req.body.GamesId);
+  //       res.json(dbEvent);
+  //   });
+  // });
 
   // DELETE route for deleting gameEvents
   app.delete("/api/gameEvents/:id", function(req, res) {
@@ -64,4 +92,5 @@ module.exports = function(app) {
         }
       });
   });
+
 };

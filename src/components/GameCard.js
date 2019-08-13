@@ -31,36 +31,38 @@ class GameCard extends Component {
   }
 
   joinEvent = id => {
-    API.joinEvent(sessionStorage.getItem("token").toString(), id )
-      .then((response) => {
-        console.log(response);
-      });
+    // API.joinEvent(sessionStorage.getItem("token").toString(), id )
+    //   .then((response) => {
+    //     console.log(response);
+    //   });
   }
 
 
   render() {
     return (
+      <div>
       <MDBCol sm="4">
-        <MDBCard className="text-black bg-light" style={{ color: "white", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }}>
-          <MDBCardImage className="img-fluid" src={this.props.gameImage} waves />
-          <MDBCardBody>
-            <MDBCardTitle style={{ color: "black" }}>{this.props.eventTitle}</MDBCardTitle>
+      <MDBCard className="text-black bg-light" style={{ color: "white", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }}>
+      <MDBCardImage className="img-fluid" src={this.props.gameImage} waves />
+      <MDBCardBody>
+      <MDBCardTitle style={{ color: "black" }}>{this.props.eventTitle}</MDBCardTitle>
             <MDBCardText>
-              <span><p>Location: {this.props.location}</p></span><br />
+            <span><p>Location: {this.props.location}</p></span><br />
               {/* Created by:{CardExample.eventOwner}<br />c */}
               <span><p>Max Players: {this.props.capacity}</p></span><br />
               <span><p>Description: {this.props.description}</p></span><br />
               {/* <span>Curerent players: {CardExample.signedInPlayers}</span> */}
             </MDBCardText>
-
+            
             <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.joinEvent(this.props.id)}>Join</MDBBtn>
-
+            
             <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>
-
+            
     
           </MDBCardBody>
-        </MDBCard>
-      </MDBCol>
+          </MDBCard>
+          </MDBCol>
+      </div>
     )
   }
 

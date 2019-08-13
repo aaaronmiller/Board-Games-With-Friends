@@ -1,5 +1,5 @@
 {
-  "name": "post-author-joins",
+  "name": "post-user-joins",
   "version": "1.0.0",
   "description": "",
   "main": "server.js",
@@ -9,7 +9,7 @@
     "watch": "nodemon server.js"
   },
   "keywords": [],
-  "author": "",
+  "user": "",
   "license": "ISC",
   "dependencies": {
     "axios": "^0.19.0",
@@ -21,5 +21,9 @@
     "jsonwebtoken": "^8.5.1",
     "mysql2": "^1.6.4",
     "sequelize": "^4.41.2"
+  },
+  "devDependencies": {
+    "nodemon": "^1.19.1",
+    "sequelize-cli": "^5.5.0"
   }
 }

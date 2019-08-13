@@ -21,7 +21,7 @@ module.exports = function(app) {
 
   // GET route for querying games
   app.get("/api/getGames", function(req, res) {
-  console.log("ganes")
+  console.log("games")
     db.Games.findAll().then(function(dbGames) {
         res.json(dbGames);
     });

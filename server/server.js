@@ -22,18 +22,20 @@ app.use(cors());
 app.use(express.static("public"));
 app.use(function(req, res, next) {
   res.header("Access-Control-Allow-Origin", '*');
-  res.header("Access-Control-Allow-Credentials", true);
-  res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
-  res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
+  // res.header("Access-Control-Allow-Credentials", true);
+  // force rebuild again
+  // res.header('Access-Control-Allow-Methods', 'GET,PUT,POST,DELETE,OPTIONS');
+  // res.header("Access-Control-Allow-Headers", 'Origin,X-Requested-With,Content-Type,Accept,content-type,application/json');
   next();
 });
 // Routes
 // =============================================================
-require("./routes/html-routes.js")(app);
-require("./routes/scrape-api-routes.js")(app);
-require("./routes/user-api-routes.js")(app);
+// require("./routes/html-routes.js")(app);
 require("./routes/event-api-routes.js")(app);
 require("./routes/games-api-routes")(app);
+require("./routes/user-api-routes.js")(app);
+require("./routes/scrape-api-routes.js")(app);
+
 
 
 // Syncing our sequelize models and then starting our Express app

@@ -4,6 +4,7 @@ import { MDBContainer } from 'mdbreact';
 import GameCard from "./GameCard";
 import CreateModal from './CreateModal';
 import API from '../utils/API';
+import Slider from "react-slick";
 
 
 export default class DashBoard extends Component {
@@ -13,6 +14,13 @@ export default class DashBoard extends Component {
             isOwner: true,
             grabbedGames: [],
             hostedGames: [],
+            defaultGame: {
+                id: "0",
+                eventTitle: "none",
+                description: "none",
+                capacity: "none",
+                location: "none"
+            },
             redirectPath: "/dashboard",
             isLoggedIn: sessionStorage.getItem("isLoggedIn")
         };
@@ -45,26 +53,47 @@ export default class DashBoard extends Component {
 
     }
     render() {
-
+        var settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 1,
+            slidesToScroll: 5
+          };
         return (
 
-            <div>
-                <MDBContainer>
-                    <div>
-                        <h1 className="text-white" style={{textAlign: "center"}}>
-                          Upcoming Games
-                        {/*<CreateModal handleLoad={this.loadRegistedGames} />*/}
-                        <CreateModal />
-                        </h1>
-                        <div className="d-flex flex-row flex-wrap">
-                            {this.state.grabbedGames.map((data) => 
-                                (<GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
-                        </div>
-                    </div>
-                </MDBContainer>
-
-            </div>
-        )
+            <span>
+            <MDBContainer>
+            <h1 className="text-white" style={{textAlign: "center"}}>
+            Upcoming Games
+            {/*<CreateModal handleLoad={this.loadRegistedGames} />*/}
+            <CreateModal />
+            </h1>
+            
+            <span className="d-flex flex-row flex-wrap">
+            <Slider {...settings}>
+            <h2> Multiple items </h2>
+                          
+                      {this.state.grabbedGames ? 
+                            (
+                                <span>
+                                {this.state.grabbedGames.map((data) => 
+                                    (<GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
+                                </span>)
+                                    : 
+                                (<span>
+                                    {this.state.defaultGame.map((data) => 
+                                        (<GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
+                                </span>)
+                                    }    
+                                    
+                                    </Slider>
+                                    </span>
+                                    </MDBContainer>
+                                  </span>
+                                  
+                                  
+                                  )
     }
 
 }
