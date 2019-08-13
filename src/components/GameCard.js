@@ -31,10 +31,10 @@ class GameCard extends Component {
   }
 
   joinEvent = id => {
-    // API.joinEvent(sessionStorage.getItem("token").toString(), id )
-    //   .then((response) => {
-    //     console.log(response);
-    //   });
+    API.joinEvent(sessionStorage.getItem("token").toString(), id )
+      .then((response) => {
+        console.log(response);
+      });
   }
 
 

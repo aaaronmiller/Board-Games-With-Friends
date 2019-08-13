@@ -89,7 +89,7 @@ export default class DashBoard extends Component {
                                     
                                     </Slider>
                                     </span>
-                                    </MDBContainer>
+                                    </MDBCo ntainer>
                                   </span>
                                   
                                   
