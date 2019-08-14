@@ -84,7 +84,7 @@ class SignUp extends React.Component {
                   }}>
                   <div className="text-white rgba-stylish-strong py-5 px-5 z-depth-4" style={{ borderRadius: "20px", color: "white" }}>
                     <div className="text-center">
-                      <h3 className="text-white mb-5 mt-4 font-weight-bold">
+                      <h3 className="text-white mb-5 mt-4 font-weight-bold"  style={{ whiteSpace: "nowrap"}}>
                         <strong>SIGN</strong>
                         <a href="#!" className="#1565c0-text font-weight-bold">
                           <strong> UP</strong>
