@@ -1,7 +1,6 @@
 import React from "react";
 import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBInput } from 'mdbreact';
-import { Redirect, Route, Link } from "react-router-dom";
-import DashBoard from "./DashBoard";
+import { Redirect, Link } from "react-router-dom";
 import API from "../utils/API";
 
 class Login extends React.Component {

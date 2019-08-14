@@ -1,10 +1,10 @@
-import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
+import React from 'react';
 import { MDBContainer, MDBRow } from 'mdbreact';
-import GameCard from "./GameCard";
 import CreateModal from './CreateModal';
-import API from '../utils/API';
 import Eventload from './eventload';
+// import GameCard from "./GameCard";
+// import API from '../utils/API';
+// import { Redirect } from "react-router-dom";
 
 
 const DashBoard =({props}) => {

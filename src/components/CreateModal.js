@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
 import API from '../utils/API';
-import { number } from 'prop-types';
+// import { number } from 'prop-types';
 
 class CreateModal extends Component {
     constructor(props) {

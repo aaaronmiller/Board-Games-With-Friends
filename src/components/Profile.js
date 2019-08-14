@@ -1,9 +1,9 @@
 import React, {Component} from 'react'
-import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
-import { Redirect, Route, Link } from "react-router-dom";
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 import API from "../utils/API"
 import UpdateProfileModal from "./UpdateProfileModal";
 import GameTag from "./GameTag"
+// import { Redirect, Route, Link } from "react-router-dom";
 
 export default class Profile extends Component {
   constructor(props) {
