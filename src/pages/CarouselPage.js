@@ -8,8 +8,8 @@ import {
   MDBMask,
   MDBContainer
 } from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 const CarouselPage = () => {
   return (

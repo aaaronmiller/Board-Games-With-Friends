@@ -7,8 +7,8 @@ import {
   MDBNavbarNav,
   MDBNavItem
 } from "mdbreact";
-import DocsLink from "./../components/docsLink";
-import SectionContainer from "./../components/sectionContainer";
+import DocsLink from "../components/docsLink";
+import SectionContainer from "../components/sectionContainer";
 
 const BreadcrumbPage = props => {
   return (

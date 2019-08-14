@@ -1,6 +1,6 @@
 import React from "react";
 import { MDBContainer, MDBIframe } from "mdbreact";
-import DocsLink from "./../components/docsLink";
+import DocsLink from "../components/docsLink";
 
 const IframePage = () => {
   return (

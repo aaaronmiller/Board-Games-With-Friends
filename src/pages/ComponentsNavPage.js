@@ -8,7 +8,7 @@ import {
   MDBIcon,
   MDBEdgeHeader
 } from "mdbreact";
-import MenuLink from "./../components/menuLink";
+import MenuLink from "../components/menuLink";
 
 const ComponentsNavPage = () => {
   return (

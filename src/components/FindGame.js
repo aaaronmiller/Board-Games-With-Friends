@@ -1,28 +1,52 @@
-import React from 'react';
-import { MDBContainer, MDBRow, MDBCol, MDBBtn } from "mdbreact";
+import React, { Component } from 'react';
+import { MDBContainer } from "mdbreact";
 import GamePanel from "./GamePanel";
+import API from '../utils/API';
+import GameModal from './GameModal';
 
-export default function FindGame() {
-    return (
-        <MDBContainer>
-            {/* <div>
-                <img src="https://cdn.mapsinternational.co.uk/pub/media/catalog/product/cache/afad95d7734d2fa6d0a8ba78597182b7/w/o/world-wall-map-political-without-flags_wm00001_h.jpg" style={{width: "100%"}} />
-            </div> */}
-            <div>
-                <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                <MDBBtn outline color="warning" rounded size="sm" type="submit" className="mr-auto">
-                    Search
-                </MDBBtn>
-            </div>
-            <div className="d-flex flex-row flex-wrap">
-                <GamePanel />
-                <GamePanel />
-                <GamePanel />
-                <GamePanel />
-                <GamePanel />
-                <GamePanel />
-                <GamePanel />
-            </div>
-        </MDBContainer>
-    )
+export default class FindGame extends Component {
+    constructor(props) {
+        super(props);
+        this.state = {
+            gamesToPlay: [],
+            redirectPath: "/findgame",
+            isLoggedIn: sessionStorage.getItem("isLoggedIn")
+        };
+    }
+    componentDidMount = () => {
+           this.loadGamesToPlay();
+    }
+    loadGamesToPlay = () => {
+        API.getGames()
+            .then((Response) => {
+                this.setState(
+                    {
+                        gamesToPlay: Response.data
+                    }
+                )
+                console.log(Response);
+                console.log(this.state.gamesToPlay);
+
+            })
+            .catch(function (error) {
+                console.log(error)
+            });
+
+    }
+
+
+    render() {
+        return (
+            <MDBContainer style={{textgAlign:"center"}}>
+                <GameModal />
+                <div className="d-flex flex-row flex-wrap">
+                    {this.state.gamesToPlay.map((data) =>
+                        (<GamePanel id={data.id} key={data.id} gameTitle={data.gameName} description={data.gameDescript} image={data.picture} timesPlayed={data.totalTimesPlayed} maxPlayers={data.maxOfPlayers} />))}
+
+                </div>
+
+
+            </MDBContainer>
+        )
+    }
 }

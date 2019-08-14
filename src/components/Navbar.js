@@ -1,80 +1,89 @@
 import React, { Component } from "react";
-import {
-    MDBNavbar, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse, MDBFormInline,
-    MDBDropdown, MDBDropdownToggle, MDBDropdownMenu, MDBDropdownItem
-} from "mdbreact";
+import { Link } from "react-router-dom";
+import { MDBNavbar, MDBCol, MDBRow, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
 
 class Navbar extends Component {
-    state = {
-        isOpen: false
-    };
-
+    constructor(props) {
+        super(props)
+        this.state = {
+            isOpen: false,
+        };
+    }
     toggleCollapse = () => {
         this.setState({ isOpen: !this.state.isOpen });
     }
     logOut = () => {
         sessionStorage.clear();
+        this.props.handleLogOut();
     }
-    isLoggedIn = () => {
-        if (sessionStorage.getItem("isLoggedIn"))
-            return (
-                <MDBNavItem>
-                    <MDBNavLink to="/" onClick={this.logOut}>Log Out</MDBNavLink>
-                </MDBNavItem>
-            )
-    }
+
+    // Legacy Code : this function is handled with a && instead, delete on 8/10
+    //   |
+    //   |
+    //           V
+    // isLoggedIn = () => {
+    //     if (this.props.isLoggedIn) {
+    //         return (
+    //             <MDBNavItem>
+    //                 <MDBNavLink to="/" onClick={this.logOut}>
+    //                     Log Out
+    //                 </MDBNavLink>
+    //             </MDBNavItem>
+    //         )
+    //     }
+    // }
 
     render() {
         return (
             <div>
                 <MDBNavbar color="#283593 indigo darken-3" dark expand="md">
                     <MDBNavbarBrand>
-                    <a className="navbar-brand" href="/">
-                        <img src="https://i.ibb.co/yXrwR6V/bgwf.jpg" alt="" />
-                    </a>
+                        <Link className="navbar-brand" to="/">
+                            <img src="https://i.ibb.co/yXrwR6V/bgwf.jpg" width="500px" alt="" />
+                        </Link>
                     </MDBNavbarBrand>
                     <MDBNavbarToggler onClick={this.toggleCollapse} />
-                    <MDBCollapse id="navbarCollapse3" isOpen={this.state.isOpen} navbar>
+                    <MDBCollapse id="navbarCollapse" isOpen={this.state.isOpen} navbar>
                         <MDBNavbarNav right>
-                            <MDBNavItem>
-                                <MDBNavLink to="/"><i className="fas fa-home"></i>Home</MDBNavLink>
+                            <MDBNavItem active>
+                                <MDBNavLink to="/"><i className="fas fa-home"></i>
+                                    Home
+                                </MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
-                                <MDBNavLink to="/dashboard"><i className="fas fa-chess-rook"></i>My Game</MDBNavLink>
+                                <MDBNavLink to="/dashboard">
+                                    <i className="fas fa-chess-rook"></i>
+                                    My Game
+                                </MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
-                                <MDBNavLink to="/find-game"><i className="fas fa-chess-knight"></i>Find A Game</MDBNavLink>
+                                <MDBNavLink to="/find-game">
+                                    <i className="fas fa-chess-knight"></i>
+                                    Find A Game
+                                </MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
-                                <MDBNavLink to="#!"><i className="far fa-newspaper"></i>News</MDBNavLink>
+                                <MDBNavLink to="/news">
+                                    <i className="far fa-newspaper"></i>
+                                    News
+                                 </MDBNavLink>
                             </MDBNavItem>
-                            <MDBNavItem>
-                                <MDBNavLink to="/profile"><i className="far fa-address-card"></i>Profile</MDBNavLink>
-                            </MDBNavItem>
-                            { this.isLoggedIn() }
-                            {/* <MDBNavItem>
-                                <MDBDropdown>
-                                    <MDBDropdownToggle nav caret>
-                                        <span className="mr-2">Dropdown</span>
-                                    </MDBDropdownToggle>
-                                    <MDBDropdownMenu>
-                                        <MDBDropdownItem href="#!">Action</MDBDropdownItem>
-                                        <MDBDropdownItem href="#!">Another Action</MDBDropdownItem>
-                                        <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                                        <MDBDropdownItem href="#!">Something else here</MDBDropdownItem>
-                                    </MDBDropdownMenu>
-                                </MDBDropdown>
-                            </MDBNavItem> */}
+                            {this.props.isLoggedIn &&
+                                <MDBNavItem>
+                                    <MDBNavLink to="/profile">
+                                        <i className="far fa-address-card"></i>
+                                        Profile
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                            }
+                            {this.props.isLoggedIn &&
+                                <MDBNavItem>
+                                    <MDBNavLink to="/" onClick={this.logOut}>
+                                        Log Out
+                                    </MDBNavLink>
+                                </MDBNavItem>
+                            }
                         </MDBNavbarNav>
-                        {/* <MDBNavbarNav right>
-                            <MDBNavItem>
-                                <MDBFormInline waves>
-                                    <div className="md-form my-0">
-                                        <input className="form-control mr-sm-2" type="text" placeholder="Search" aria-label="Search" />
-                                    </div>
-                                </MDBFormInline>
-                            </MDBNavItem>
-                        </MDBNavbarNav> */}
                     </MDBCollapse>
                 </MDBNavbar>
             </div>

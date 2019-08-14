@@ -39,10 +39,15 @@ body {
 	float:right;
 }
 
-.profilePage {
+#profileContainer {
 	color: white;
 }
 
-#placeholder {
-	color:white;
+/* #contact-name {
+	color: white;
+} */
+
+#allInput {
+	color: white;
 }
+

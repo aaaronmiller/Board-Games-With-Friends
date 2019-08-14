@@ -1,82 +1,75 @@
-import React from "react";
-import {  MDBContainer, MDBRow, MDBCol, MDBIcon, MDBBtn, MDBInput } from "mdbreact";
+import React, {Component} from 'react'
+import { MDBContainer, MDBRow, MDBCol, MDBBtn } from 'mdbreact';
+import { Redirect, Route, Link } from "react-router-dom";
+import API from "../utils/API"
+import UpdateProfileModal from "./UpdateProfileModal";
 
-const ContactPage = () => {
-  return (
-    <MDBContainer className="profilePage">
-      <h2 className="h1-responsive font-weight-bold text-center my-5">
-        My Profile
-      </h2>
-      <MDBRow>
-        <MDBCol md="9" className="md-0 mb-5">
-          <form>
+export default class Profile extends Component {
+  constructor(props) {
+    super(props);
+    this.state = {
+      image: "https://png.pngtree.com/svg/20161212/f93e57629c.svg",
+      userName: "",
+      gender: "",
+      introduction: "",
+      favorite: []
+    };
+    this.updateProfileState = this.updateProfileState.bind(this);
+    // this.loadProfile();
+
+  }
+  componentDidMount() {
+    this.loadProfile();
+  }
+
+  updateProfileState(userData) {
+    console.log(userData);
+    this.setState( {image: userData.userImage} );
+    this.setState( {userName: userData.userName} );
+    this.setState( {gender: userData.userGender} );
+    this.setState( {introduction: userData.userIntro} );
+    // this.setState( {favorite: JSON.parse(userData.favoriteGames)} );
+  }
+
+  loadProfile() {
+    API.getProfile(sessionStorage.getItem("token"))
+    .then(response =>{
+      console.log("user data:",response.data);
+      this.updateProfileState(response.data);
+    }).catch(
+      err => console.log(err)
+    );
+  }
+  
+
+  render() {
+    return (
+      <MDBContainer>
+        <h2 className="h1-responsive font-weight-bold text-center my-5 text-white">Profile</h2>
+        <MDBRow>
+          <MDBCol sm="4">
+            <img src={this.state.image} width="200"/>
+          </MDBCol>
+          <MDBCol sm="8">
             <MDBRow>
-              <MDBCol md="6">
-                <div className="md-form mb-0">
-                  <MDBInput type="text" id="placeholder" label="Your name" />
-                </div>
+              <MDBCol sm="6">
+                <p className="pb-5 text-white">Username: {this.state.userName || "Unknown"}</p>
               </MDBCol>
-              <MDBCol md="6">
-                <div className="md-form mb-0">
-                  <MDBInput
-                    type="email"
-                    id="placeholder"
-                    label="Your email"
-                  />
-                </div>
+              <MDBCol sm="6">
+                <p className="pb-5 text-white">Gender: {this.state.gender || "Unknown"}</p>
               </MDBCol>
             </MDBRow>
-            <MDBRow>
-              <MDBCol md="12">
-                <div className="md-form mb-0">
-                  <MDBInput type="text" id="placeholder" label="Password" />
-                </div>
-              </MDBCol>
-            </MDBRow>
-            <MDBRow>
-              <MDBCol md="12">
-                <div className="md-form mb-0">
-                  <MDBInput type="text" id="placeholder" label="Your Favorite Games" />
-                </div>
-              </MDBCol>
-            </MDBRow>
-            {/* <MDBRow>
-              <MDBCol md="12">
-                <div className="md-form mb-0">
-                  <MDBInput
-                    type="textarea"
-                    id="placeholder"
-                    label="Your favorite Games"
-                  />
-                </div>
-              </MDBCol>
-            </MDBRow> */}
-          </form>
-          <div className="text-center text-md-left">
-            <MDBBtn color="primary" size="md">
-              Update
-            </MDBBtn>
-          </div>
-        </MDBCol>
-        <MDBCol md="3" className="text-center">
-          <ul className="list-unstyled mb-0">
-            <li>
-              <MDBIcon icon="map-marker-alt" size="2x" className="blue-text" />
-              <p>Seattle, WA 98114, USA</p>
-            </li>
-            <li>
-              <MDBIcon icon="phone" size="2x" className="blue-text mt-4" />
-              <p>+ 01 234 567 89</p>
-            </li>
-            <li>
-              <MDBIcon icon="envelope" size="2x" className="blue-text mt-4" />
-              <p>youremail@example.com</p>
-            </li>
-          </ul>
-        </MDBCol>
-      </MDBRow>
-    </MDBContainer>
-  );
+            <p className="pb-5 text-white">Favorite Boardgames: {this.state.favorite || "Unknown"}</p>
+            <p className="pb-5 text-white">Introduction: {this.state.introduction || "User has no introduction yet!"}</p>
+          </MDBCol>
+        </MDBRow>
+        <UpdateProfileModal  userName = {this.state.userName}update={this.updateProfileState}/>
+
+
+      </MDBContainer>
+
+
+      
+    )
+  }
 }
-
-export default ContactPage;

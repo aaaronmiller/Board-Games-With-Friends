@@ -1,24 +1,22 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInputGroup, MDBInput } from 'mdbreact';
-import axios from 'axios';
+import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
 import API from '../utils/API';
-import { resolve } from 'url';
 import { number } from 'prop-types';
 
 class CreateModal extends Component {
-    state = {
-        modal1: false,
-        username: "",
-        title: "",
-        name: "",
-        capacity: number,
-        date: "",
-        time: "",
-        location: "",
-        address: "",
-        description: "",
-        phone: number
-        
+    constructor(props) {
+        super(props);
+
+        this.state = {
+            modal1: false,
+            eventTitle: "",
+            gameName: "",
+            description: "",
+            location: "",
+            maxPlayers: "",
+            dateTime: "",
+            gpsLocation: ""
+        }
     }
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -27,24 +25,30 @@ class CreateModal extends Component {
         });
     };
     handleCreate = () => {
-        this.setState({ modal1: false});
-        console.log("hit")
-
-        axios.post("https://arcane-spire-45572.herokuapp.com/api/gameEvents", {
-            eventTitle: this.state.title,
+        this.setState({ modal1: false });
+        API.saveEvent({
+            // token: sessionStorage.getItem("token"),
+            eventTitle: this.state.eventTitle,
+            gameName: this.state.gameName,
             description: this.state.description,
             location: this.state.location,
-            capacity:  this.state.capacity,
-            phone: this.state.phone
-          })
+            maxPlayers: this.state.maxPlayers,
+            dateTime: this.state.dateTime,
+            gpsLocation: this.state.gpsLocation,
+            // enrolledPlayers: 
+            // time: this.state.time,
+        })
             .then((response) => {
-                console.log("event created")
-                console.log(response)
+                console.log("event created");
+                console.log(response);
+                window.location.reload();
             }).catch(function (error) {
                 console.log(error);
-              })
-              console.log(this.state);
+            })
     }
+
+
+
     toggle = nr => () => {
         let modalNumber = 'modal' + nr
         this.setState({
@@ -54,106 +58,87 @@ class CreateModal extends Component {
 
     render() {
         return (
-            <div style={{ display: "inline-block" }}>
+            <MDBContainer>
+                <div style={{ display: "inline-block" }}>
 
-                <MDBBtn className="text-white" color="#d50000 red accent-4" style={{ color: "white", marginLeft: "340px" }} href="#" onClick={this.toggle(1)}>Create a Game</MDBBtn>
+                    <MDBBtn className="text-white" color="#d50000 red accent-4" style={{ color: "white", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={this.toggle(1)}>Create a Game</MDBBtn>
 
-                <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} size="lg">
-                    <MDBModalHeader  style={{textAlign:"center", color:"black"}} toggle={this.toggle(1)}>Create a board game</MDBModalHeader>
-                    <MDBModalBody>
-                        <div className="md-form">
-
+<<<<<<< HEAD
+=======
+                    <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} size="lg">
+                        <MDBModalHeader style={{ textAlign: "center", color: "black" }} toggle={this.toggle(1)}>Create a board game</MDBModalHeader>
+                        <MDBModalBody>
+                            <div className="md-form">
+>>>>>>> master
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    
+                                    className="mb-2 mt-0"
                                     hint="Event Title"
-                                    name="title"
+                                    name="eventTitle"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend="Name"
-                                    name="name"
+                                    
+                                    className="mb-2 mt-0"
+                                    name="gameName"
                                     hint="The Name Of The Boardgame"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend="Capacity"
+                                    
+                                    className="mb-2 mt-0"
                                     hint="Maximum Number of People"
-                                    name="capacity"
+                                    name="maxPlayers"
                                     type="number"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend="Event Date"
-                                    hint="MM/DD/YYYY"
-                                    name="date"
+                                    
+                                    className="mb-2 mt-0"
+                                    hint="Date and start time"
+                                    name="dateTime"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend="Start Time"
-                                    hint="HH:MM"
-                                    name="time"
+                                    
+                                    className="mb-2 mt-0"
+                                    hint="GPSlocation"
+                                    name="gpslocation"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend="Location"
-                                    hint="Room/Apt. Number"
+                                    
+                                    className="mb-2 mt-0"
+                                    hint="Location"
                                     name="location"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend=" "
-                                    hint="Address"
-                                    name="address"
-                                    onChange={this.handleInputChange}
-                                />
-                                <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend=" "
-                                    hint="Phone Number"
-                                    name="phone"
-                                    onChange={this.handleInputChange}
-                                />
-
-                                <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
-                                    prepend="Description"
+                                    
+                                    className="mb-2 mt-0"
                                     type="textarea"
                                     hint="Extra Information"
                                     name="description"
                                     onChange={this.handleInputChange}
                                 />
-                        
-                        </div>
+
+                            </div>
                         </MDBModalBody>
                         <MDBModalFooter>
                             <MDBBtn color="#01579b light-blue darken-4" onClick={this.toggle(1)}>Close</MDBBtn>
                             <MDBBtn color="#d50000 red accent-4" onClick={this.handleCreate}>Create</MDBBtn>
                         </MDBModalFooter>
                     </MDBModal>
-                    </div>
-                );
-            }
-        }
-        
+                </div>
+            </MDBContainer>
+        );
+    }
+}
+
 export default CreateModal;
