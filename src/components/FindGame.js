@@ -1,8 +1,9 @@
 import React, { Component } from 'react';
-import { MDBContainer } from "mdbreact";
+import { MDBContainer, MDBRow, MDBCol } from "mdbreact";
 import GamePanel from "./GamePanel";
 import API from '../utils/API';
 import GameModal from './GameModal';
+import Slider from "react-slick";
 
 export default class FindGame extends Component {
     constructor(props) {
@@ -36,17 +37,40 @@ export default class FindGame extends Component {
 
 
     render() {
+        const settings = {
+            dots: true,
+            infinite: false,
+            speed: 150,
+            slidesToShow: 2,
+            slidesToScroll: 1,
+            slidePerRow: 1,
+            centerMode: false,
+            width: "300px"
+        };
         return (
-            <MDBContainer style={{textgAlign:"center"}}>
+           <div>
+                <div>
                 <GameModal />
-                <div className="d-flex flex-row flex-wrap">
-                    {this.state.gamesToPlay.map((data) =>
-                        (<GamePanel id={data.id} key={data.id} gameTitle={data.gameName} description={data.gameDescript} image={data.picture} timesPlayed={data.totalTimesPlayed} maxPlayers={data.maxOfPlayers} />))}
-
                 </div>
-
-
-            </MDBContainer>
-        )
-    }
-}
+           
+           
+           <MDBContainer style={{textgAlign:"center"}}>
+            
+           <MDBRow>
+            <MDBCol sm="3">
+            </MDBCol>
+            <Slider {...settings} style={{width:"450px"}} >
+            
+            {this.state.gamesToPlay.map((data) =>
+                (<GamePanel id={data.id} key={data.id} gameTitle={data.gameName} description={data.gameDescript} image={data.picture} timesPlayed={data.totalTimesPlayed} maxPlayers={data.maxOfPlayers} />))}
+                
+                
+                </Slider>
+                </MDBRow>
+                
+                </MDBContainer>
+                
+                </div> 
+                )
+            }
+        }

@@ -61,7 +61,7 @@ class GameCard extends Component {
   
   
   <MDBCard className="text-black bg-light" style={{ color: "black", display:"inline-block", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)", backgroundImage:
-  "url(https://image.freepik.com/free-vector/stylish-blue-medical-background-with-hexagon_1017-19373.jpg)",}}>
+  "url(https://image.freepik.com/free-vector/stylish-blue-medical-background-with-hexagon_1017-19373.jpg)"}}>
   <MDBCardBody>
   <MDBCardTitle style={{ color: "black" }}>{this.props.eventTitle}</MDBCardTitle>
             <MDBCardText style={{ color: "white" }}>

@@ -34,7 +34,7 @@ class GamePanel extends Component {
   //   });
   // };
 
-  
+
   componentDidMount() {
     this.loadEvents();
   };
@@ -58,32 +58,35 @@ class GamePanel extends Component {
   render() {
 
     return (
-      <MDBCol sm="4">
-        <MDBCard style={{ color: "white", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }} className="text-center">
-          <MDBCardHeader color="blue">
-            {this.props.gameTitle}
-          </MDBCardHeader>
-          <MDBCardBody>
-            <MDBCardTitle>
-              <a href="`{this.props.gameUrl}`">
-                {this.props.gameTitle}
-              </a>
-            </MDBCardTitle>
-            <MDBCardText>
-            <MDBCardImage className="img-fluid rounded mx-auto d-block" src={this.props.image}  style={{ height : "80%", width :   "80%", borderRadius: "25px" }} />
-              <br />
-              {this.props.gameDescription}<br />
-            </MDBCardText>
-            <MDBBtn color="blue" size="sm">
-              Create Event
+      <div>
+       
+          <MDBCard style={{ color: "white", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)",backgroundImage:
+          "url(https://previews.123rf.com/images/tashechka/tashechka1701/tashechka170100695/70080103-abstract-geometric-style-yellow-background-illustration-yellow-white-colors-.jpg)" }} >
+            <MDBCardHeader color="#ffa726 orange lighten-1">
+              {this.props.gameTitle}
+            </MDBCardHeader>
+            <MDBCardBody>
+              <MDBCardTitle>
+                <a href="`{this.props.gameUrl}`" style={{fontSize: "20px", whiteSpace: "nowrap", color:"black" }}>
+                  {this.props.gameTitle}
+                </a>
+              </MDBCardTitle>
+              <MDBCardText style={{color:"black" }}>
+                <MDBCardImage className="img-fluid rounded mx-auto d-block" src={this.props.image} style={{ height: "80%", width: "80%", borderRadius: "25px" }} />
+                <br />
+                {this.props.description}<br />
+              </MDBCardText>
+              <MDBBtn color="#e65100 orange darken-4" size="sm" style={{ color: "white",borderRadius: "10px", filter: "drop-shadow(5px 5px 9px #000000)" }}>
+                Create Event
         </MDBBtn>
 
-        <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={() => this.deleteGame(this.props.id)} >Delete</MDBBtn>
-          </MDBCardBody>
-          <MDBCardFooter color="secondary-color">
-          </MDBCardFooter>
-        </MDBCard>
-      </MDBCol>
+              <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white",borderRadius: "10px", filter: "drop-shadow(5px 5px 9px #000000)" }} href="#" onClick={() => this.deleteGame(this.props.id)} >Delete</MDBBtn>
+            </MDBCardBody>
+            <MDBCardFooter color="secondary-color">
+            </MDBCardFooter>
+          </MDBCard>
+      
+      </div>
     );
   };
 }

@@ -51,7 +51,7 @@ class GameModal extends Component {
             <MDBContainer style={{textAlign: "center"}}>
                 <div style={{ display: "inline-block"}}>
 
-                    <MDBBtn className="text-white" color="#d50000 red accent-4" style={{color: "white", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={this.toggle(1)}>Create a Game</MDBBtn>
+                    <MDBBtn className="text-white" color="#e65100 orange darken-4" style={{color: "white", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={this.toggle(1)}>Create a Game</MDBBtn>
 
                     <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} size="lg">
                         <MDBModalHeader style={{ textAlign: "center", color: "black" }} toggle={this.toggle(1)}>Create a board game</MDBModalHeader>
@@ -94,7 +94,7 @@ class GameModal extends Component {
                         </MDBModalBody>
                         <MDBModalFooter>
                             <MDBBtn color="#01579b light-blue darken-4" style={{ color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}} onClick={this.toggle(1)}>Close</MDBBtn>
-                            <MDBBtn color="#d50000 red accent-4" style={{color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}} onClick={this.handleCreate}>Create</MDBBtn>
+                            <MDBBtn color="#e65100 orange darken-4" style={{color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}} onClick={this.handleCreate}>Create</MDBBtn>
                         </MDBModalFooter>
                     </MDBModal>
                 </div>
