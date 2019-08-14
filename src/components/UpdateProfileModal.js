@@ -97,19 +97,19 @@ export default class UpdateProfileModal extends Component {
                         />
                         <div className="mb-2 mt-0">
                             <MDBInput className="" name="gameItem" hint="Name of Games You Like" onChange={this.handleInputChange} value={this.state.gameItem}/>
-                            <MDBBtn className="" onClick={this.addGame}>ADD</MDBBtn>
+                            <MDBBtn color="red" className=""  style={{color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}} onClick={this.addGame}>ADD</MDBBtn>
                             {console.log(this.state.favorite)}
                             {console.log(this.props.gameArr)}
                             {this.state.favorite.map((element, index) => (
-                                <GameTag name={element} color="success" index={index} delete={this.deleteTag} key={index} removable={true}/>
+                                <GameTag name={element} color="#01579b light-blue darken-4" index={index} delete={this.deleteTag} key={index} removable={true}/>
                             ))}
                         </div>
                         
                     </MDBModalBody>
 
-                    <MDBModalFooter>
-                        <MDBBtn color="#01579b light-blue darken-4" onClick={() =>this.modalToggle()}>Close</MDBBtn>
-                        <MDBBtn color="#d50000 red accent-4" onClick={()=>this.handleUpdate()}>Confirm</MDBBtn>
+                    <MDBModalFooter style={{textAlign:"center"}}>
+                        <MDBBtn color="#01579b light-blue darken-4"  style={{color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}}  onClick={() =>this.modalToggle()}>Close</MDBBtn>
+                        <MDBBtn color="#d50000 red accent-4" style={{color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}} onClick={()=>this.handleUpdate()}>Confirm</MDBBtn>
                     </MDBModalFooter>
                 </MDBModal>
             </MDBContainer>

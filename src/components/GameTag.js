@@ -9,7 +9,7 @@ export default class GameTag extends Component {
     render() {
         return (
             <div>
-                <MDBBadge pill color="success" onClick={this.delete}>{this.props.name}</MDBBadge>
+                <MDBBadge pill color="red" onClick={this.delete}>{this.props.name}</MDBBadge>
             </div>
     )
     }
