@@ -41,8 +41,8 @@ class GameCard extends Component {
   render() {
     return (
       <div>
-      <MDBCol sm="4">
-      <MDBCard className="text-black bg-light" style={{ color: "white", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }}>
+  
+      <MDBCard className="text-black bg-light" style={{ color: "black", display:"inline-block", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }}>
       <MDBCardImage className="img-fluid" src={this.props.gameImage} waves />
       <MDBCardBody>
       <MDBCardTitle style={{ color: "black" }}>{this.props.eventTitle}</MDBCardTitle>
@@ -61,7 +61,7 @@ class GameCard extends Component {
     
           </MDBCardBody>
           </MDBCard>
-          </MDBCol>
+        
       </div>
     )
   }

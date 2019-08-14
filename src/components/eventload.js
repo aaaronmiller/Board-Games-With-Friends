@@ -1,6 +1,7 @@
 import React, { Component } from 'react';
 import GameCard from "./GameCard";
 import API from '../utils/API';
+import Slider from "react-slick";
 
 
 export default class Eventload extends Component {
@@ -8,8 +9,16 @@ export default class Eventload extends Component {
         super(props);
         this.state = {
             isOwner: true,
+            gorm: false,
             grabbedGames: [],
             hostedGames: [],
+            defaultGame: [{
+                id: "0",
+                eventTitle: "none",
+                description: "none",
+                capacity: "none",
+                location: "none"
+            }],
             redirectPath: "/dashboard",
             isLoggedIn: sessionStorage.getItem("isLoggedIn")
         };
@@ -21,7 +30,8 @@ export default class Eventload extends Component {
             .then((Response) => {
                 this.setState(
                     {
-                        grabbedGames: Response.data
+                        grabbedGames: Response.data,
+                        gorm: true
                     }
                 )
                 console.log(Response);
@@ -35,14 +45,28 @@ export default class Eventload extends Component {
     }
     render() {
 
-        return (
+        const settings = {
+            dots: true,
+            infinite: true,
+            speed: 500,
+            slidesToShow: 3,
+            slidesToScroll: 3
+        };
+            return (
+                <Slider {...settings}>
+                 <div>
 
-            <div>
-
-                {this.state.grabbedGames.map((data) => 
-                    (<GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
-
+            {this.state.gorm ? 
+                (
+                    <span>
+                    {this.state.grabbedGames.map((data) => 
+                        (<GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
+                    </span>)
+                        : 
+                    (<h1>no games yet</h1>)
+                        } 
             </div>
+            </Slider>
         )
     }
 
