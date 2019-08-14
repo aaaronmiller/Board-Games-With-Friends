@@ -35,7 +35,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
           <Switch>
            
               <Route exact path="/" render={() => <Login handleLogIn={this.logIn} />} />
-              <Route exact path="/signUp" component={SignUp} />
+              <Route exact path="/signUp"render={() => <SignUp handleLogIn={this.logIn}/>} />
               <Route exact path="/dashboard" component={Dashboard} />
               <Route exact path="/find-game" component={FindGame} />
               <Route exact path="/news" component={News} />
