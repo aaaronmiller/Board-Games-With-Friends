@@ -12,13 +12,8 @@ export default {
   },
 
   // Gets all events created by current user
-<<<<<<< HEAD
-  getEvents: function(eventId) {
-    return axios.get("/api/gameEvents");
-=======
   getEvents: function () {
     return axios.get(url + "/api/gameEvents");
->>>>>>> master
   },
 
   // Gets the event with the given id
