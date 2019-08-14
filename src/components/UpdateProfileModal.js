@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { MDBBtn, MDBInput, MDBModalFooter, MDBModalHeader, MDBModalBody, MDBModal, MDBContainer} from "mdbreact";
 import API from "../utils/API";
-import { element } from 'prop-types';
 import GameTag from "./GameTag"
 
 
@@ -15,12 +14,13 @@ export default class UpdateProfileModal extends Component {
             gender: "",
             introduction: "",
             favorite: [],
-            gameItem: "",
-            favoriteGamesLen: 0
+            gameItem: ""
         }
         this.selectGender = this.selectGender.bind(this);
     }
-    
+    componentDidMount = () => {
+        this.setState({favorite: this.props.gameArr});
+    }
     modalToggle = () => {
         let mod = "updateModal";
         this.setState({ [mod]: !this.state[mod] });
@@ -33,6 +33,11 @@ export default class UpdateProfileModal extends Component {
         this.setState({
             [name]: value
         });
+    }
+    deleteTag = index => {
+        let tempArr = this.state.favorite;
+        tempArr.splice(index, 1);
+        this.setState( {favorite: tempArr} );
     }
     addGame = () => {
         if (this.state.gameItem) {
@@ -93,8 +98,10 @@ export default class UpdateProfileModal extends Component {
                         <div className="mb-2 mt-0">
                             <MDBInput className="" name="gameItem" hint="Name of Games You Like" onChange={this.handleInputChange} value={this.state.gameItem}/>
                             <MDBBtn className="" onClick={this.addGame}>ADD</MDBBtn>
-                            {this.state.favorite.map((element) => (
-                                <GameTag name={element}  color="success"/>
+                            {console.log(this.state.favorite)}
+                            {console.log(this.props.gameArr)}
+                            {this.state.favorite.map((element, index) => (
+                                <GameTag name={element} color="success" index={index} delete={this.deleteTag} key={index} removable={true}/>
                             ))}
                         </div>
                         

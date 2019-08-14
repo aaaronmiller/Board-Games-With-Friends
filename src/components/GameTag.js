@@ -1,10 +1,16 @@
-import React from 'react';
-import { MDBBadge, MDBContainer } from "mdbreact";
+import React, { Component } from 'react'
+import { MDBBadge } from "mdbreact"
 
-export default function GameTag(props) {
-    return (
-        <div>
-            <MDBBadge pill color="success">{props.name}</MDBBadge>
-        </div>
+export default class GameTag extends Component {
+    delete = () => {
+        if (this.props.removable)
+        this.props.delete(this.props.index);
+    }
+    render() {
+        return (
+            <div>
+                <MDBBadge pill color="success" onClick={this.delete}>{this.props.name}</MDBBadge>
+            </div>
     )
+    }
 }
