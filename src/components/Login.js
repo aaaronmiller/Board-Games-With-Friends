@@ -51,6 +51,7 @@ class Login extends React.Component {
         } else {
           sessionStorage.setItem("token", response.data);
           sessionStorage.setItem("isLoggedIn", true);
+          sessionStorage.setItem("userName", this.state.username);
           // this.props.handleLogIn();
           this.renderRedirect();
         }

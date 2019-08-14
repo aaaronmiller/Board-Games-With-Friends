@@ -16,7 +16,7 @@ const DashBoard = ({ props }) => {
                         Upcoming Games
                             <CreateModal />
                     </h1>
-                    <Eventload />
+                            <Eventload />
                 </div>
             </MDBContainer>
         </div>

@@ -13,7 +13,8 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 
   class App extends Component {
   state = {
-    isLoggedIn: sessionStorage.getItem("isLoggedIn")
+    isLoggedIn: sessionStorage.getItem("isLoggedIn"),
+    userName: sessionStorage.getItem("userName")
   };
   logIn = () => {
     this.setState({isLoggedIn: true});
@@ -32,7 +33,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
         }}>
           <Navbar isLoggedIn={this.state.isLoggedIn} handleLogOut={this.logOut}/>
           <Switch>
-            <div>
+           
               <Route exact path="/" render={() => <Login handleLogIn={this.logIn} />} />
               <Route exact path="/signUp" component={SignUp} />
               <Route exact path="/dashboard" component={Dashboard} />
@@ -42,7 +43,7 @@ import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
               <Route exact path="/test" component={Test} />
               <Route exact path="/test2" component={Test2} />
               
-            </div>
+         
           </Switch>
         </div>
       </Router>

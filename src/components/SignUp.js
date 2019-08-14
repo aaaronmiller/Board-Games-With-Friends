@@ -51,6 +51,7 @@ class SignUp extends React.Component {
     API.signUp(this.state.username, this.state.password)
       .then((response) => {
         console.log(response);
+        alert("Thank you, please now login using your chosen username and password.")
         this.renderRedirect();
         if (!response.data) {
           alert("wrong username or password")
