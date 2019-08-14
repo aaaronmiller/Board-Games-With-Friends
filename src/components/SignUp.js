@@ -26,7 +26,8 @@ class SignUp extends React.Component {
     this.setState(
       {
 
-        redirectPath: "/"
+        redirectPath: "/dashboard"
+
       }
     )
   }
@@ -50,6 +51,8 @@ class SignUp extends React.Component {
     console.log(this.state.username, this.state.password);
     API.signUp(this.state.username, this.state.password)
       .then((response) => {
+        sessionStorage.setItem("token", response.data);
+        sessionStorage.setItem("isLoggedIn", true);
         console.log(response);
         alert("Thank you, please now login using your chosen username and password.")
         this.renderRedirect();
