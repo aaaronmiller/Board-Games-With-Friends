@@ -28,23 +28,29 @@ module.exports = function(sequelize, DataTypes) {
       len: [1]
     },
     dateTime: {
-      type: DataTypes.DATE,
+      type: DataTypes.STRING,
       allowNull: false,
       len: [1]
     },
     gpsLocation: {
       type: DataTypes.STRING,
       allowNull: true,
-    },
-    enrolledPlayers: {
-      type: DataTypes.STRING,
-      allowNull: true,
     }
+    // enrolledPlayers: {
+    //   type: DataTypes.STRING,
+    //   allowNull: true,
+    // }
   });
 
-
-    // Event.belongsToMany(models.User, { through: "UserEvent" });
-
-
+  Event.associate = function(models) {
+    // We're saying that a Post should belong to an User
+    // A Post can't be created without an User due to the foreign key constraint
+    Event.belongsToMany(models.Games, { through: "GamesEvent" });
+    Event.belongsToMany(models.User, { through: "UserEvent" });
+    Event.belongsTo(models.JoinedEvent, {
+      foreignKey: 'eventId',
+      constraints: false
+    });
+  };
   return Event;
 };

@@ -27,16 +27,16 @@ class CreateModal extends Component {
     handleCreate = () => {
         this.setState({ modal1: false });
         API.saveEvent({
-            token: sessionStorage.getItem("token"),
-            eventTitle: this.state.title,
+            // token: sessionStorage.getItem("token"),
+            eventTitle: this.state.eventTitle,
+            gameName: this.state.gameName,
             description: this.state.description,
-            location: this.state.address,
-            capacity: this.state.capacity,
-            phone: this.state.phone,
-            date: this.state.date,
-            specificLocation: this.state.location,
-            time: this.state.time,
-            gameName: this.state.name
+            location: this.state.location,
+            maxPlayers: this.state.maxPlayers,
+            dateTime: this.state.dateTime,
+            gpsLocation: this.state.gpsLocation,
+            // enrolledPlayers: 
+            // time: this.state.time,
         })
             .then((response) => {
                 console.log("event created");
@@ -68,24 +68,24 @@ class CreateModal extends Component {
                         <MDBModalBody>
                             <div className="md-form">
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    
+                                    className="mb-2 mt-0"
                                     hint="Event Title"
                                     name="eventTitle"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    
+                                    className="mb-2 mt-0"
                                     name="gameName"
                                     hint="The Name Of The Boardgame"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    
+                                    className="mb-2 mt-0"
                                     hint="Maximum Number of People"
                                     name="maxPlayers"
                                     type="number"
@@ -93,32 +93,32 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    
+                                    className="mb-2 mt-0"
                                     hint="Date and start time"
                                     name="dateTime"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    
+                                    className="mb-2 mt-0"
                                     hint="GPSlocation"
                                     name="gpslocation"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    
+                                    className="mb-2 mt-0"
                                     hint="Location"
                                     name="location"
                                     onChange={this.handleInputChange}
                                 />
 
                                 <MDBInput
-                                    material
-                                    containerClassName="mb-2 mt-0"
+                                    
+                                    className="mb-2 mt-0"
                                     type="textarea"
                                     hint="Extra Information"
                                     name="description"
@@ -128,8 +128,8 @@ class CreateModal extends Component {
                             </div>
                         </MDBModalBody>
                         <MDBModalFooter>
-                            <MDBBtn color="#01579b light-blue darken-4" onClick={this.toggle(1)}>Close</MDBBtn>
-                            <MDBBtn color="#d50000 red accent-4" onClick={this.handleCreate}>Create</MDBBtn>
+                            <MDBBtn color="#01579b light-blue darken-4" style={{color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}} onClick={this.toggle(1)}>Close</MDBBtn>
+                            <MDBBtn color="#d50000 red accent-4" style={{color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}} onClick={this.handleCreate}>Create</MDBBtn>
                         </MDBModalFooter>
                     </MDBModal>
                 </div>

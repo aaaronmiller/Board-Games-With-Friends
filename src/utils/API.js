@@ -1,7 +1,7 @@
 import axios from "axios";
 
-// const url = "https://arcane-spire-45572.herokuapp.com";
-const url = "http://localhost:8080";
+const url = "https://arcane-spire-45572.herokuapp.com";
+// const url = "http://localhost:8080";
 
 export default {
   // Event API's  
@@ -39,12 +39,9 @@ export default {
   },
   // Gets the user with the given id
   getUser: function (userId) {
-    return axios.get(url + "/api/users" + userId);
+    return axios.get(url + "/api/users/" + userId);
   },
-  // Deletes the user with the given id
-  deleteUser: function (userId) {
-    return axios.delete(url + "/api/users" + userId);
-  },
+ 
   // Saves a user to the database
   addUser: function (userData) {
     return axios.post(url + "/api/users/", userData);
@@ -53,7 +50,6 @@ export default {
   // Login/SignUp APIs
   // Login
   logIn: (username, password) => {
-    // console.log("works!");
     return axios.post(url + "/api/login", 
     {
       userName: username,
@@ -67,7 +63,10 @@ export default {
       password: password
     });
   },
-
+  
+  joinEvent: function (token, eventId) {
+    return axios.post(url + "/api/users/join/" + token + "/" + eventId);
+  },
 
 
   scrape: function () {
@@ -93,6 +92,10 @@ export default {
   updateGame: function (gameId, gameData) {
     return axios.put(url + "/api/updateGame/" + gameId, gameData);
   },
-
-
+  updateProfile: function (userId, profileObj) {
+    return axios.put(url + "/api/updateProfile/" + userId, profileObj);
+  },
+  getProfile: function (userId) {
+    return axios.get(url + "/api/getProfile/" + userId);
+  }
 };

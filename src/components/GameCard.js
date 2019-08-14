@@ -31,63 +31,46 @@ class GameCard extends Component {
   }
 
   joinEvent = id => {
-    API.getEvent(id)
+    API.joinEvent(sessionStorage.getItem("token").toString(), id )
       .then((response) => {
-        let wookie = response;
-        let peopleInGame = wookie.data.enrolledPlayers;
-        // check here if peopleInGame < wookie.data.maxOfPlayers (need to convert to array and count first)
-        // ie.
-        //
-        // let maxPlayers = wookie.data.maxOfPlayers;
-        // let jawa = peopleInGame.split(",");
-        // if parseInt(jawa) < maxPlayers { do some crazy shit } 
-        console.log(peopleInGame);
-        peopleInGame = peopleInGame + ", " + this.props.username;
-        wookie.data.enrolledPlayers = peopleInGame;
-          API.updateEvent(wookie).then((response) => {
-                // console.log("event created");
-                // console.log(response);
-                window.location.reload();
-               }).catch(function (error) {
-                console.log(error);
-            })
+        console.log(response);
       });
-}
+  }
 
-  // handleInputChange = event => {
-  //   const { name, value } = event.target;
-  //   this.setState({
-  //     [name]: value
-  //   });
-  // };
 
   render() {
     return (
-      <MDBCol sm="4">
-        <MDBCard className="text-black bg-light" style={{ color: "white", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }}>
-          <MDBCardImage className="img-fluid" src={this.props.gameImage} waves />
-          <MDBCardBody>
-            <MDBCardTitle style={{ color: "black" }}>{this.props.eventTitle}</MDBCardTitle>
+      <div>
+  
+      <MDBCard className="text-black bg-light" style={{ color: "black", display:"inline-block", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }}>
+      <MDBCardImage className="img-fluid" src={this.props.gameImage} waves />
+      <MDBCardBody>
+      <MDBCardTitle style={{ color: "black" }}>{this.props.eventTitle}</MDBCardTitle>
             <MDBCardText>
-              <span><p>Location: {this.props.location}</p></span><br />
+            <span><p>Location: {this.props.location}</p></span><br />
               {/* Created by:{CardExample.eventOwner}<br />c */}
               <span><p>Max Players: {this.props.capacity}</p></span><br />
               <span><p>Description: {this.props.description}</p></span><br />
               {/* <span>Curerent players: {CardExample.signedInPlayers}</span> */}
             </MDBCardText>
 
-            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleSubmit}>Join</MDBBtn>
+            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={()=>this.joinEvent(this.props.id)}>Join</MDBBtn>
 
-            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={() => this.deleteEvent(this.props.id)} >Delete</MDBBtn>
-
-            {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleDelete}>Delete</MDBBtn>) : ("")}
-
-            {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleEdit}>Edit</MDBBtn>) : ("")}
+            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>
+            
+    
           </MDBCardBody>
-        </MDBCard>
-      </MDBCol>
+          </MDBCard>
+        
+      </div>
     )
   }
 
 }
 export default GameCard;
+
+
+
+// {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleDelete}>Delete</MDBBtn>) : ("")}
+
+// {this.props.isOwner ? (<MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={this.props.handleEdit}>Edit</MDBBtn>) : ("")}

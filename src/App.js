@@ -6,6 +6,8 @@ import Dashboard from "./components/DashBoard";
 import FindGame from "./components/FindGame";
 import News from "./components/News";
 import Profile from "./components/Profile";
+import Test from "./components/test";
+import Test2 from "./components/test2";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
 import Routes from "./Routes";
 
@@ -37,6 +39,8 @@ import Routes from "./Routes";
               <Route exact path="/find-game" component={FindGame} />
               <Route exact path="/news" component={News} />
               <Route exact path="/profile" component={Profile} />
+              <Route exact path="/test" component={Test} />
+              <Route exact path="/test2" component={Test2} />
               
             </div>
           </Switch>

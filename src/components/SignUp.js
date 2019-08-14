@@ -15,7 +15,7 @@ class SignUp extends React.Component {
 
     this.usernameHandler = this.usernameHandler.bind(this);
     this.passwordHandler = this.passwordHandler.bind(this);
-    this.handlesubmit = this.handlesubmit.bind(this);
+    this.handleSubmit = this.handleSubmit.bind(this);
     this.renderRedirect = this.renderRedirect.bind(this);
 
 
@@ -46,7 +46,7 @@ class SignUp extends React.Component {
     )
   }
 
-  handlesubmit(event) {
+  handleSubmit(event) {
     console.log(this.state.username, this.state.password);
     API.signUp(this.state.username, this.state.password)
       .then((response) => {
@@ -101,7 +101,7 @@ class SignUp extends React.Component {
                           rounded
                           type="button"
                           className="btn-block z-depth-1"
-                          onClick={this.handlesubmit}
+                          onClick={this.handleSubmit}
                           style={{
                           borderRadius: "8px",
                           filter: "drop-shadow(10px 10px 9px #000000)"

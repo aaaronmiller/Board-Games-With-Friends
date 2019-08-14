@@ -52,7 +52,7 @@ class Login extends React.Component {
         } else {
           sessionStorage.setItem("token", response.data);
           sessionStorage.setItem("isLoggedIn", true);
-          this.props.handleLogIn();
+          // this.props.handleLogIn();
           this.renderRedirect();
         }
       })
@@ -107,7 +107,7 @@ class Login extends React.Component {
                           borderRadius: "8px",
                           filter: "drop-shadow(10px 10px 9px #000000)"
                         }}>
-                          Log IN
+                          LOG IN
                     </MDBBtn>
                         </div>
                       </MDBRow>
