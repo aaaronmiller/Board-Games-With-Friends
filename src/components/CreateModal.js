@@ -63,13 +63,10 @@ class CreateModal extends Component {
 
                     <MDBBtn className="text-white" color="#d50000 red accent-4" style={{ color: "white", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={this.toggle(1)}>Create a Game</MDBBtn>
 
-<<<<<<< HEAD
-=======
                     <MDBModal isOpen={this.state.modal1} toggle={this.toggle(1)} size="lg">
                         <MDBModalHeader style={{ textAlign: "center", color: "black" }} toggle={this.toggle(1)}>Create a board game</MDBModalHeader>
                         <MDBModalBody>
                             <div className="md-form">
->>>>>>> master
                                 <MDBInput
                                     
                                     className="mb-2 mt-0"
