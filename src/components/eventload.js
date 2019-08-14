@@ -1,7 +1,7 @@
 import React, { Component } from 'react';
 import GameCard from "./GameCard";
 import API from '../utils/API';
-import Slider from "react-slick";
+
 
 
 export default class Eventload extends Component {
@@ -26,7 +26,7 @@ export default class Eventload extends Component {
     }
 
     loadRegistedGames = () => {
-        API.getEvents ()
+        API.getEvents()
             .then((Response) => {
                 this.setState(
                     {
@@ -36,37 +36,34 @@ export default class Eventload extends Component {
                 )
                 console.log(Response);
                 console.log(this.state.grabbedGames);
-
             })
             .catch(function (error) {
                 console.log(error)
             });
-
     }
     render() {
 
-        const settings = {
-            dots: true,
-            infinite: true,
-            speed: 500,
-            slidesToShow: 3,
-            slidesToScroll: 3
-        };
-            return (
-                <Slider {...settings}>
-                 <div>
-
-            {this.state.gorm ? 
-                (
-                    <span>
-                    {this.state.grabbedGames.map((data) => 
-                        (<GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
-                    </span>)
-                        : 
+        // const settings = {
+        //     dots: true,
+        //     infinite: true,
+        //     speed: 500,
+        //     slidesToShow: 3,
+        //     slidesToScroll: 3
+        // };
+        return (
+            // <Slider {...settings}>
+            <div>
+                {this.state.gorm ?
+                    (
+                        <span>
+                            {this.state.grabbedGames.map((data) =>
+                                (<GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
+                        </span>)
+                    :
                     (<h1>no games yet</h1>)
-                        } 
+                }
             </div>
-            </Slider>
+            // </Slider>
         )
     }
 

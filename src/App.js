@@ -9,7 +9,7 @@ import Profile from "./components/Profile";
 import Test from "./components/test";
 import Test2 from "./components/test2";
 import { BrowserRouter as Router, Route, Switch } from "react-router-dom";
-import Routes from "./Routes";
+// import Routes from "./Routes";
 
   class App extends Component {
   state = {

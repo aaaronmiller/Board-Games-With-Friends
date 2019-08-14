@@ -68,7 +68,7 @@ class CreateModal extends Component {
                         <MDBModalBody>
                             <div className="md-form">
                                 <MDBInput
-                                    
+
                                     className="mb-2 mt-0"
                                     hint="Event Title"
                                     name="eventTitle"
@@ -76,7 +76,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
-                                    
+
                                     className="mb-2 mt-0"
                                     name="gameName"
                                     hint="The Name Of The Boardgame"
@@ -84,7 +84,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
-                                    
+
                                     className="mb-2 mt-0"
                                     hint="Maximum Number of People"
                                     name="maxPlayers"
@@ -93,7 +93,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
-                                    
+
                                     className="mb-2 mt-0"
                                     hint="Date and start time"
                                     name="dateTime"
@@ -101,7 +101,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
-                                    
+
                                     className="mb-2 mt-0"
                                     hint="GPSlocation"
                                     name="gpslocation"
@@ -109,7 +109,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
-                                    
+
                                     className="mb-2 mt-0"
                                     hint="Location"
                                     name="location"
@@ -117,7 +117,7 @@ class CreateModal extends Component {
                                 />
 
                                 <MDBInput
-                                    
+
                                     className="mb-2 mt-0"
                                     type="textarea"
                                     hint="Extra Information"
@@ -128,8 +128,8 @@ class CreateModal extends Component {
                             </div>
                         </MDBModalBody>
                         <MDBModalFooter>
-                            <MDBBtn color="#01579b light-blue darken-4" style={{color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}} onClick={this.toggle(1)}>Close</MDBBtn>
-                            <MDBBtn color="#d50000 red accent-4" style={{color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}} onClick={this.handleCreate}>Create</MDBBtn>
+                            <MDBBtn color="#01579b light-blue darken-4" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)" }} onClick={this.toggle(1)}>Close</MDBBtn>
+                            <MDBBtn color="#d50000 red accent-4" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)" }} onClick={this.handleCreate}>Create</MDBBtn>
                         </MDBModalFooter>
                     </MDBModal>
                 </div>

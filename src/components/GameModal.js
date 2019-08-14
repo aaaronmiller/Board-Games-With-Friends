@@ -94,7 +94,7 @@ class GameModal extends Component {
                         </MDBModalBody>
                         <MDBModalFooter>
                             <MDBBtn color="#01579b light-blue darken-4" style={{ color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}} onClick={this.toggle(1)}>Close</MDBBtn>
-                            <MDBBtn color="#d50000 red accent-4"  style={{color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}}onClick={this.handleCreate}>Create</MDBBtn>
+                            <MDBBtn color="#d50000 red accent-4" style={{color:"white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)"}} onClick={this.handleCreate}>Create</MDBBtn>
                         </MDBModalFooter>
                     </MDBModal>
                 </div>

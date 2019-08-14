@@ -1,7 +1,7 @@
 import React, { Component } from "react";
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardHeader, MDBCardFooter, MDBCardImage, MDBBtn, MDBCol } from
   "mdbreact";
-  import API from '../utils/API';
+import API from '../utils/API';
 
 // const GamePanel = props => {
 

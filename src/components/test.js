@@ -1,9 +1,9 @@
 import React, { Component } from 'react';
-import { Redirect } from "react-router-dom";
-import { MDBBtn, MDBCard, MDBCardBody, MDBCardImage, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
-import GameCard from "./GameCard";
-import CreateModal from './CreateModal';
-import API from '../utils/API';
+// import { Redirect } from "react-router-dom";
+import { MDBBtn, MDBCard, MDBCardTitle, MDBCardText, MDBCol } from 'mdbreact';
+// import GameCard from "./GameCard";
+// import CreateModal from './CreateModal';
+// import API from '../utils/API';
 import Slider from "react-slick";
 
 export default class SimpleSlider extends Component {
