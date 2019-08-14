@@ -1,6 +1,7 @@
 import React, { Component } from "react";
 import { Link } from "react-router-dom";
 import { MDBNavbar, MDBCol, MDBRow, MDBNavbarBrand, MDBNavbarNav, MDBNavItem, MDBNavLink, MDBNavbarToggler, MDBCollapse } from "mdbreact";
+import Media from 'react-media';
 
 class Navbar extends Component {
     constructor(props) {
@@ -38,9 +39,18 @@ class Navbar extends Component {
             <div>
                 <MDBNavbar color="#283593 indigo darken-3" dark expand="md">
                     <MDBNavbarBrand>
-                        <Link className="navbar-brand" to="/">
-                            <img src="https://i.ibb.co/yXrwR6V/bgwf.jpg" width="500px" alt="" />
-                        </Link>
+                     <Media query="(max-width: 599px)">
+                     {matches =>
+                      matches ? (
+                        <Link className="navbar-brand containerFluid" to="/">
+                            <img className="containerFluid" src="https://i.ibb.co/yF7HS8y/bgwf-small.jpg" alt="Board Games with Friends" />
+                         </Link>
+                       ) : (
+                            <Link className="navbar-brand containerFluid" to="/">
+                                <img className="containerFluid" src="https://i.ibb.co/yXrwR6V/bgwf.jpg" alt="Board Games with Friends" />
+                            </Link>
+                       ) }
+                        </Media>
                     </MDBNavbarBrand>
                     <MDBNavbarToggler onClick={this.toggleCollapse} />
                     <MDBCollapse id="navbarCollapse" isOpen={this.state.isOpen} navbar>
