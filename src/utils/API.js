@@ -39,12 +39,9 @@ export default {
   },
   // Gets the user with the given id
   getUser: function (userId) {
-    return axios.get(url + "/api/users" + userId);
+    return axios.get(url + "/api/users/" + userId);
   },
-  // Deletes the user with the given id
-  deleteUser: function (userId) {
-    return axios.delete(url + "/api/users" + userId);
-  },
+ 
   // Saves a user to the database
   addUser: function (userData) {
     return axios.post(url + "/api/users/", userData);
@@ -101,5 +98,4 @@ export default {
   getProfile: function (userId) {
     return axios.get(url + "/api/getProfile/" + userId);
   }
-
 };

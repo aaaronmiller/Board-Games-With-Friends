@@ -23,24 +23,48 @@ module.exports = function(app) {
       where: {
         id: req.params.id
       },
-      include: [db.Post]
+      include: [db.Event]
     }).then(function(dbUser) {
+      dbUser.addEvent(req.body.EventId);
+      dbUser.addUser(req.body.UserId);
       res.json(dbUser);
     });
   });
 
-  // app.post("/api/users", function(req, res) {
-  //   db.User.create(req.body).then(function(dbUser) {
+  // app.post("/api/users/join", function(req, res) {
+  //   db.User.create(req.body.UserId).then(function(dbUser) {
+  //     dbEvent.addUser(req.body.UserId);
   //     res.json(dbUser);
   //   });
-  // });
 
-  app.post("/api/users", function(req, res) {
+  // });
+  app.post("/api/users/join/:token/:id", function(req, res)
+  {
+    //parse token to get id
+    var decoded = jwt.verify(req.params.token, 'secret');
+    db.JoinedEvent.create({
+      eventId: req.params.id,
+      userId: decoded.userId
+    })
+    .then(function(dbPopulateEvent)
+    {
+
+      res.json(dbPopulateEvent);
+    });
+  });
+
+  app.post("/api/createaccount", function(req, res) {
     var hashpass = bcrypt.hashSync(req.body.password, saltRounds);
     db.User.create(
       {
         userName: req.body.userName,
-        password: hashpass
+        password: hashpass,
+        realName: req.body.realName,
+        userGender: req.body.userGender,
+        userIntro: req.body.userIntro,
+        favoriteGames: req.body.favoriteGames,
+        userImage: req.body.userImage
+
       }).then(function(dbUser) {
         
         console.log(dbUser.id);
@@ -56,7 +80,7 @@ module.exports = function(app) {
     
     db.User.findAll({
       where: {
-        userName: req.body.userName
+        userName: req.body.userName,
       }
     }).then(function(dbUser) {
       console.log(req.body.userName);

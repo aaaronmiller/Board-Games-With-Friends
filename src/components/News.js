@@ -14,6 +14,7 @@ export default class DashBoard extends Component {
         };
     }
     componentDidMount = () => {
+        // this.handlesubmit();
         this.loadNewsArticles();
     }
     loadNewsArticles = () => {
@@ -60,8 +61,6 @@ export default class DashBoard extends Component {
                             Boardgames in the News<br />
                             <MDBBtn className="text-white" color="#d50000 red accent-4" style={{ color: "white", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={this.handlesubmit}>Scrape</MDBBtn>
                         </h1>
-                        <br /> 
-
                         <div className="d-flex flex-row flex-wrap">
                             {this.state.newsArticles.map((data) => 
                                 (<NewsCard id={data.id} key={data.id} gameTitle={data.title} summary={data.summary} image={data.image} link={data.link} />))}

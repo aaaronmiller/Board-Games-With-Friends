@@ -14,7 +14,8 @@ module.exports = function(sequelize, DataTypes) {
       },
       totalTimesPlayed: {
         type: DataTypes.INTEGER,
-        allowNull: true,
+        allowNull: false,
+        len: [1]
       },
       maxOfPlayers: {
         type: DataTypes.INTEGER,
@@ -27,6 +28,13 @@ module.exports = function(sequelize, DataTypes) {
         len: [1]
       }
     });
+  
+    Games.associate = function(models) {
+      // We're saying that a Post should belong to an User
+      // A Post can't be created without an User due to the foreign key constraint
+      Games.belongsToMany(models.Event, { through: "GamesEvent" });
 
+    };
+  
     return Games;
   };

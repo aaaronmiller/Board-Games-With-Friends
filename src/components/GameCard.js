@@ -40,13 +40,14 @@ class GameCard extends Component {
 
   render() {
     return (
-      <MDBCol sm="4">
-        <MDBCard className="text-black bg-light" style={{ color: "white", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }}>
-          <MDBCardImage className="img-fluid" src={this.props.gameImage} waves />
-          <MDBCardBody>
-            <MDBCardTitle style={{ color: "black" }}>{this.props.eventTitle}</MDBCardTitle>
+      <div>
+  
+      <MDBCard className="text-black bg-light" style={{ color: "black", display:"inline-block", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)" }}>
+      <MDBCardImage className="img-fluid" src={this.props.gameImage} waves />
+      <MDBCardBody>
+      <MDBCardTitle style={{ color: "black" }}>{this.props.eventTitle}</MDBCardTitle>
             <MDBCardText>
-              <span><p>Location: {this.props.location}</p></span><br />
+            <span><p>Location: {this.props.location}</p></span><br />
               {/* Created by:{CardExample.eventOwner}<br />c */}
               <span><p>Max Players: {this.props.capacity}</p></span><br />
               <span><p>Description: {this.props.description}</p></span><br />
@@ -56,11 +57,12 @@ class GameCard extends Component {
             <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={()=>this.joinEvent(this.props.id)}>Join</MDBBtn>
 
             <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>
-
+            
     
           </MDBCardBody>
-        </MDBCard>
-      </MDBCol>
+          </MDBCard>
+        
+      </div>
     )
   }
 
