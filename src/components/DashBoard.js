@@ -1,51 +1,13 @@
 import React, { Component } from 'react';
 import { Redirect } from "react-router-dom";
-import { MDBContainer } from 'mdbreact';
+import { MDBContainer, MDBRow } from 'mdbreact';
 import GameCard from "./GameCard";
 import CreateModal from './CreateModal';
 import API from '../utils/API';
+import Eventload from './eventload';
 
 
-export default class DashBoard extends Component {
-    constructor(props) {
-        super(props);
-        this.state = {
-            isOwner: true,
-            grabbedGames: [],
-            hostedGames: [],
-            redirectPath: "/dashboard",
-            isLoggedIn: sessionStorage.getItem("isLoggedIn")
-        };
-        this.loadRegistedGames();
-    }
-    // componentDidMount = () => {
-    //     // this.renderRedirect();
-    //     this.loadRegistedGames();
-    // }
-    // renderRedirect = () => {
-    //     console.log("redirect");
-    //     if (!this.state.isLoggedIn)
-    //         this.setState({ redirectPath: "/" });
-    // }
-    loadRegistedGames = () => {
-        API.getEvents ()
-            .then((Response) => {
-                this.setState(
-                    {
-                        grabbedGames: Response.data
-                    }
-                )
-                console.log(Response);
-                console.log(this.state.grabbedGames);
-
-            })
-            .catch(function (error) {
-                console.log(error)
-            });
-
-    }
-    render() {
-
+const DashBoard =({props}) => {
         return (
 
             <div>
@@ -56,16 +18,15 @@ export default class DashBoard extends Component {
                         {/*<CreateModal handleLoad={this.loadRegistedGames} />*/}
                         <CreateModal />
                         </h1>
-                        <div className="d-flex flex-row flex-wrap">
-                            {this.state.grabbedGames.map((data) => 
-                                (<GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} description={data.description} location={data.location} capacity={data.capacity} />))}
-                        </div>
+                                <Eventload />
                     </div>
                 </MDBContainer>
 
             </div>
         )
-    }
+    
 
 }
+
+export default DashBoard
 

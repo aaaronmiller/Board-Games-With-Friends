@@ -52,7 +52,7 @@ class Login extends React.Component {
         } else {
           sessionStorage.setItem("token", response.data);
           sessionStorage.setItem("isLoggedIn", true);
-          this.props.handleLogIn();
+          // this.props.handleLogIn();
           this.renderRedirect();
         }
       })

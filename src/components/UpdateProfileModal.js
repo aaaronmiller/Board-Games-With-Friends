@@ -9,7 +9,7 @@ export default class UpdateProfileModal extends Component {
         this.state = {
             updateModal: false,
             image: "https://png.pngtree.com/svg/20161212/f93e57629c.svg",
-            username: "",
+            userName: this.props.userName,
             gender: "",
             introduction: "",
             favorite: []
@@ -27,14 +27,17 @@ export default class UpdateProfileModal extends Component {
         });
     }
     handleUpdate = () => {
+        console.log('inside  handle update')
+        console.log(this.state);
         this.modalToggle();
         let profileObj = {
-            userName: this.state.username,
+            userName: this.props.userName,
             userImage: this.state.image,
             userGender: this.state.gender,
             userIntro: this.state.introduction,
             favoriteGames: this.state.favorite
         };
+        console.log(profileObj);
         API.updateProfile(sessionStorage.getItem("token"), profileObj).then(res => {
             console.log(res);
         }).catch(err => 
@@ -59,6 +62,7 @@ export default class UpdateProfileModal extends Component {
                         <MDBInput    
                             className="mb-2 mt-0"
                             name="gender"
+                            hint="Gender"
                             
                             onChange={this.handleInputChange}
                         />
@@ -80,7 +84,7 @@ export default class UpdateProfileModal extends Component {
 
                     <MDBModalFooter>
                         <MDBBtn color="#01579b light-blue darken-4" onClick={() =>this.modalToggle()}>Close</MDBBtn>
-                        <MDBBtn color="#d50000 red accent-4" onClick={this.handleUpdate}>Confirm</MDBBtn>
+                        <MDBBtn color="#d50000 red accent-4" onClick={()=>this.handleUpdate()}>Confirm</MDBBtn>
                     </MDBModalFooter>
                 </MDBModal>
             </MDBContainer>
