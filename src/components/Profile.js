@@ -60,13 +60,13 @@ export default class Profile extends Component {
                 <p className="pb-5 text-white">Gender: {this.state.gender || "Unknown"}</p>
               </MDBCol>
             </MDBRow>
-            <p className="pb-5 text-white">Favorite Boardgames: {this.state.favorite ? this.state.favorite.map((element) => (
-                                <GameTag name={element}  color="success"/>
-                            )): "Unknow"}</p>
+            <p className="pb-5 text-white">Favorite Boardgames: {this.state.favorite ? this.state.favorite.map((element, index) => (
+               <GameTag name={element} color="success" key={index} removable={false}/>
+             )): "Unknow"}</p>
             <p className="pb-5 text-white">Introduction: {this.state.introduction || "User has no introduction yet!"}</p>
           </MDBCol>
         </MDBRow>
-        <UpdateProfileModal  userName = {this.state.userName}update={this.updateProfileState}/>
+        <UpdateProfileModal  userName={this.state.userName} update={this.updateProfileState} gameArr={this.state.favorite}/>
 
 
       </MDBContainer>
