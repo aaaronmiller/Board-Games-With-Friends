@@ -5,13 +5,17 @@ import Slider from "react-slick";
 
 // const CardExample = () => {
 class GameCard extends Component {
-  //   state = {
-  //     isOwner: true, 
-  //     isAdmin: true,
-  //   };
+    state = {
+      userName: "", 
+      // isAdmin: true,
+    };
 
   componentDidMount() {
     this.loadEvents();
+    this.setState(
+      {
+        userName: sessionStorage.getItem("userName")
+      })
   };
 
   loadEvents = () => {
@@ -23,7 +27,7 @@ class GameCard extends Component {
   };
 
   loadEventsNplayers = () => {
-    API.getAllEvents()
+    API.getAllEvents()  
       .then(res =>
         this.setState({ gameObj: res.data })
         .catch(err => console.log(err))
@@ -54,6 +58,13 @@ class GameCard extends Component {
       });
   }
 
+  joinEvent2 = id => {
+    API.joinEvent(sessionStorage.getItem("userName"), id )
+      .then((response) => {
+        console.log(response);
+      });
+  }
+
 
   render() {
     return (
@@ -75,10 +86,12 @@ class GameCard extends Component {
               Joined Players: {this.props.listPlayers}
             </MDBCardText>
             
-            <MDBBtn color="red" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=>this.joinEvent(this.props.id)}>Join</MDBBtn>
-
-            <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white",borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>
+            <MDBBtn color="red" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=>this.joinEvent2(this.props.id)}>Join</MDBBtn>
             
+     
+         ( <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white",borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>)
+        
+          
             
             </MDBCardBody>
             </MDBCard>

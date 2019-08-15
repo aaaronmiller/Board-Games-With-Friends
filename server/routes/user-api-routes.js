@@ -4,12 +4,27 @@ const saltRounds = 10;
 var db = require("../models");
 
 module.exports = function(app) {
+  app.get("/api/users/join/:id", function(req, res) {
+    // Here we add an "include" property to our options in our findOne query
+    // We set the value to an array of the models we want to include in a left outer join
+    // In this case, just db.Post
+    db.joinedEvents.findAll({
+      where: {
+        eventsId: req.params.id
+      }
+    }).then(function(dbUsers) {
+      res.json(dbUsers);
+    });
+  });
+
+
+
   app.get("/api/users", function(req, res) {
     // Here we add an "include" property to our options in our findAll query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Post
-    db.User.findAll({
-      include: [db.Post]
+    db.Users.findAll({
+      include: [db.Posts]
     }).then(function(dbUser) {
       res.json(dbUser);
     });
@@ -19,15 +34,15 @@ module.exports = function(app) {
     // Here we add an "include" property to our options in our findOne query
     // We set the value to an array of the models we want to include in a left outer join
     // In this case, just db.Post
-    db.User.findOne({
+    db.Users.findOne({
       where: {
         id: req.params.id
       },
-      include: [db.Event]
-    }).then(function(dbUser) {
-      dbUser.addEvent(req.body.EventId);
-      dbUser.addUser(req.body.UserId);
-      res.json(dbUser);
+      include: [db.Events]
+    }).then(function(dbUsers) {
+      dbUsers.addEvents(req.body.EventId);
+      dbUsers.addUsers(req.body.UserId);
+      res.json(dbUsers);
     });
   });
 
@@ -42,9 +57,27 @@ module.exports = function(app) {
   {
     //parse token to get id
     var decoded = jwt.verify(req.params.token, 'secret');
-    db.JoinedEvent.create({
-      eventId: req.params.id,
-      userId: decoded.userId
+    db.joinedEvents.create({
+      where: {
+        eventsId: req.params.id,
+        userId: decoded.userId
+      },include: [db.Events, db.Users]
+    })
+    .then(function(dbPopulateEvent)
+    {
+
+      res.json(dbPopulateEvent);
+    });
+  });
+
+  app.post("/api/users/join2/:userName/:id", function(req, res)
+  {
+    //parse token to get id
+       db.joinedEvents.create({
+        where: {
+      eventsId: req.params.id,
+      userName: req.params.userName
+    },include: [db.Events, db.Users]
     })
     .then(function(dbPopulateEvent)
     {
@@ -55,7 +88,7 @@ module.exports = function(app) {
 
   app.post("/api/createaccount", function(req, res) {
     var hashpass = bcrypt.hashSync(req.body.password, saltRounds);
-    db.User.create(
+    db.Users.create(
       {
         userName: req.body.userName,
         password: hashpass,
@@ -65,11 +98,11 @@ module.exports = function(app) {
         favoriteGames: req.body.favoriteGames,
         userImage: req.body.userImage
 
-      }).then(function(dbUser) {
+      }).then(function(dbUsers) {
         
-        console.log(dbUser.id);
+        console.log(dbUsers.id);
       const token = jwt.sign({
-        userId: dbUser.id,
+        userId: dbUsers.id,
       }, 'secret', { expiresIn: '1h' });
          res.json(token);
     
@@ -78,24 +111,24 @@ module.exports = function(app) {
 
   app.post("/api/login", function (req, res) {
     
-    db.User.findAll({
+    db.Users.findAll({
       where: {
         userName: req.body.userName,
       }
-    }).then(function(dbUser) {
+    }).then(function(dbUsers) {
       console.log(req.body.userName);
 
-      console.log(dbUser);
-        if (dbUser.length > 0)//if we found results
+      console.log(dbUsers);
+        if (dbUsers.length > 0)//if we found results
       {
         //result returns array so loop
-        for(let i = 0; i < dbUser.length; i++) {
+        for(let i = 0; i < dbUsers.length; i++) {
 
         
-          bcrypt.compare(req.body.password, dbUser[i].password, function (err, bres) {
+          bcrypt.compare(req.body.password, dbUsers[i].password, function (err, bres) {
             if (bres) {//if account is found
               const token = jwt.sign({
-                userId: dbUser[i].id
+                userId: dbUsers[i].id
                 // username: result[i].username,
               }, 'secret', { expiresIn: '1h' });
               console.log("success");
@@ -103,7 +136,7 @@ module.exports = function(app) {
             }
             else {//if password does not match
               console.log(bres);
-              console.log(dbUser[i].password);
+              console.log(dbUsers[i].password);
   
   
               console.log("false");
@@ -114,7 +147,7 @@ module.exports = function(app) {
       }
       else
       {
-        console.log(dbUser)
+        console.log(dbUsers)
         console.log("nothingfound")
         //found nothing in db and create account
         res.json(false);
@@ -124,12 +157,12 @@ module.exports = function(app) {
   });
 
   app.delete("/api/users/:id", function(req, res) {
-    db.User.destroy({
+    db.Users.destroy({
       where: {
         id: req.params.id
       }
-    }).then(function(dbUser) {
-      res.json(dbUser);
+    }).then(function(dbUsers) {
+      res.json(dbUsers);
     });
   });
 

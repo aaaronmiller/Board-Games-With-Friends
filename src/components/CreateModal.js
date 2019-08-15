@@ -35,6 +35,7 @@ class CreateModal extends Component {
             maxPlayers: this.state.maxPlayers,
             dateTime: this.state.dateTime,
             gpsLocation: this.state.gpsLocation,
+            creatorName: sessionStorage.getItem("userName")
             // enrolledPlayers: 
             // time: this.state.time,
         })

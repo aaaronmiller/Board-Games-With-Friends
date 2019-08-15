@@ -35,17 +35,17 @@ class GamePanel extends Component {
   // };
 
 
-  componentDidMount() {
-    this.loadEvents();
-  };
+  // componentDidMount() {
+  //   this.loadEvents();
+  // };
 
-  loadEvents = () => {
-    API.getGames()
-      .then(res =>
-        this.setState({ gameObj: res.data })
-      )
-      .catch(err => console.log(err));
-  };
+  // loadEvents = () => {
+  //   API.getGames()
+  //     .then(res =>
+  //       this.setState({ gameObj: res.data })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   deleteGame = id => {
     API.deleteGame(id)

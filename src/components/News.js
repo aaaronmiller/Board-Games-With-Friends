@@ -68,10 +68,26 @@ export default class DashBoard extends Component {
                     </div>
                     </MDBCol>
                     </ MDBRow>
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
+                    <br />
                 </MDBContainer>
                 {/* why is this part here?
                     <Redirect to={this.state.redirectPath} />
                 */}
+
             </div>
         )
     }

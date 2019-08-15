@@ -19,13 +19,13 @@ export default class FindGame extends Component {
     }
     loadGamesToPlay = () => {
         API.getGames()
-            .then((Response) => {
+            .then((res) => {
                 this.setState(
                     {
-                        gamesToPlay: Response.data
+                        gamesToPlay: res.data
                     }
                 )
-                console.log(Response);
+                console.log(res);
                 console.log(this.state.gamesToPlay);
 
             })
@@ -62,15 +62,30 @@ export default class FindGame extends Component {
             <Slider {...settings} style={{width:"450px"}} >
             
             {this.state.gamesToPlay.map((data) =>
-                (<GamePanel id={data.id} key={data.id} gameTitle={data.gameName} description={data.gameDescript} image={data.picture} timesPlayed={data.totalTimesPlayed} maxPlayers={data.maxOfPlayers} />))}
+            (<GamePanel id={data.id} key={data.id} gameTitle={data.gameName} description={data.gameDescript} image={data.picture}  />))}
                 
                 
                 </Slider>
                 </MDBRow>
-                
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
                 </MDBContainer>
                 
                 </div> 
                 )
             }
         }
+

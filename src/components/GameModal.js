@@ -24,7 +24,7 @@ class GameModal extends Component {
         API.saveGame({
             gameName: this.state.name,
             gameDescript: this.state.description,
-            maxOfPlayers: this.state.capacity,
+            maxOfPlayers: this.state.maxOfPlayers,
             picture: this.state.picture,
           })
             .then((response) => {

@@ -36,7 +36,7 @@ export default class Eventload extends Component {
                 this.setState(
                     {
                         grabbedGames: Response.data,
-                        gorm: true
+                        // gorm: true
                     }
                 )
                 console.log(Response);
@@ -70,7 +70,7 @@ export default class Eventload extends Component {
                 <GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} 
                 gameName={data.gameName}   
                 description={data.description} location={data.location} maxPlayers={data.maxPlayers}
-                dateTime={data.dateTime}
+                dateTime={data.dateTime} creatorName={data}
                 />
                 
                 ) }

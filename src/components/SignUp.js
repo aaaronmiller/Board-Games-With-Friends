@@ -128,7 +128,21 @@ class SignUp extends React.Component {
           <MDBCol sm="3"></MDBCol>
           </MDBRow>
         <Redirect to={this.state.redirectPath} />
-
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
         </MDBContainer>
       </div >
     );

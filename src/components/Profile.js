@@ -68,7 +68,21 @@ export default class Profile extends Component {
         </MDBRow>
         <UpdateProfileModal  userName={this.state.userName} update={this.updateProfileState} gameArr={this.state.favorite}/>
 
-
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
+        <br />
       </MDBContainer>
 
 
