@@ -91,23 +91,28 @@ class GameCard extends Component {
         if (this.state.userName === splitList[i])
         {
           alert("Cannot join games you have already joined!");
-          break;
+          return;
         }
       };
       splitList.push(this.state.userName);
       console.log(splitList)
       var newPlayerList = "";
       newPlayerList = splitList.join(",");
-      API.joinEvent3( id , {
-        enrolledPlayers: newPlayerList
-      })
-      .then((response) => {
-        console.log("player added!")
-        console.log(response);
-        window.location.reload();
-      });
+      if (splitList.length < (parseInt(this.state.maxPlayers) - 1)) {
+        API.joinEvent3( id , {
+          enrolledPlayers: newPlayerList
+        })
+        .then((response) => {
+          console.log("player added!")
+          console.log(response);
+          window.location.reload();
+        });
+      } else {
+        alert("Maximum players already reached.")
+        return;
+        }
+      }
     }
-  }
 
 
   render() {
