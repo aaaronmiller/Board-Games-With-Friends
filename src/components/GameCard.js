@@ -7,6 +7,7 @@ import Slider from "react-slick";
 class GameCard extends Component {
     state = {
       userName: "", 
+      enrolledPlayers: ""
       // isAdmin: true,
     };
 
@@ -65,6 +66,49 @@ class GameCard extends Component {
       });
   }
 
+  joinEvent3 = id => {
+    if (this.state.userName === this.props.creatorName) {
+      alert("Cannot join games which you created!")
+      return;
+    };
+   var playerList = "";
+    playerList = this.props.enrolledPlayers;
+    if (playerList === null) {
+      API.joinEvent3( id , {
+        enrolledPlayers: this.state.userName
+      })
+        .then((response) => {
+          console.log("player added!")
+          console.log(response);
+          window.location.reload();
+          return;
+        })
+    } else {
+
+      var splitList = playerList.split(",");
+      let i = 0;
+      for (i=0; i<=splitList.length; i++) {
+        if (this.state.userName === splitList[i])
+        {
+          alert("Cannot join games you have already joined!");
+          break;
+        }
+      };
+      splitList.push(this.state.userName);
+      console.log(splitList)
+      var newPlayerList = "";
+      newPlayerList = splitList.join(",");
+      API.joinEvent3( id , {
+        enrolledPlayers: newPlayerList
+      })
+      .then((response) => {
+        console.log("player added!")
+        console.log(response);
+        window.location.reload();
+      });
+    }
+  }
+
 
   render() {
     return (
@@ -83,13 +127,14 @@ class GameCard extends Component {
               <span><p>Max Players: {this.props.maxPlayers}</p></span>
               <span><p>Description: {this.props.description}</p></span>
               {/* <span>Curerent players: {CardExample.signedInPlayers}</span> */}
-              Joined Players: {this.props.listPlayers}
+              Enrolled Players: {this.props.enrolledPlayers}<br />
+              Creator: {this.props.creatorName}
             </MDBCardText>
             
-            <MDBBtn color="red" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=>this.joinEvent2(this.props.id)}>Join</MDBBtn>
+            <MDBBtn color="red" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=>this.joinEvent3(this.props.id)}>Join</MDBBtn>
             
      
-         ( <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white",borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>)
+          <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white",borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>
         
           
             

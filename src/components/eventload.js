@@ -70,7 +70,7 @@ export default class Eventload extends Component {
                 <GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} 
                 gameName={data.gameName}   
                 description={data.description} location={data.location} maxPlayers={data.maxPlayers}
-                dateTime={data.dateTime} creatorName={data}
+                dateTime={data.dateTime} creatorName={data.creatorName} enrolledPlayers={data.enrolledPlayers}
                 />
                 
                 ) }

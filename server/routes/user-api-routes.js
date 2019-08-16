@@ -58,11 +58,9 @@ module.exports = function(app) {
     //parse token to get id
     var decoded = jwt.verify(req.params.token, 'secret');
     db.joinedEvents.create({
-      where: {
         eventsId: req.params.id,
         userId: decoded.userId
-      },include: [db.Events, db.Users]
-    })
+     })
     .then(function(dbPopulateEvent)
     {
 
@@ -74,16 +72,35 @@ module.exports = function(app) {
   {
     //parse token to get id
        db.joinedEvents.create({
-        where: {
+    //     where: {
+    //   eventsId: req.params.id,
+    //   userName: req.params.userName
+    // },include: [db.Events, db.Users]
+    // })
+     
       eventsId: req.params.id,
       userName: req.params.userName
-    },include: [db.Events, db.Users]
+
     })
-    .then(function(dbPopulateEvent)
+    .then(function(res)
     {
 
-      res.json(dbPopulateEvent);
+      res.json(res);
     });
+  });
+
+  app.put("/api/users/join3/:id", function(req, res) {
+    db.Events.update(
+      req.body,
+      {
+        where: {
+          id: req.params.id
+        }
+      }).then(function(dbPopulateEvent)
+      {
+  
+        res.json(dbPopulateEvent);
+      });
   });
 
   app.post("/api/createaccount", function(req, res) {

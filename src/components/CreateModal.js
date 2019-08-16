@@ -25,6 +25,10 @@ class CreateModal extends Component {
         });
     };
     handleCreate = () => {
+        if (this.state.maxPlayers < 2) {
+            alert("Maximum players too low!");
+            return;
+        }
         this.setState({ modal1: false });
         API.saveEvent({
             // token: sessionStorage.getItem("token"),

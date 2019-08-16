@@ -67,6 +67,9 @@ export default {
   joinEvent: function (userId, eventId) {
     return axios.post(url + "/api/users/join2/" + userId + "/" + eventId);
   },
+  joinEvent3: function (eventId, eventData) {
+    return axios.put(url + "/api/users/join3/"  + eventId, eventData);
+  },
   getPlayers: function (eventId) {
     return axios.get(url + "/api/users/join/"  + eventId);
   },

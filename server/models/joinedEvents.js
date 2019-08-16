@@ -8,12 +8,12 @@ module.exports = function(sequelize, DataTypes) {
           key: 'eventsId'
         }
       },
-      userName:{
+      usersId:{
         type: DataTypes.STRING,
         allowNull: false,
         references: {
           model: 'Users',
-          key: 'userName'
+          key: 'usersId'
         }
       }
 

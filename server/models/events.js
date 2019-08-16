@@ -38,8 +38,13 @@ module.exports = function(sequelize, DataTypes) {
     },
     creatorName: {
       type: DataTypes.STRING,
-      allowNull: false,
+      allowNull: true,
+    },
+    enrolledPlayers: {
+      type: DataTypes.STRING,
+      allowNull: true,
     }
+
     // enrolledPlayers: {
     //   type: DataTypes.STRING,
     //   allowNull: true,
