@@ -17,23 +17,6 @@ class Navbar extends Component {
         sessionStorage.clear();
         this.props.handleLogOut();
     }
-
-    // Legacy Code : this function is handled with a && instead, delete on 8/10
-    //   |
-    //   |
-    //           V
-    // isLoggedIn = () => {
-    //     if (this.props.isLoggedIn) {
-    //         return (
-    //             <MDBNavItem>
-    //                 <MDBNavLink to="/" onClick={this.logOut}>
-    //                     Log Out
-    //                 </MDBNavLink>
-    //             </MDBNavItem>
-    //         )
-    //     }
-    // }
-
     render() {
         return (
             <div>
@@ -55,11 +38,13 @@ class Navbar extends Component {
                     <MDBNavbarToggler onClick={this.toggleCollapse} />
                     <MDBCollapse id="navbarCollapse" isOpen={this.state.isOpen} navbar>
                         <MDBNavbarNav right>
+                        {!this.props.isLoggedIn &&
                             <MDBNavItem active>
                                 <MDBNavLink to="/"><i className="fas fa-home"></i>
-                                    Home
+                                    Login
                                 </MDBNavLink>
                             </MDBNavItem>
+                        }
                             <MDBNavItem>
                                 <MDBNavLink to="/dashboard">
                                     <i className="fas fa-chess-rook"></i>

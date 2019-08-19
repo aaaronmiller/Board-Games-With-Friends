@@ -44,6 +44,7 @@ class Login extends React.Component {
   }
 
   handleSubmit(event) {
+    event.preventDefault();
     API.logIn(this.state.username, this.state.password)
       .then((response) => {
         if (!response.data) {
@@ -54,6 +55,7 @@ class Login extends React.Component {
           sessionStorage.setItem("userName", this.state.username);
           // this.props.handleLogIn();
           this.renderRedirect();
+          window.location.reload();
         }
       })
       .catch(function (error) {
@@ -91,26 +93,26 @@ class Login extends React.Component {
                         </a>
                       </h3>
                     </div>
-
-                    <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler} />
-                    <MDBInput className="text-white" label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler} />
-
-                    <MDBRow className="d-flex align-items-center mb-4">
-                      <div className="text-center mb-3 col-md-12">
-                        <MDBBtn
-                          color="red"
-                          rounded
-                          type="button"
-                          className="btn-block z-depth-1"
-                          onClick={this.handleSubmit}
-                          style={{
-                          borderRadius: "8px",
-                          filter: "drop-shadow(10px 10px 9px #000000)"
-                        }}>
-                          LOG IN
-                    </MDBBtn>
-                        </div>
-                      </MDBRow>
+               <form onSubmit={this.handleSubmit}>
+                  <MDBInput className="text-white" label="Your email" group icon="user" type="text" validate onChange={this.usernameHandler} />
+                  <MDBInput className="text-white" label="Your password" group icon="lock" type="password" validate onChange={this.passwordHandler} />
+                  
+                  <MDBRow className="d-flex align-items-center mb-4">
+                  <div className="text-center mb-3 col-md-12">
+                  <MDBBtn
+                  color="red"
+                  rounded
+                  type="submit"
+                  className="btn-block z-depth-1"
+                  style={{
+                    borderRadius: "8px",
+                    filter: "drop-shadow(10px 10px 9px #000000)"
+                  }}>
+                  LOG IN
+                  </MDBBtn>
+                  </div>
+                  </MDBRow>
+                </form>
                   <MDBCol sm="12">
                     <p className="font-small text-white d-flex justify-content-end">
                       Don't have an accout?

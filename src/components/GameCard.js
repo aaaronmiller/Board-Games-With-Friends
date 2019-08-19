@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { MDBContainer, MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
+import { MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
 import API from '../utils/API';
 import Slider from "react-slick";
 
@@ -95,15 +95,14 @@ class GameCard extends Component {
         }
       };
       splitList.push(this.state.userName);
-      console.log(splitList)
       var newPlayerList = "";
       newPlayerList = splitList.join(",");
-      if (splitList.length < (parseInt(this.state.maxPlayers) - 1)) {
+      if (splitList.length < (parseInt(this.props.maxPlayers))) {
         API.joinEvent3( id , {
           enrolledPlayers: newPlayerList
         })
         .then((response) => {
-          console.log("player added!")
+          alert("player added!")
           console.log(response);
           window.location.reload();
         });
@@ -138,9 +137,9 @@ class GameCard extends Component {
             
             <MDBBtn color="red" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=>this.joinEvent3(this.props.id)}>Join</MDBBtn>
             
-     
-          <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white",borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>
-        
+        {this.props.creatorName===this.state.userName && 
+          <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white",borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>}
+          
           
             
             </MDBCardBody>

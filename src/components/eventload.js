@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GameCard from "./GameCard";
 import API from '../utils/API';
 import Slider from "react-slick";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 
 export default class Eventload extends Component {
     constructor(props) {
