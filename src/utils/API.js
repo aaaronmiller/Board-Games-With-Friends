@@ -1,7 +1,7 @@
 import axios from "axios";
 
-const url = "https://arcane-spire-45572.herokuapp.com";
-// const url = "http://localhost:8080";
+// const url = "https://arcane-s pire-45572.herokuapp.com";
+const url = "http://localhost:8080";
 
 export default {
   // Event API's  
@@ -71,6 +71,10 @@ export default {
     return axios.post(url + "/api/users/join/"  + eventId);
   },
 
+  getJoinedPlayers: function (eventId) {
+    return axios.get(url + "/api/joinedUser/"  + eventId);
+  },
+  
 
   scrape: function () {
     return axios.get(url + "/api/scrape");

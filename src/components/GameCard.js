@@ -5,38 +5,30 @@ import Slider from "react-slick";
 
 // const CardExample = () => {
 class GameCard extends Component {
-  //   state = {
-  //     isOwner: true, 
-  //     isAdmin: true,
-  //   };
+    state = {
+      objData: []
+   
+    };
 
   componentDidMount() {
     this.loadEvents();
   };
 
   loadEvents = () => {
-    API.getAllEvents()
+    API.getJoinedPlayers(this.props.id)
       .then(res =>
-        this.setState({ gameObj: res.data })
+        {
+          this.setState(
+            {
+              objData : res.data
+            }
+          )
+          console.log(this.state.objData)
+        }
       )
       .catch(err => console.log(err));
-  };
 
-  loadEventsNplayers = () => {
-    API.getAllEvents()
-      .then(res =>
-        this.setState({ gameObj: res.data })
-        .catch(err => console.log(err))
-        );
-        API.getPlayers(this.state.id)
-          .then(res =>
-            this.setState({ joinedPlayers : res.data})
-            )
-            .catch(err => console.log(err));
-            let joinedPlayers = this.state.joinedPlayers;
-            let listPlayers = joinedPlayers.join(",");
-            this.setState({joinedPlayers : listPlayers})
-   }
+  };
 
   deleteEvent = id => {
     API.deleteEvent(id)
@@ -45,6 +37,8 @@ class GameCard extends Component {
       }).catch(function (error) {
         console.log(error);
       })
+      window.location.reload();
+
   }
 
   joinEvent = id => {
@@ -52,6 +46,7 @@ class GameCard extends Component {
       .then((response) => {
         console.log(response);
       });
+      window.location.reload();
   }
 
 
@@ -72,7 +67,10 @@ class GameCard extends Component {
               <span><p>Max Players: {this.props.maxPlayers}</p></span>
               <span><p>Description: {this.props.description}</p></span>
               {/* <span>Curerent players: {CardExample.signedInPlayers}</span> */}
-              Joined Players: {this.props.listPlayers}
+              <span><p>JoinedPlayers:</p></span>
+              
+              {this.state.objData.map((data) =>  <span><p>{data.User.userName}</p></span>)}
+
             </MDBCardText>
             
             <MDBBtn color="red" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=>this.joinEvent(this.props.id)}>Join</MDBBtn>
