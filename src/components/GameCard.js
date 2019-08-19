@@ -44,9 +44,10 @@ class GameCard extends Component {
   joinEvent = id => {
     API.joinEvent(sessionStorage.getItem("token").toString(), id )
       .then((response) => {
+      this.loadEvents();
+
         console.log(response);
       });
-      window.location.reload();
   }
 
 
