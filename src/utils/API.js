@@ -1,7 +1,9 @@
 import axios from "axios";
 
 // const url = "https://arcane-spire-45572.herokuapp.com";
-const url = "http://localhost:8080";
+const url = "https://limitless-eyrie-66892.herokuapp.com";
+
+// const url = "http://localhost:8080";
 
 export default {
   // Event API's  
