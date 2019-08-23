@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import { MDBContainer, MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
+import { MDBBtn, MDBModal, MDBModalBody, MDBModalHeader, MDBModalFooter, MDBInput } from 'mdbreact';
 import API from '../utils/API';
 // import { number } from 'prop-types';
 
@@ -15,8 +15,11 @@ class CreateModal extends Component {
             location: "",
             maxPlayers: "",
             dateTime: "",
-            gpsLocation: ""
-        }
+            gpsLocation: "",
+            latt: "",
+            long: ""
+        };
+        // this.getGPS = this.getGPS.bind(this);
     }
     handleInputChange = event => {
         const { name, value } = event.target;
@@ -60,6 +63,27 @@ class CreateModal extends Component {
             [modalNumber]: !this.state[modalNumber]
         });
     }
+
+    getGPS = () =>  {
+        // if (navigator.geolocation) {
+        //     console.log('geolocation exists')
+            navigator.geolocation.getCurrentPosition(function (position) {
+                alert(position.coords.latitude + "&" + position.coords.longitude) ;
+                console.log("inside success callback");
+                this.setState({
+                    latt : position.coords.longitude,
+                    long : position.coords.latitude,
+                    gpsLocation : position
+                });
+              
+            },
+            console.log("success"));
+        }
+        //  else {
+        //     // Browser doesn't support Geolocation
+        //     console.log("GPS error");
+        // }
+    // }
 
     render() {
         return (
@@ -122,6 +146,12 @@ class CreateModal extends Component {
                                     name="description"
                                     onChange={this.handleInputChange}
                                 />
+
+                                <div style={{color: "black"}}>
+                                Latitude: {this.state.Latt} <br />
+                                Longitude: {this.state.Long} <br />
+                                </div>
+                                <MDBBtn color="#01579b light-blue darken-4" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(5px 5px 5px #000000)" }} onClick={this.getGPS}>Get GPS Coords</MDBBtn>
 
                             </div>
                         </MDBModalBody>
