@@ -17,17 +17,17 @@ class Navbar extends Component {
         sessionStorage.clear();
         this.props.handleLogOut();
     }
-    isLoggedIn = () => {
-        if (this.props.isLoggedIn) {
-            return (
-                <MDBNavItem>
-                    <MDBNavLink to="/" onClick={this.logOut}>
-                        Log Out
-                    </MDBNavLink>
-                </MDBNavItem>
-            )
-        }
-    }
+    // isLoggedIn = () => {
+    //     if (this.props.isLoggedIn) {
+    //         return (
+    //             <MDBNavItem>
+    //                 <MDBNavLink to="/" onClick={this.logOut}>
+    //                     Log Out
+    //                 </MDBNavLink>
+    //             </MDBNavItem>
+    //         )
+    //     }
+    // }
 
     render() {
         return (
@@ -60,13 +60,13 @@ class Navbar extends Component {
                             <MDBNavItem>
                                 <MDBNavLink to="/dashboard">
                                     <i className="fas fa-chess-rook"></i>
-                                    My Game
+                                    Events
                                 </MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
                                 <MDBNavLink to="/find-game">
                                     <i className="fas fa-chess-knight"></i>
-                                    Find A Game
+                                    Game Catalog
                                 </MDBNavLink>
                             </MDBNavItem>
                             <MDBNavItem>
@@ -83,14 +83,14 @@ class Navbar extends Component {
                                     </MDBNavLink>
                                 </MDBNavItem>
                             }
-                            {/* {this.props.isLoggedIn &&
+                            {this.props.isLoggedIn &&
                                 <MDBNavItem>
                                     <MDBNavLink to="/" onClick={this.logOut}>
                                         Log Out
                                     </MDBNavLink>
                                 </MDBNavItem>
-                            } */}
-                            { this.isLoggedIn() }
+                            } 
+                        
                         </MDBNavbarNav>
                     </MDBCollapse>
                 </MDBNavbar>

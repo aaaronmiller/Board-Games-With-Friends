@@ -5,11 +5,11 @@ import Slider from "react-slick";
 
 // const CardExample = () => {
 class GameCard extends Component {
-    state = {
-      userName: "", 
-      enrolledPlayers: ""
-      // isAdmin: true,
-    };
+  state = {
+    userName: "",
+    enrolledPlayers: ""
+    // isAdmin: true,
+  };
 
   componentDidMount() {
     this.loadEvents();
@@ -28,20 +28,20 @@ class GameCard extends Component {
   };
 
   loadEventsNplayers = () => {
-    API.getAllEvents()  
+    API.getAllEvents()
       .then(res =>
         this.setState({ gameObj: res.data })
-        .catch(err => console.log(err))
-        );
-        API.getPlayers(this.state.id)
-          .then(res =>
-            this.setState({ joinedPlayers : res.data})
-            )
-            .catch(err => console.log(err));
-            let joinedPlayers = this.state.joinedPlayers;
-            let listPlayers = joinedPlayers.join(",");
-            this.setState({joinedPlayers : listPlayers})
-   }
+          .catch(err => console.log(err))
+      );
+    API.getPlayers(this.state.id)
+      .then(res =>
+        this.setState({ joinedPlayers: res.data })
+      )
+      .catch(err => console.log(err));
+    let joinedPlayers = this.state.joinedPlayers;
+    let listPlayers = joinedPlayers.join(",");
+    this.setState({ joinedPlayers: listPlayers })
+  }
 
   deleteEvent = id => {
     API.deleteEvent(id)
@@ -53,14 +53,14 @@ class GameCard extends Component {
   }
 
   joinEvent = id => {
-    API.joinEvent(sessionStorage.getItem("token").toString(), id )
+    API.joinEvent(sessionStorage.getItem("token").toString(), id)
       .then((response) => {
         console.log(response);
       });
   }
 
   joinEvent2 = id => {
-    API.joinEvent(sessionStorage.getItem("userName"), id )
+    API.joinEvent(sessionStorage.getItem("userName"), id)
       .then((response) => {
         console.log(response);
       });
@@ -71,10 +71,14 @@ class GameCard extends Component {
       alert("Cannot join games which you created!")
       return;
     };
-   var playerList = "";
+    if (this.state.userName === null) {
+      alert("Must login to join events!")
+      return;
+    };
+    var playerList = "";
     playerList = this.props.enrolledPlayers;
     if (playerList === null) {
-      API.joinEvent3( id , {
+      API.joinEvent3(id, {
         enrolledPlayers: this.state.userName
       })
         .then((response) => {
@@ -87,9 +91,8 @@ class GameCard extends Component {
 
       var splitList = playerList.split(",");
       let i = 0;
-      for (i=0; i<=splitList.length; i++) {
-        if (this.state.userName === splitList[i])
-        {
+      for (i = 0; i <= splitList.length; i++) {
+        if (this.state.userName === splitList[i]) {
           alert("Cannot join games you have already joined!");
           return;
         }
@@ -98,34 +101,96 @@ class GameCard extends Component {
       var newPlayerList = "";
       newPlayerList = splitList.join(",");
       if (splitList.length < (parseInt(this.props.maxPlayers))) {
-        API.joinEvent3( id , {
+        API.joinEvent3(id, {
           enrolledPlayers: newPlayerList
         })
-        .then((response) => {
-          alert("player added!")
-          console.log(response);
-          window.location.reload();
-        });
+          .then((response) => {
+            alert("player added!")
+            console.log(response);
+            window.location.reload();
+          });
       } else {
         alert("Maximum players already reached.")
         return;
+      }
+    }
+  }
+
+
+  leaveEvent = id => {
+    var playerList = "";
+    playerList = this.props.enrolledPlayers;
+    var splitList = playerList.split(",");
+    if ((splitList[0] === this.state.userName) && (splitList.length < 2)) {
+      API.joinEvent3(id, {
+        enrolledPlayers: null
+      })
+        .then((response) => {
+          alert("player removed!")
+          console.log(response);
+          window.location.reload();
+        })
+    } else {
+
+      let i = 0;
+      for (i = 0; i <= splitList.length; i++) {
+        if (this.state.userName === splitList[i]) {
+          var newSplitList = [];
+          newSplitList = splitList.splice(i+1);
+          
+          var newPlayerList = "";
+          newPlayerList = newSplitList.join(",");
+          API.joinEvent3(id, {
+            enrolledPlayers: newPlayerList
+          })
+          .then((response) => {
+            alert("player removed!")
+            console.log(response);
+            window.location.reload();
+          });
+        } else {
+          alert("no")
+        }
+    };
+
+    };
+  }
+  
+  leaveEventBtn = () => {
+    if (this.props.enrolledPlayers === null) {
+      return;
+      } else {
+
+        var playerList = "";
+        playerList = this.props.enrolledPlayers;
+        var splitList = playerList.split(",");
+        let i = 0;
+        for (i = 0; i <= splitList.length; i++) {
+          if (this.state.userName === splitList[i]) {
+            return (
+          <MDBBtn color="red" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={() => this.leaveEvent(this.props.id)}>Leave Event</MDBBtn>
+          )
+        } else {
+          
         }
       }
     }
-
+  }
 
   render() {
     return (
-  <div style={{display:"inline-block", textAlign:"center"}}>
-  
-  
-  <MDBCard className="text-black bg-light" style={{ color: "black", display:"inline-block", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)", backgroundImage:
-  "url(https://image.freepik.com/free-vector/stylish-blue-medical-background-with-hexagon_1017-19373.jpg)"}}>
-  <MDBCardBody>
-  <MDBCardTitle style={{ color: "black" }}>{this.props.eventTitle}</MDBCardTitle>
+      <div style={{ display: "inline-block", textAlign: "center" }}>
+
+
+        <MDBCard className="text-black bg-light" style={{
+          color: "black", display: "inline-block", textAlign: "center", margin: "30px", borderRadius: "30px", filter: "drop-shadow(10px 10px 9px #000000)", backgroundImage:
+            "url(https://image.freepik.com/free-vector/stylish-blue-medical-background-with-hexagon_1017-19373.jpg)"
+        }}>
+          <MDBCardBody>
+            <MDBCardTitle style={{ color: "black" }}>{this.props.eventTitle}</MDBCardTitle>
             <MDBCardText style={{ color: "white" }}>
-            {this.props.gameName}<br /><br />
-            <span><p>Location: {this.props.location}</p></span><br />
+              {this.props.gameName}<br /><br />
+              <span><p>Location: {this.props.location}</p></span><br />
               {/* Created by:{CardExample.eventOwner}<br />c */}
               Date/time:{this.props.dateTime}<br />
               <span><p>Max Players: {this.props.maxPlayers}</p></span>
@@ -134,20 +199,22 @@ class GameCard extends Component {
               Enrolled Players: {this.props.enrolledPlayers}<br />
               Creator: {this.props.creatorName}
             </MDBCardText>
-            
-            <MDBBtn color="red" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=>this.joinEvent3(this.props.id)}>Join</MDBBtn>
-            
-        {this.props.creatorName===this.state.userName && 
-          <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white",borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={()=> this.deleteEvent(this.props.id)} >Delete</MDBBtn>}
-          
-          
-            
-            </MDBCardBody>
-            </MDBCard>
-           
-            </div>
-            
-            )
+
+            <MDBBtn color="red" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={() => this.joinEvent3(this.props.id)}>Join</MDBBtn>
+
+            {this.leaveEventBtn()}
+
+            {this.props.creatorName === this.state.userName &&
+              <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white", borderRadius: "10px", filter: "drop-shadow(10px 10px 9px #000000)" }} href="#" onClick={() => this.deleteEvent(this.props.id)} >Delete</MDBBtn>}
+
+
+
+          </MDBCardBody>
+        </MDBCard>
+
+      </div>
+
+    )
   }
 
 }

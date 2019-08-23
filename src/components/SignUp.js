@@ -54,7 +54,6 @@ class SignUp extends React.Component {
         sessionStorage.setItem("token", response.data);
         sessionStorage.setItem("isLoggedIn", true);
         console.log(response);
-        alert("Thank you, please now login using your chosen username and password.")
         this.props.handleLogIn();
         this.renderRedirect();
 
