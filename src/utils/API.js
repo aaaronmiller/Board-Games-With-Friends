@@ -1,6 +1,8 @@
 import axios from "axios";
 
-const url = "https://arcane-spire-45572.herokuapp.com";
+// const url = "https://arcane-spire-45572.herokuapp.com";
+const url = "https://limitless-eyrie-66892.herokuapp.com";
+
 // const url = "http://localhost:8080";
 
 export default {
@@ -64,11 +66,14 @@ export default {
     });
   },
   
-  joinEvent: function (token, eventId) {
-    return axios.post(url + "/api/users/join/" + token + "/" + eventId);
+  joinEvent: function (userId, eventId) {
+    return axios.post(url + "/api/users/join2/" + userId + "/" + eventId);
+  },
+  joinEvent3: function (eventId, eventData) {
+    return axios.put(url + "/api/users/join3/"  + eventId, eventData);
   },
   getPlayers: function (eventId) {
-    return axios.post(url + "/api/users/join/"  + eventId);
+    return axios.get(url + "/api/users/join/"  + eventId);
   },
 
 

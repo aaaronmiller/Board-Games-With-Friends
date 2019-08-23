@@ -5,6 +5,9 @@
 /.pnp
 .pnp.js
 
+# sequelize config
+/server/config
+
 # testing
 /coverage
 

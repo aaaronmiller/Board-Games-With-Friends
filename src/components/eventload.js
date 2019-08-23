@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import GameCard from "./GameCard";
 import API from '../utils/API';
 import Slider from "react-slick";
-import { MDBContainer, MDBRow, MDBCol, MDBBtn, MDBCard, MDBCardBody, MDBCardTitle, MDBCardText } from 'mdbreact';
+import { MDBContainer, MDBRow, MDBCol } from 'mdbreact';
 
 export default class Eventload extends Component {
     constructor(props) {
@@ -36,7 +36,7 @@ export default class Eventload extends Component {
                 this.setState(
                     {
                         grabbedGames: Response.data,
-                        gorm: true
+                        // gorm: true
                     }
                 )
                 console.log(Response);
@@ -70,7 +70,7 @@ export default class Eventload extends Component {
                 <GameCard id={data.id} key={data.id} eventTitle={data.eventTitle} 
                 gameName={data.gameName}   
                 description={data.description} location={data.location} maxPlayers={data.maxPlayers}
-                dateTime={data.dateTime}
+                dateTime={data.dateTime} creatorName={data.creatorName} enrolledPlayers={data.enrolledPlayers}
                 />
                 
                 ) }

@@ -2,6 +2,7 @@ import React, { Component } from "react";
 import { MDBCard, MDBCardBody, MDBCardTitle, MDBCardText, MDBCardHeader, MDBCardFooter, MDBCardImage, MDBBtn, MDBCol } from
   "mdbreact";
 import API from '../utils/API';
+import CreateModal from './CreateModal';
 
 // const GamePanel = props => {
 
@@ -35,17 +36,17 @@ class GamePanel extends Component {
   // };
 
 
-  componentDidMount() {
-    this.loadEvents();
-  };
+  // componentDidMount() {
+  //   this.loadEvents();
+  // };
 
-  loadEvents = () => {
-    API.getGames()
-      .then(res =>
-        this.setState({ gameObj: res.data })
-      )
-      .catch(err => console.log(err));
-  };
+  // loadEvents = () => {
+  //   API.getGames()
+  //     .then(res =>
+  //       this.setState({ gameObj: res.data })
+  //     )
+  //     .catch(err => console.log(err));
+  // };
 
   deleteGame = id => {
     API.deleteGame(id)
@@ -72,13 +73,17 @@ class GamePanel extends Component {
                 </a>
               </MDBCardTitle>
               <MDBCardText style={{color:"black" }}>
+              {this.props.image===null ? (
                 <MDBCardImage className="img-fluid rounded mx-auto d-block" src={this.props.image} style={{ height: "80%", width: "80%", borderRadius: "25px" }} />
+                ) : ( 
+              <MDBCardImage className="img-fluid rounded mx-auto d-block" src="http://ridleylibrary.org/wp-content/uploads/2018/02/games.jpg" style={{ height: "80%", width: "80%", borderRadius: "25px" }} /> 
+              )}
+                
                 <br />
                 {this.props.description}<br />
               </MDBCardText>
-              <MDBBtn color="#e65100 orange darken-4" size="sm" style={{ color: "white",borderRadius: "10px", filter: "drop-shadow(5px 5px 9px #000000)" }}>
-                Create Event
-        </MDBBtn>
+
+              <CreateModal />
 
               <MDBBtn color="#1565c0 blue darken-3" style={{ color: "white",borderRadius: "10px", filter: "drop-shadow(5px 5px 9px #000000)" }} href="#" onClick={() => this.deleteGame(this.props.id)} >Delete</MDBBtn>
             </MDBCardBody>

@@ -13,11 +13,26 @@ const DashBoard = ({ props }) => {
             <MDBContainer>
                 <div>
                     <h1 className="text-white" style={{ textAlign: "center" }}>
-                        Upcoming Games
-                            <CreateModal />
+                        Upcoming Games<br />
+                          <CreateModal />
                     </h1>
                             <Eventload />
                 </div>
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
+                <br />
             </MDBContainer>
         </div>
     )

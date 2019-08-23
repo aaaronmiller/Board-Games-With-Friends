@@ -50,11 +50,13 @@ class Navbar extends Component {
                     <MDBNavbarToggler onClick={this.toggleCollapse} />
                     <MDBCollapse id="navbarCollapse" isOpen={this.state.isOpen} navbar>
                         <MDBNavbarNav right>
+                        {!this.props.isLoggedIn &&
                             <MDBNavItem active>
                                 <MDBNavLink to="/"><i className="fas fa-home"></i>
-                                    Home
+                                    Login
                                 </MDBNavLink>
                             </MDBNavItem>
+                        }
                             <MDBNavItem>
                                 <MDBNavLink to="/dashboard">
                                     <i className="fas fa-chess-rook"></i>
