@@ -54,11 +54,9 @@ class SignUp extends React.Component {
         sessionStorage.setItem("token", response.data);
         sessionStorage.setItem("isLoggedIn", true);
         console.log(response);
-<<<<<<< HEAD
         alert("Thank you, please now login using your chosen username and password.")
         this.props.handleLogIn();
         this.renderRedirect();
-=======
 
         API.logIn(this.state.username, this.state.password)
           .then((response) => {
@@ -77,7 +75,6 @@ class SignUp extends React.Component {
             console.log(error);
           });
 
->>>>>>> AAA
         if (!response.data) {
           alert("wrong username or password")
         }
